@@ -23,13 +23,19 @@ dns:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
   fallback:
-    - https://1.1.1.1/dns-query
-    - https://dns.google/dns-query
+    - https://1.0.0.1/dns-query
+    - tls://dns.google
   fallback-filter:
     geoip: true
     geoip-code: CN
+    geosite:
+      - gfw
     ipcidr:
       - 240.0.0.0/4
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
 
 
 
