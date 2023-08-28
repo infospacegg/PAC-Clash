@@ -243,6 +243,16 @@ proxy-groups:
     - DIRECT
     - vless-reality-vision节点                                    
     - vless-reality-grpc节点
+    - vless-xtls-rprx-vision节点
+    - vless-ws-tls节点
+    - vless-ws节点
+    - vmess-ws-tls节点
+    - vmess-ws节点
+    - trojan-tcp-tls节点
+    - hysteria证书节点
+    - hysteria自签节点
+    - tuic-V5节点
+    - warp-wireguard节点
 
 
 
