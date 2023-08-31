@@ -1,11 +1,11 @@
 #甬哥Github项目  ：github.com/yonggekkk
 #甬哥Blogger博客 ：ygkkk.blogspot.com
 #甬哥YouTube频道 ：www.youtube.com/@ygkkk
-#====甬哥侃侃侃clash-meta配置文件模版（V23.8.31）=====
+#====clash-meta精简配置文件模版（V23.8.31）=====
 #====参考自clash-meta官方文档：wiki.metacubex.one=====
 
 #（一区）=============================（clash配置）
-#dns可自行修改折腾
+#dns可自行修改
 port: 7890
 allow-lan: true
 mode: rule
