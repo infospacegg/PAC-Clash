@@ -1,7 +1,7 @@
 #甬哥Github项目  ：github.com/yonggekkk
 #甬哥Blogger博客 ：ygkkk.blogspot.com
 #甬哥YouTube频道 ：www.youtube.com/@ygkkk
-#====clash-meta精简配置文件模版（V23.8.31）=====
+#====clash-meta精简配置文件模版（V23.10.13）=====
 #====参考自clash-meta官方文档：wiki.metacubex.one=====
 
 #（一区）=============================（clash配置）
@@ -188,7 +188,31 @@ proxies:
   protocol: udp                                    #自定义协议：udp/wechat-video/faketcp
   up: 20                                           #自定义的上传限制
   down: 100                                        #自定义的下载限制
-  sni: www.bing.com                                
+  sni: www.bing.com                                #自签证书                     
+  skip-cert-verify: true
+  fast-open: true
+
+#==============================（hysteria2证书节点）
+- name: hysteria2证书节点                            #可自定义名称
+  type: hysteria2 
+  server: yg.ygkkk.eu.org                            #解析的域名
+  port: 12345                                        #自定义的端口
+  password: 123456                                   #自定义的密码
+  alpn:
+    - h3
+  sni: yg.ygkkk.eu.org                               #sni域名，与上面server地址一致 
+  skip-cert-verify: false
+  fast-open: true
+
+#==============================（hysteria2自签节点）
+- name: hysteria2自签节点                             #可自定义名称
+  type: hysteria2                                      
+  server: 1.2.3.4                                     #服务器本地IP
+  port: 12345                                         #自定义的端口
+  password: 123456                                    #自定义的密码
+  alpn:
+    - h3
+  sni: www.bing.com                                    #自签证书
   skip-cert-verify: true
   fast-open: true
     
