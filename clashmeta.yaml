@@ -249,6 +249,7 @@ proxy-groups:
   type: load-balance
   url: http://www.gstatic.com/generate_204
   interval: 300
+  strategy: round-robin
   proxies:
     - warp-wireguard节点                                  #自定义添加协议的name字段
     - vless-ws-tls节点
