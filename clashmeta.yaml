@@ -162,8 +162,8 @@ proxies:
     - http/1.1
   skip-cert-verify: false
     
-#==============================（hysteria证书节点）
-- name: hysteria证书节点                            #可自定义名称
+#==============================（hysteria1证书节点）
+- name: hysteria1证书节点                            #可自定义名称
   type: hysteria
   server: yg.ygkkk.eu.org                          #解析的域名
   port: 12345                                      #自定义的端口，多端口改为 ports:空格1000,2000-3000
@@ -177,8 +177,8 @@ proxies:
   skip-cert-verify: false
   fast-open: true
     
-#==============================（hysteria自签节点）
-- name: hysteria自签节点                           #可自定义名称
+#==============================（hysteria1自签节点）
+- name: hysteria1自签节点                           #可自定义名称
   type: hysteria
   server: 1.2.3.4                                  #服务器本地IP
   port: 12345                                      #自定义的端口，多端口改为 ports:空格1000,2000-3000
@@ -288,5 +288,6 @@ proxy-groups:
 #（四区）==============================（代理规则）
 #代理规则可自行添加 
 rules:
+  - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,🌍选择代理节点
