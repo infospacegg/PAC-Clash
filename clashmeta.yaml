@@ -247,7 +247,7 @@ proxies:
 proxy-groups:
 - name: 负载均衡
   type: load-balance
-  url: http://www.gstatic.com/generate_204
+  url: https://cp.cloudflare.com/generate_204
   interval: 300
   strategy: round-robin
   proxies:
@@ -257,7 +257,7 @@ proxy-groups:
 
 - name: 自动选择
   type: url-test
-  url: http://www.gstatic.com/generate_204
+  url: https://cp.cloudflare.com/generate_204
   interval: 300
   tolerance: 50
   proxies:
