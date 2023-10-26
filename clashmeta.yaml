@@ -288,6 +288,5 @@ proxy-groups:
 #（四区）==============================（代理规则）
 #代理规则可自行添加 
 rules:
-  - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,🌍选择代理节点
