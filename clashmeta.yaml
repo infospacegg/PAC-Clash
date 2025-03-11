@@ -113,6 +113,39 @@ proxies:
     headers:
       Host: abc.ygkkk.eu.org                       #host域名，与上面的servername一致
 
+#==vmess-ws-tls节点1
+
+- name: CF_V6_www.visa.com.mt_2086_HKG4Asia PacificHong Kong40 ms_0103H-2                           #可自定义名称
+  type: vless
+  server: 2606:4700:839b:dad6:d211:6253:25dc:adc4                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+      
+#==vmess-ws-tls节点1
+
+- name: CF_V6_www.visa.com.mt_2086_FRA3EuropeFrankfurt229 ms_0103H-2                           #可自定义名称
+  type: vless
+  server: 2606:4700:8d99:c65a:8f72:aeb6:6d7b:2890                      #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+
 #==============================（vmess-ws-tls节点）
 - name: vmess-ws-tls节点                           #可自定义名称
   type: vmess
@@ -273,9 +306,8 @@ proxy-groups:
   interval: 300
   strategy: round-robin
   proxies:
-    - warp-wireguard节点                                  #自定义添加协议的name字段
-    - vless-ws-tls节点
-    - vless-ws节点
+    - CF_V6_www.visa.com.mt_2086_HKG4Asia PacificHong Kong40 ms_0103H-2                                  #自定义添加协议的name字段
+    - CF_V6_www.visa.com.mt_2086_FRA3EuropeFrankfurt229 ms_0103H-2   
 
 - name: 自动选择
   type: url-test
@@ -283,8 +315,8 @@ proxy-groups:
   interval: 300
   tolerance: 50
   proxies:
-    - vless-reality-vision节点                            #自定义添加协议的name字段
-    - vless-reality-grpc节点
+    - CF_V6_www.visa.com.mt_2086_HKG4Asia PacificHong Kong40 ms_0103H-2                                  #自定义添加协议的name字段
+    - CF_V6_www.visa.com.mt_2086_FRA3EuropeFrankfurt229 ms_0103H-2   
     
 - name: 🌍选择代理节点
   type: select
@@ -292,6 +324,8 @@ proxy-groups:
     - 负载均衡                                            #自定义添加协议的name字段
     - 自动选择
     - DIRECT
+    - CF_V6_www.visa.com.mt_2086_HKG4Asia PacificHong Kong40 ms_0103H-2                                  #自定义添加协议的name字段
+    - CF_V6_www.visa.com.mt_2086_FRA3EuropeFrankfurt229 ms_0103H-2   
     - vless-reality-vision节点                                    
     - vless-reality-grpc节点
     - vless-xtls-rprx-vision节点
