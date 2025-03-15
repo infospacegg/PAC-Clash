@@ -757,11 +757,13 @@ rules:
   - MATCH,🌍选择代理节点
   # Gemini和Google AI Studio规则
   - DOMAIN-SUFFIX,gemini.google.com,Gemini
-  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,Gemini
+  - DOMAIN-KEYWORD,generativelanguage,Gemini
   - DOMAIN-KEYWORD,gemini,Gemini
   - DOMAIN-SUFFIX,aistudio.google.com,Gemini
   - DOMAIN-SUFFIX,google-analytics.com,Gemini
-  - DOMAIN-SUFFIX,googleapis.com,Gemini
+  - DOMAIN-KEYWORD,colab,Gemini
+  - DOMAIN-SUFFIX,apis.google.com,Gemini
+  - DOMAIN-KEYWORD,developerprofiles,Gemini
   - DOMAIN-SUFFIX,gstatic.com,Gemini
   - DOMAIN-SUFFIX,googleusercontent.com,Gemini
   - DOMAIN,accounts.google.com,Gemini
