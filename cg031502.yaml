@@ -752,9 +752,7 @@ proxy-groups:
 #（四区）==============================（代理规则）
 #代理规则可自行添加 
 rules:
-  - GEOIP,LAN,DIRECT
-  - GEOIP,CN,DIRECT
-  - MATCH,🌍选择代理节点
+
   # Gemini和Google AI Studio综合规则
   - DOMAIN-SUFFIX,ai.google.com,Gemini
   - DOMAIN-SUFFIX,aistudio.google.com,Gemini
@@ -770,3 +768,7 @@ rules:
   - DOMAIN-SUFFIX,gstatic.com,Gemini
   - DOMAIN-SUFFIX,googleusercontent.com,Gemini
   - DOMAIN,accounts.google.com,Gemini
+
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,🌍选择代理节点
