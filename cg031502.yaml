@@ -129,6 +129,141 @@ proxies:
     headers:
       Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
 
+#==============================（新增FRA节点 - IPv4 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms                           #法兰克福节点1
+  type: vless
+  server: 104.16.136.181                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv4 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt227 ms                           #法兰克福节点2
+  type: vless
+  server: 172.67.6.34                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv4 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt227 ms                           #法兰克福节点4
+  type: vless
+  server: 104.20.55.220                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv4 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt228 ms                           #法兰克福节点5
+  type: vless
+  server: 104.19.233.207                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv6 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms_IPv6                           #法兰克福节点1 IPv6
+  type: vless
+  server: 2606:4700:839c:4907:2994:d309:2514:b062                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv6 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt229 ms_IPv6                           #法兰克福节点2 IPv6
+  type: vless
+  server: 2606:4700:8dd1:14fa:3745:ca6b:9119:53ec                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv6 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt230 ms_IPv6                           #法兰克福节点4 IPv6
+  type: vless
+  server: 2606:4700:8d9f:7e6:5952:79cd:dcf7:f71c                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv6 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt230 ms_IPv6                           #法兰克福节点5 IPv6
+  type: vless
+  server: 2606:4700:8d7a:295f:3bcd:703e:444c:4082                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增SEA/SJC节点 - IPv6 北美）
+- name: CF_V6_www.visa.com.mt_2086_SEA5North AmericaSeattle171 ms_IPv6                           #西雅图节点5 IPv6
+  type: vless
+  server: 2606:4700:23:53a5:513:9b4b:aad0:ac61                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
 #==============================（vmess-ws-tls节点）
 - name: vmess-ws-tls节点                           #可自定义名称
   type: vmess
@@ -278,140 +413,6 @@ proxies:
   private-key: gK3C8ijdVlT7sd5fsdf5ssdfgsdfgsdfgobT2U+rgHo=  #获取private-key，私key
   udp: true
 
-#==============================（新增SEA/SJC节点 - IPv6 北美）
-- name: CF_V6_www.visa.com.mt_2086_SEA5North AmericaSeattle171 ms_IPv6                           #西雅图节点5 IPv6
-  type: vless
-  server: 2606:4700:23:53a5:513:9b4b:aad0:ac61                          #解析的域名或者优选域名IP
-  port: 2086                                     #自定义的端口
-  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
-  udp: true
-  tls: false
-  network: ws
-  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
-  ws-opts:
-    path: /?ed=2560                         #" "内自定义的path路径
-    headers:
-      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
-
-#==============================（新增FRA节点 - IPv4 欧洲法兰克福）
-- name: CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms                           #法兰克福节点1
-  type: vless
-  server: 104.16.136.181                          #解析的域名或者优选域名IP
-  port: 2086                                     #自定义的端口
-  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
-  udp: true
-  tls: false
-  network: ws
-  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
-  ws-opts:
-    path: /?ed=2560                         #" "内自定义的path路径
-    headers:
-      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
-
-#==============================（新增FRA节点 - IPv4 欧洲法兰克福）
-- name: CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt227 ms                           #法兰克福节点2
-  type: vless
-  server: 172.67.6.34                          #解析的域名或者优选域名IP
-  port: 2086                                     #自定义的端口
-  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
-  udp: true
-  tls: false
-  network: ws
-  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
-  ws-opts:
-    path: /?ed=2560                         #" "内自定义的path路径
-    headers:
-      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
-
-#==============================（新增FRA节点 - IPv4 欧洲法兰克福）
-- name: CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt227 ms                           #法兰克福节点4
-  type: vless
-  server: 104.20.55.220                          #解析的域名或者优选域名IP
-  port: 2086                                     #自定义的端口
-  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
-  udp: true
-  tls: false
-  network: ws
-  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
-  ws-opts:
-    path: /?ed=2560                         #" "内自定义的path路径
-    headers:
-      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
-
-#==============================（新增FRA节点 - IPv4 欧洲法兰克福）
-- name: CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt228 ms                           #法兰克福节点5
-  type: vless
-  server: 104.19.233.207                          #解析的域名或者优选域名IP
-  port: 2086                                     #自定义的端口
-  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
-  udp: true
-  tls: false
-  network: ws
-  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
-  ws-opts:
-    path: /?ed=2560                         #" "内自定义的path路径
-    headers:
-      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
-
-#==============================（新增FRA节点 - IPv6 欧洲法兰克福）
-- name: CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms_IPv6                           #法兰克福节点1 IPv6
-  type: vless
-  server: 2606:4700:839c:4907:2994:d309:2514:b062                          #解析的域名或者优选域名IP
-  port: 2086                                     #自定义的端口
-  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
-  udp: true
-  tls: false
-  network: ws
-  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
-  ws-opts:
-    path: /?ed=2560                         #" "内自定义的path路径
-    headers:
-      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
-
-#==============================（新增FRA节点 - IPv6 欧洲法兰克福）
-- name: CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt229 ms_IPv6                           #法兰克福节点2 IPv6
-  type: vless
-  server: 2606:4700:8dd1:14fa:3745:ca6b:9119:53ec                          #解析的域名或者优选域名IP
-  port: 2086                                     #自定义的端口
-  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
-  udp: true
-  tls: false
-  network: ws
-  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
-  ws-opts:
-    path: /?ed=2560                         #" "内自定义的path路径
-    headers:
-      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
-
-#==============================（新增FRA节点 - IPv6 欧洲法兰克福）
-- name: CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt230 ms_IPv6                           #法兰克福节点4 IPv6
-  type: vless
-  server: 2606:4700:8d9f:7e6:5952:79cd:dcf7:f71c                          #解析的域名或者优选域名IP
-  port: 2086                                     #自定义的端口
-  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
-  udp: true
-  tls: false
-  network: ws
-  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
-  ws-opts:
-    path: /?ed=2560                         #" "内自定义的path路径
-    headers:
-      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
-
-#==============================（新增FRA节点 - IPv6 欧洲法兰克福）
-- name: CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt230 ms_IPv6                           #法兰克福节点5 IPv6
-  type: vless
-  server: 2606:4700:8d7a:295f:3bcd:703e:444c:4082                          #解析的域名或者优选域名IP
-  port: 2086                                     #自定义的端口
-  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
-  udp: true
-  tls: false
-  network: ws
-  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
-  ws-opts:
-    path: /?ed=2560                         #" "内自定义的path路径
-    headers:
-      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
 
 #（三区）==============================（代理分流）
 #分流组可自行创建添加，proxies参数下的name节点名称，按需求自行增减，确保出现的name节点名称在二区代理协议中可查找
@@ -531,4 +532,3 @@ rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,🌍选择代理节点
-
