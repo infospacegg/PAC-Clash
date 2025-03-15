@@ -755,8 +755,13 @@ rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,🌍选择代理节点
-# Gemini规则应放在其他规则之前，确保优先匹配
+  # Gemini和Google AI Studio规则
   - DOMAIN-SUFFIX,gemini.google.com,Gemini
   - DOMAIN-SUFFIX,generativelanguage.googleapis.com,Gemini
   - DOMAIN-KEYWORD,gemini,Gemini
   - DOMAIN-SUFFIX,aistudio.google.com,Gemini
+  - DOMAIN-SUFFIX,google-analytics.com,Gemini
+  - DOMAIN-SUFFIX,googleapis.com,Gemini
+  - DOMAIN-SUFFIX,gstatic.com,Gemini
+  - DOMAIN-SUFFIX,googleusercontent.com,Gemini
+  - DOMAIN,accounts.google.com,Gemini
