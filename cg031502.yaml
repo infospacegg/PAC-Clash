@@ -736,9 +736,26 @@ proxy-groups:
     - warp-wireguard节点
 
 
+- name: "Gemini"
+  type: select
+  proxies:
+    - CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms
+    - CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt227 ms
+    - CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt227 ms
+    - CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt228 ms
+    - CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms_IPv6
+    - CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt229 ms_IPv6
+    - CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt230 ms_IPv6
+    - CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt230 ms_IPv6
+    - CF_V6_www.visa.com.mt_2086_FRA3EuropeFrankfurt229 ms_0103H-2
+
 #（四区）==============================（代理规则）
 #代理规则可自行添加 
 rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,🌍选择代理节点
+# Gemini规则应放在其他规则之前，确保优先匹配
+  - DOMAIN-SUFFIX,gemini.google.com,Gemini
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,Gemini
+  - DOMAIN-KEYWORD,gemini,Gemini
