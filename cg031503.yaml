@@ -1230,22 +1230,28 @@ proxy-groups:
 #（四区）==============================（代理规则）
 #代理规则可自行添加 
 rules:
-  # Gemini和Google AI Studio综合规则
-  - DOMAIN-SUFFIX,ai.google.com,Gemini
-  - DOMAIN-SUFFIX,aistudio.google.com,Gemini
-  - DOMAIN-SUFFIX,gemini.google.com,Gemini
+# Gemini综合规则
+  - DOMAIN,ai.google.dev,Gemini
+  - DOMAIN,alkalimakersuite-pa.clients6.google.com,Gemini
+  - DOMAIN,makersuite.google.com,Gemini
   - DOMAIN-SUFFIX,bard.google.com,Gemini
-  - DOMAIN-KEYWORD,generativelanguage,Gemini
-  - DOMAIN-KEYWORD,gemini,Gemini
-  - DOMAIN-KEYWORD,colab,Gemini
+  - DOMAIN-SUFFIX,deepmind.com,Gemini
+  - DOMAIN-SUFFIX,deepmind.google,Gemini
+  - DOMAIN-SUFFIX,gemini.google.com,Gemini
+  - DOMAIN-SUFFIX,generativeai.google,Gemini
+  - DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com,Gemini
   - DOMAIN-SUFFIX,apis.google.com,Gemini
-  - DOMAIN-KEYWORD,developerprofiles,Gemini
+  - DOMAIN-SUFFIX,aistudio.google.com,Gemini
   - DOMAIN-SUFFIX,google-analytics.com,Gemini
-  - DOMAIN-SUFFIX,googleapis.com,Gemini
   - DOMAIN-SUFFIX,gstatic.com,Gemini
   - DOMAIN-SUFFIX,googleusercontent.com,Gemini
   - DOMAIN,accounts.google.com,Gemini
+  - DOMAIN-KEYWORD,colab,Gemini
+  - DOMAIN-KEYWORD,developerprofiles,Gemini
+  - DOMAIN-KEYWORD,generativelanguage,Gemini
+  - DOMAIN-KEYWORD,gemini,Gemini
   
+  # 原有规则
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,🌍选择代理节点
