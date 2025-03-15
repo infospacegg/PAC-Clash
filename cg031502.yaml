@@ -759,3 +759,4 @@ rules:
   - DOMAIN-SUFFIX,gemini.google.com,Gemini
   - DOMAIN-SUFFIX,generativelanguage.googleapis.com,Gemini
   - DOMAIN-KEYWORD,gemini,Gemini
+  - DOMAIN-SUFFIX,aistudio.google.com,Gemini
