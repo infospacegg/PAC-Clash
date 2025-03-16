@@ -36,6 +36,19 @@ dns:
 
 #（二区）==============================（代理协议）
 #当前12个协议节点配置模版，按需求修改，如某协议节点不用，则无需删除，确保三区代理分流中没有该name节点名称即可
+proxy-providers:
+  cfzy:
+    type: http
+    path: ./ProxySet/cfzy/cfzy.yaml
+    url: "https://gitlab.com/api/v4/projects/67911760/repository/files/proxies.yaml/raw?ref=main&private_token=glpat-Eu2whgwSfLtBymi26RF9"
+    interval: 1800
+    filter: 
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+
+
 proxies:
 #==============================（vless-reality-vision节点）
 - name: vless-reality-vision节点               #可自定义名称
@@ -1227,6 +1240,11 @@ proxy-groups:
     - YP_V12_www.visa.com.br_2087
     - YP_V13_www.visasoutheasteurope.com_2096
 
+- name: cfzy负载均衡
+  type: load-balance
+  use:
+    - cfzy
+    
 #（四区）==============================（代理规则）
 #代理规则可自行添加 
 rule-providers:
@@ -1350,15 +1368,15 @@ rules:
   - RULE-SET,reject,REJECT
   - RULE-SET,icloud,DIRECT
   - RULE-SET,apple,DIRECT
-  - RULE-SET,google,🌍选择代理节点
-  - RULE-SET,proxy,🌍选择代理节点
+  - RULE-SET,google,负载均衡
+  - RULE-SET,proxy,负载均衡
   - RULE-SET,direct,DIRECT
   - RULE-SET,lancidr,DIRECT
   - RULE-SET,cncidr,DIRECT
-  - RULE-SET,telegramcidr,🌍选择代理节点
+  - RULE-SET,telegramcidr,负载均衡
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,🌍选择代理节点
+  - MATCH,负载均衡
   # 原有规则
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
