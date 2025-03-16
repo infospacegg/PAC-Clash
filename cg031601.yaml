@@ -58,8 +58,6 @@ proxy-groups:
   strategy: round-robin
   use:
     - cfzy
-  proxies:
-    - DIRECT
 
 - name: 自动选择
   type: url-test
@@ -68,8 +66,6 @@ proxy-groups:
   tolerance: 50
   use:
     - cfzy
-  proxies:
-    - DIRECT
     
 - name: 🌍选择代理节点
   type: select
@@ -103,32 +99,24 @@ proxy-groups:
   use:
     - cfzy
   filter: "FRA|Frankfurt"
-  proxies:
-    - DIRECT
 
 - name: "CFT1208节点组"
   type: select
   use:
     - cfzy
   filter: "CF_T"
-  proxies:
-    - DIRECT
 
 - name: "CFV1208节点组"
   type: select
   use:
     - cfzy
   filter: "CF_V"
-  proxies:
-    - DIRECT
 
 - name: "YP节点组"
   type: select
   use:
     - cfzy
   filter: "YP_V"
-  proxies:
-    - DIRECT
 
 #（四区）==============================（代理规则）
 
@@ -262,4 +250,4 @@ rules:
   - RULE-SET,telegramcidr,PROXY
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
-  - MATCH,PROXY
+  - MATCH,PROXY 
