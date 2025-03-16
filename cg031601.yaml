@@ -48,9 +48,6 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
       interval: 300
 
-
-proxies:
-
 #（三区）==============================（代理分流）
 #分流组可自行创建添加，proxies参数下的name节点名称，按需求自行增减，确保出现的name节点名称在二区代理协议中可查找
 proxy-groups:
@@ -59,180 +56,81 @@ proxy-groups:
   url: https://cp.cloudflare.com/generate_204
   interval: 300
   strategy: round-robin
+  use:
+    - cfzy
   proxies:
-    - CF_V6_www.visa.com.mt_2086_HKG4Asia PacificHong Kong40 ms_0103H-2                                  #自定义添加协议的name字段
-    - CF_V6_www.visa.com.mt_2086_FRA3EuropeFrankfurt229 ms_0103H-2   
-    - CF_V6_www.visa.com.mt_2086_HKG1Asia PacificHong Kong42 ms
-    - CF_V6_www.visa.com.mt_2086_HKG2Asia PacificHong Kong43 ms
-    - CF_V6_www.visa.com.mt_2086_HKG3Asia PacificHong Kong225 ms
-    - CF_V6_www.visa.com.mt_2086_HKG4Asia PacificHong Kong226 ms
-    - CF_V6_www.visa.com.mt_2086_HKG5Asia PacificHong Kong226 ms
-    - CF_V6_www.visa.com.mt_2086_HKG1Asia PacificHong Kong39 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_HKG2Asia PacificHong Kong40 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_HKG3Asia PacificHong Kong40 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_HKG5Asia PacificHong Kong40 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_SEA1North AmericaSeattle166 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_SJC2North AmericaSan Jose168 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_SJC3North AmericaSan Jose169 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_SEA4North AmericaSeattle171 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_SEA5North AmericaSeattle171 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms
-    - CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt227 ms
-    - CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt227 ms
-    - CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt228 ms
-    - CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt229 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt230 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt230 ms_IPv6
+    - DIRECT
 
 - name: 自动选择
   type: url-test
   url: https://cp.cloudflare.com/generate_204
   interval: 300
   tolerance: 50
+  use:
+    - cfzy
   proxies:
-    - CF_V6_www.visa.com.mt_2086_HKG4Asia PacificHong Kong40 ms_0103H-2                                  #自定义添加协议的name字段
-    - CF_V6_www.visa.com.mt_2086_FRA3EuropeFrankfurt229 ms_0103H-2   
-    - CF_V6_www.visa.com.mt_2086_HKG1Asia PacificHong Kong42 ms
-    - CF_V6_www.visa.com.mt_2086_HKG2Asia PacificHong Kong43 ms
-    - CF_V6_www.visa.com.mt_2086_HKG3Asia PacificHong Kong225 ms
-    - CF_V6_www.visa.com.mt_2086_HKG4Asia PacificHong Kong226 ms
-    - CF_V6_www.visa.com.mt_2086_HKG5Asia PacificHong Kong226 ms
-    - CF_V6_www.visa.com.mt_2086_HKG1Asia PacificHong Kong39 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_HKG2Asia PacificHong Kong40 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_HKG3Asia PacificHong Kong40 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_HKG5Asia PacificHong Kong40 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_SEA1North AmericaSeattle166 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_SJC2North AmericaSan Jose168 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_SJC3North AmericaSan Jose169 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_SEA4North AmericaSeattle171 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_SEA5North AmericaSeattle171 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms
-    - CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt227 ms
-    - CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt227 ms
-    - CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt228 ms
-    - CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt229 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt230 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt230 ms_IPv6
+    - DIRECT
     
 - name: 🌍选择代理节点
   type: select
+  use:
+    - cfzy
   proxies:
-    - 负载均衡                                            #自定义添加协议的name字段
+    - 负载均衡
     - 自动选择
     - DIRECT
-    - CF_V6_www.visa.com.mt_2086_HKG4Asia PacificHong Kong40 ms_0103H-2                                  #自定义添加协议的name字段
-    - CF_V6_www.visa.com.mt_2086_FRA3EuropeFrankfurt229 ms_0103H-2   
-    - CF_V6_www.visa.com.mt_2086_HKG1Asia PacificHong Kong42 ms
-    - CF_V6_www.visa.com.mt_2086_HKG2Asia PacificHong Kong43 ms
-    - CF_V6_www.visa.com.mt_2086_HKG3Asia PacificHong Kong225 ms
-    - CF_V6_www.visa.com.mt_2086_HKG4Asia PacificHong Kong226 ms
-    - CF_V6_www.visa.com.mt_2086_HKG5Asia PacificHong Kong226 ms
-    - CF_V6_www.visa.com.mt_2086_HKG1Asia PacificHong Kong39 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_HKG2Asia PacificHong Kong40 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_HKG3Asia PacificHong Kong40 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_HKG5Asia PacificHong Kong40 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_SEA1North AmericaSeattle166 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_SJC2North AmericaSan Jose168 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_SJC3North AmericaSan Jose169 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_SEA4North AmericaSeattle171 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_SEA5North AmericaSeattle171 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms
-    - CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt227 ms
-    - CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt227 ms
-    - CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt228 ms
-    - CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt229 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt230 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt230 ms_IPv6
-    - vless-reality-vision节点                                    
-    - vless-reality-grpc节点
-    - vless-xtls-rprx-vision节点
-    - vless-ws-tls节点
-    - vless-ws节点
-    - vmess-ws-tls节点
-    - vmess-ws节点
-    - trojan-tcp-tls节点
-    - hysteria1证书节点
-    - hysteria1自签节点
-    - hysteria2证书节点
-    - hysteria2自签节点
-    - tuic-V5证书节点
-    - tuic-V5自签节点 
-    - warp-wireguard节点
     - "CFT1208节点组"
     - "CFV1208节点组"
     - "YP节点组"
     - "Gemini"
 
-  - name: PROXY
-    type: select
-    proxies:
-      - cfzy
-
-
+- name: PROXY
+  type: select
+  use:
+    - cfzy
+  proxies:
+    - 🌍选择代理节点
+    - 负载均衡
+    - 自动选择
+    - "CFT1208节点组"
+    - "CFV1208节点组"
+    - "YP节点组"
+    - "Gemini"
+    - DIRECT
 
 - name: "Gemini"
   type: select
+  use:
+    - cfzy
+  filter: "FRA|Frankfurt"
   proxies:
-    - CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms
-    - CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt227 ms
-    - CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt227 ms
-    - CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt228 ms
-    - CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt229 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt230 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt230 ms_IPv6
-    - CF_V6_www.visa.com.mt_2086_FRA3EuropeFrankfurt229 ms_0103H-2
+    - DIRECT
 
 - name: "CFT1208节点组"
   type: select
+  use:
+    - cfzy
+  filter: "CF_T"
   proxies:
-    - CF_T1_www.visa.com_80
-    - CF_T2_cis.visa.com_8080
-    - CF_T3_africa.visa.com_8880
-    - CF_T4_www.visa.com.sg_2052
-    - CF_T5_www.visaeurope.at_2082
-    - CF_T6_www.visa.com.mt_2086
-    - CF_T7_qa.visamiddleeast.com_2095
-    - CF_T8_usa.visa.com_443
-    - CF_T9_myanmar.visa.com_8443
-    - CF_T10_www.visa.com.tw_2053
-    - CF_T11_www.visaeurope.ch_2083
-    - CF_T12_www.visa.com.br_2087
-    - CF_T13_www.visasoutheasteurope.com_2096
+    - DIRECT
 
 - name: "CFV1208节点组"
   type: select
+  use:
+    - cfzy
+  filter: "CF_V"
   proxies:
-    - CF_V1_www.visa.com_80
-    - CF_V2_cis.visa.com_8080
-    - CF_V3_africa.visa.com_8880
-    - CF_V4_www.visa.com.sg_2052
-    - CF_V5_www.visaeurope.at_2082
-    - CF_V6_www.visa.com.mt_2086_base
-    - CF_V7_qa.visamiddleeast.com_2095
-    - CF_V8_usa.visa.com_443
-    - CF_V9_myanmar.visa.com_8443
-    - CF_V10_www.visa.com.tw_2053
-    - CF_V11_www.visaeurope.ch_2083
-    - CF_V12_www.visa.com.br_2087
-    - CF_V13_www.visasoutheasteurope.com_2096
+    - DIRECT
 
 - name: "YP节点组"
   type: select
+  use:
+    - cfzy
+  filter: "YP_V"
   proxies:
-    - YP_V8_usa.visa.com_443
-    - YP_V9_myanmar.visa.com_8443
-    - YP_V10_www.visa.com.tw_2053
-    - YP_V11_www.visaeurope.ch_2083
-    - YP_V12_www.visa.com.br_2087
-    - YP_V13_www.visasoutheasteurope.com_2096
+    - DIRECT
 
 #（四区）==============================（代理规则）
-
-
 
 rule-providers:
   reject:
@@ -326,8 +224,6 @@ rule-providers:
     path: ./ruleset/applications.yaml
     interval: 86400
 
-
-
 #代理规则可自行添加 
 rules:
   # Gemini综合规则
@@ -351,7 +247,6 @@ rules:
   - DOMAIN-KEYWORD,generativelanguage,Gemini
   - DOMAIN-KEYWORD,gemini,Gemini
   
-
   - RULE-SET,applications,DIRECT
   - DOMAIN,clash.razord.top,DIRECT
   - DOMAIN,yacd.haishan.me,DIRECT
