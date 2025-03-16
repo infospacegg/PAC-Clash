@@ -1,0 +1,1017 @@
+proxies:
+ #==============================（vless-reality-vision节点）
+- name: vless-reality-vision节点               #可自定义名称
+  type: vless
+  server: 1.2.3.4                             #解析的域名或IP
+  port: 12345                                 #自定义的端口
+  uuid: f897325d-053d-45d1-899c-566692331f8   #自定义的uuid
+  network: tcp
+  udp: true
+  tls: true
+  flow: xtls-rprx-vision
+  servername: www.yahoo.com                   #自定义的第三方域名
+  reality-opts: 
+    public-key: 4CiE7y7ZPBXIZWzMwphuSH7qdZyisNjD3CDQGjmilmI    #自定义的public-key
+    short-id: a8c031ce                        #自定义的short-id
+  client-fingerprint: chrome                  #自定义的浏览器指纹
+
+#==============================（vless-reality-grpc节点）
+- name: vless-reality-grpc节点                  #可自定义名称
+  type: vless
+  server: 1.2.3.4                               #解析的域名或IP
+  port: 12345                                   #自定义的端口
+  uuid: 335ec5dd-61b1-4413-980e-5e009968f633    #自定义的uuid
+  network: grpc
+  tls: true
+  udp: true
+  flow:
+  client-fingerprint: chrome                    #自定义的浏览器指纹
+  servername: www.yahoo.com                     #自定义的第三方域名
+  grpc-opts:
+    grpc-service-name: "ygkkk"                  #" "内自定义的字符
+  reality-opts:
+    public-key: Aqp9oy2EFi4NNfRMZa3I3HdGhHbOIiSDZ8L28UCF73k    #自定义的public-key
+    short-id: 24410d1c                          #自定义的short-id
+
+#==============================（vless-xtls-rprx-vision节点）
+- name: vless-xtls-rprx-vision节点              #可自定义名称
+  type: vless
+  server: yg.ygkkk.eu.org                      #解析的域名
+  port: 12345                                  #自定义的端口
+  uuid: 5f74f86b-3ee8-44f4-adc4-6666be3d315    #自定义的uuid
+  network: tcp
+  tls: true
+  udp: true
+  flow: xtls-rprx-vision
+  client-fingerprint: chrome
+
+#==============================（vless-ws-tls节点）
+- name: vless-ws-tls节点                           #可自定义名称
+  type: vless
+  server: yg.ygkkk.eu.org                          #解析的域名或者优选域名IP
+  port: 12345                                      #自定义的端口
+  uuid: 3cc9a51c-db76-4ad2-a76b-8cb993bddb73       #自定义的uuid
+  udp: true
+  tls: true
+  network: ws
+  servername: abc.ygkkk.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/?ed=2048"                              #" "内自定义的path路径
+    headers:
+      Host: abc.ygkkk.eu.org                       #host域名，与上面的servername一致
+
+#==============================（vless-ws节点）
+- name: vless-ws节点                               #可自定义名称
+  type: vless
+  server: yg.ygkkk.eu.org                          #解析的域名或者优选域名IP
+  port: 8880                                       #自定义的端口
+  uuid: 77a571fb-4fd2-4b37-8596-1b7d9728bb5c       #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: abc.ygkkk.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/?ed=2048"                              #" "内自定义的path路径
+    headers:
+      Host: abc.ygkkk.eu.org                       #host域名，与上面的servername一致
+
+#==vmess-ws-tls节点1
+
+- name: CF_V6_www.visa.com.mt_2086_HKG4Asia PacificHong Kong40 ms_0103H-2                           #可自定义名称
+  type: vless
+  server: 2606:4700:839b:dad6:d211:6253:25dc:adc4                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增HKG节点 - 香港）
+- name: CF_V6_www.visa.com.mt_2086_HKG1Asia PacificHong Kong42 ms                           #香港节点1
+  type: vless
+  server: 104.17.186.160                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增HKG节点 - 香港）
+- name: CF_V6_www.visa.com.mt_2086_HKG2Asia PacificHong Kong43 ms                           #香港节点2
+  type: vless
+  server: 104.18.211.56                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增HKG节点 - 香港）
+- name: CF_V6_www.visa.com.mt_2086_HKG3Asia PacificHong Kong225 ms                           #香港节点3
+  type: vless
+  server: 104.17.35.14                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增HKG节点 - 香港）
+- name: CF_V6_www.visa.com.mt_2086_HKG4Asia PacificHong Kong226 ms                           #香港节点4
+  type: vless
+  server: 104.18.219.234                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增HKG节点 - 香港）
+- name: CF_V6_www.visa.com.mt_2086_HKG5Asia PacificHong Kong226 ms                           #香港节点5
+  type: vless
+  server: 104.19.218.225                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增HKG节点 - 香港 IPv6）
+- name: CF_V6_www.visa.com.mt_2086_HKG1Asia PacificHong Kong39 ms_IPv6                           #香港节点1 IPv6
+  type: vless
+  server: 2606:4700:3037:6cb9:c47b:ad5f:2dba:55fd                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增HKG节点 - 香港 IPv6）
+- name: CF_V6_www.visa.com.mt_2086_HKG2Asia PacificHong Kong40 ms_IPv6                           #香港节点2 IPv6
+  type: vless
+  server: 2606:4700:3032:b8da:18ae:2626:9f0:186f                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增HKG节点 - 香港 IPv6）
+- name: CF_V6_www.visa.com.mt_2086_HKG3Asia PacificHong Kong40 ms_IPv6                           #香港节点3 IPv6
+  type: vless
+  server: 2606:4700:3037:8f1e:f4ab:9df5:9381:c05c                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增HKG节点 - 香港 IPv6）
+- name: CF_V6_www.visa.com.mt_2086_HKG5Asia PacificHong Kong40 ms_IPv6                           #香港节点5 IPv6
+  type: vless
+  server: 2606:4700:3030:6e0c:93ef:ee9a:8dc0:5ab5                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv4 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms                           #法兰克福节点1
+  type: vless
+  server: 104.16.136.181                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv4 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt227 ms                           #法兰克福节点2
+  type: vless
+  server: 172.67.6.34                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv4 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA3EuropeFrankfurt229 ms_0103H-2                           #法兰克福节点3
+  type: vless
+  server: 104.18.36.147                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv4 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt227 ms                           #法兰克福节点4
+  type: vless
+  server: 104.20.55.220                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv4 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt228 ms                           #法兰克福节点5
+  type: vless
+  server: 104.19.233.207                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv6 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA1EuropeFrankfurt228 ms_IPv6                           #法兰克福节点1 IPv6
+  type: vless
+  server: 2606:4700:839c:4907:2994:d309:2514:b062                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv6 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA2EuropeFrankfurt229 ms_IPv6                           #法兰克福节点2 IPv6
+  type: vless
+  server: 2606:4700:8dd1:14fa:3745:ca6b:9119:53ec                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv6 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA4EuropeFrankfurt230 ms_IPv6                           #法兰克福节点4 IPv6
+  type: vless
+  server: 2606:4700:8d9f:7e6:5952:79cd:dcf7:f71c                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增FRA节点 - IPv6 欧洲法兰克福）
+- name: CF_V6_www.visa.com.mt_2086_FRA5EuropeFrankfurt230 ms_IPv6                           #法兰克福节点5 IPv6
+  type: vless
+  server: 2606:4700:8d7a:295f:3bcd:703e:444c:4082                          #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增SEA节点 - 北美西雅图 IPv6）
+- name: CF_V6_www.visa.com.mt_2086_SEA1North AmericaSeattle166 ms_IPv6                           #西雅图节点1 IPv6
+  type: vless
+  server: 2606:4700:3030:4c5c:6267:a8d3:2185:ba1e                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增SEA节点 - 北美西雅图 IPv6）
+- name: CF_V6_www.visa.com.mt_2086_SEA4North AmericaSeattle171 ms_IPv6                           #西雅图节点4 IPv6
+  type: vless
+  server: 2606:4700:3031:bc9e:7dd1:15ed:79c7:f862                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增SEA节点 - 北美西雅图 IPv6）
+- name: CF_V6_www.visa.com.mt_2086_SEA5North AmericaSeattle171 ms_IPv6                           #西雅图节点5 IPv6
+  type: vless
+  server: 2606:4700:23:53a5:513:9b4b:aad0:ac61                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增SJC节点 - 北美圣何塞 IPv6）
+- name: CF_V6_www.visa.com.mt_2086_SJC2North AmericaSan Jose168 ms_IPv6                           #圣何塞节点2 IPv6
+  type: vless
+  server: 2606:4700:3033:f001:89d4:3972:8c75:61f4                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（新增SJC节点 - 北美圣何塞 IPv6）
+- name: CF_V6_www.visa.com.mt_2086_SJC3North AmericaSan Jose169 ms_IPv6                           #圣何塞节点3 IPv6
+  type: vless
+  server: 2606:4700:3036:9ea4:2fd6:2453:1ad3:a355                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（vmess-ws-tls节点）
+- name: vmess-ws-tls节点                           #可自定义名称
+  type: vmess
+  server: yg.ygkkk.eu.org                          #解析的域名或者优选域名IP
+  port: 12345                                      #自定义的端口
+  uuid: 3cc9a51c-db76-4ad2-a76b-8cb993bddb73       #自定义的uuid
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  network: ws
+  servername: abc.ygkkk.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/?ed=2048"                              #自定义的path路径
+    headers:
+      Host: abc.ygkkk.eu.org                       #host域名，与上面的servername一致
+
+#==============================（vmess-ws节点）
+- name: vmess-ws节点                               #可自定义名称
+  type: vmess
+  server: yg.ygkkk.eu.org                          #解析的域名或者优选域名IP
+  port: 8880                                       #自定义的端口
+  uuid: 77a571fb-4fd2-4b37-8596-1b7d9728bb5c       #自定义的uuid
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  network: ws
+  servername: abc.ygkkk.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/?ed=2048"                              #" "内自定义的path路径
+    headers:
+      Host: abc.ygkkk.eu.org                       #host域名，与上面的servername一致
+
+#==============================（trojan-tcp-tls节点）
+- name: trojan-tcp-tls节点                         #可自定义名称
+  type: trojan
+  server: yg.ygkkk.eu.org                          #解析的域名
+  port: 12345                                      #自定义的端口
+  password: 123456789                              #自定义的密码
+  client-fingerprint: chrome
+  udp: true
+  sni: yg.ygkkk.eu.org                             #sni域名，与上面server地址一致
+  alpn:
+    - h2
+    - http/1.1
+  skip-cert-verify: false
+    
+#==============================（hysteria1证书节点）
+- name: hysteria1证书节点                            #可自定义名称
+  type: hysteria
+  server: yg.ygkkk.eu.org                          #解析的域名
+  port: 12345                                      #自定义的端口，多端口改为 ports:空格1000,2000-3000
+  auth-str: 123456                                 #自定义的密码
+  alpn:
+    - h3
+  protocol: udp                                    #自定义协议：udp/wechat-video/faketcp
+  up: 20                                           #自定义的上传限制
+  down: 100                                        #自定义的下载限制
+  sni: yg.ygkkk.eu.org                             #sni域名，与上面server地址一致  
+  skip-cert-verify: false
+  fast-open: true
+    
+#==============================（hysteria1自签节点）
+- name: hysteria1自签节点                           #可自定义名称
+  type: hysteria
+  server: 1.2.3.4                                  #服务器本地IP
+  port: 12345                                      #自定义的端口，多端口改为 ports:空格1000,2000-3000
+  auth-str: 123456                                 #自定义的密码
+  alpn:
+    - h3
+  protocol: udp                                    #自定义协议：udp/wechat-video/faketcp
+  up: 20                                           #自定义的上传限制
+  down: 100                                        #自定义的下载限制
+  sni: www.bing.com                                #自签证书                     
+  skip-cert-verify: true
+  fast-open: true
+
+#==============================（hysteria2证书节点）
+- name: hysteria2证书节点                            #可自定义名称
+  type: hysteria2 
+  server: yg.ygkkk.eu.org                            #解析的域名
+  port: 12345                                        #自定义的端口，不支持多端口
+  password: 123456                                   #自定义的密码
+  obfs: salamander                                   #obfs混淆开启，未开启请删除此行
+  obfs-password: 123456                              #obfs混淆密码，未开启请删除此行
+  alpn:
+    - h3
+  sni: yg.ygkkk.eu.org                               #sni域名，与上面server地址一致 
+  skip-cert-verify: false
+  fast-open: true
+
+#==============================（hysteria2自签节点）
+- name: hysteria2自签节点                             #可自定义名称
+  type: hysteria2                                      
+  server: 1.2.3.4                                     #服务器本地IP
+  port: 12345                                         #自定义的端口，不支持多端口
+  password: 123456                                    #自定义的密码 
+  obfs: salamander                                    #obfs混淆开启，未开启请删除此行 
+  obfs-password: 123456                               #obfs混淆密码，未开启请删除此行     
+  alpn:
+    - h3
+  sni: www.bing.com                                    #自签证书
+  skip-cert-verify: true
+  fast-open: true
+    
+#==============================（tuic-V5证书节点）
+- name: tuic-V5证书节点                              #可自定义名称
+  server: yg.ygkkk.eu.org                          #解析的域名或IP
+  port: 12345                                      #自定义的端口
+  type: tuic
+  uuid: a806923b-737c-4581-8b13-56666f911866       #自定义的uuid
+  password: a806923b-737c-4581-8b13-56666f911866   #自定义的密码
+  alpn: [h3]
+  disable-sni: true
+  reduce-rtt: true
+  udp-relay-mode: native
+  congestion-controller: bbr
+  sni: yg.ygkkk.eu.org                            #sni域名，与上面server地址一致     
+  skip-cert-verify: false
+
+
+#==============================（tuic-V5自签节点）
+- name: tuic-V5自签节点                              #可自定义名称
+  server: 1.2.3.4                                   #服务器本地IP
+  port: 12345                                       #自定义的端口
+  type: tuic
+  uuid: a806923b-737c-4581-8b13-56666f911866       #自定义的uuid
+  password: a806923b-737c-4581-8b13-56666f911866   #自定义的密码
+  alpn: [h3]
+  disable-sni: true
+  reduce-rtt: true
+  udp-relay-mode: native
+  congestion-controller: bbr
+  sni: www.bing.com                                 #自签证书   
+  skip-cert-verify: true
+  
+
+#==============================（warp-wireguard节点）  
+- name: warp-wireguard节点                                   #可自定义名称
+  type: wireguard         
+  server: 162.159.193.10                                     #可自定义优选对端IP，与下面port的端口相对应
+  port: 2408                                                 #可自定义优选对端IP，与上面server的IP相对应
+  ip: 172.16.0.2
+  ipv6: 2606:4700:190:814e:7de3:5ddb:9d3e:9359               #与private-key相对应，如删除本行，表示仅IPV4
+  public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
+  private-key: gK3C8ijdVlT7sd5fsdf5ssdfgsdfgobT2U+rgHo=  #获取private-key，私key
+  udp: true
+
+
+#==============================（CFT1208节点 - Trojan类型）
+- name: CF_T1_www.visa.com_80
+  type: trojan
+  server: www.visa.com
+  port: 80
+  password: linshimimaclouflarefisheepike241208
+  udp: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cft1208.fisheepike.workers.dev
+
+- name: CF_T2_cis.visa.com_8080
+  type: trojan
+  server: cis.visa.com
+  port: 8080
+  password: linshimimaclouflarefisheepike241208
+  udp: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cft1208.fisheepike.workers.dev
+
+- name: CF_T3_africa.visa.com_8880
+  type: trojan
+  server: africa.visa.com
+  port: 8880
+  password: linshimimaclouflarefisheepike241208
+  udp: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cft1208.fisheepike.workers.dev
+
+- name: CF_T4_www.visa.com.sg_2052
+  type: trojan
+  server: www.visa.com.sg
+  port: 2052
+  password: linshimimaclouflarefisheepike241208
+  udp: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cft1208.fisheepike.workers.dev
+
+- name: CF_T5_www.visaeurope.at_2082
+  type: trojan
+  server: www.visaeurope.at
+  port: 2082
+  password: linshimimaclouflarefisheepike241208
+  udp: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cft1208.fisheepike.workers.dev
+
+- name: CF_T6_www.visa.com.mt_2086
+  type: trojan
+  server: www.visa.com.mt
+  port: 2086
+  password: linshimimaclouflarefisheepike241208
+  udp: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cft1208.fisheepike.workers.dev
+
+- name: CF_T7_qa.visamiddleeast.com_2095
+  type: trojan
+  server: qa.visamiddleeast.com
+  port: 2095
+  password: linshimimaclouflarefisheepike241208
+  udp: true
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cft1208.fisheepike.workers.dev
+
+- name: CF_T8_usa.visa.com_443
+  type: trojan
+  server: usa.visa.com
+  port: 443
+  password: linshimimaclouflarefisheepike241208
+  udp: true
+  tls: true
+  sni: cft1208.fisheepike.workers.dev
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cft1208.fisheepike.workers.dev
+
+- name: CF_T9_myanmar.visa.com_8443
+  type: trojan
+  server: myanmar.visa.com
+  port: 8443
+  password: linshimimaclouflarefisheepike241208
+  udp: true
+  tls: true
+  sni: cft1208.fisheepike.workers.dev
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cft1208.fisheepike.workers.dev
+
+- name: CF_T10_www.visa.com.tw_2053
+  type: trojan
+  server: www.visa.com.tw
+  port: 2053
+  password: linshimimaclouflarefisheepike241208
+  udp: true
+  tls: true
+  sni: cft1208.fisheepike.workers.dev
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cft1208.fisheepike.workers.dev
+
+- name: CF_T11_www.visaeurope.ch_2083
+  type: trojan
+  server: www.visaeurope.ch
+  port: 2083
+  password: linshimimaclouflarefisheepike241208
+  udp: true
+  tls: true
+  sni: cft1208.fisheepike.workers.dev
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cft1208.fisheepike.workers.dev
+
+- name: CF_T12_www.visa.com.br_2087
+  type: trojan
+  server: www.visa.com.br
+  port: 2087
+  password: linshimimaclouflarefisheepike241208
+  udp: true
+  tls: true
+  sni: cft1208.fisheepike.workers.dev
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cft1208.fisheepike.workers.dev
+
+- name: CF_T13_www.visasoutheasteurope.com_2096
+  type: trojan
+  server: www.visasoutheasteurope.com
+  port: 2096
+  password: linshimimaclouflarefisheepike241208
+  udp: true
+  tls: true
+  sni: cft1208.fisheepike.workers.dev
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cft1208.fisheepike.workers.dev
+
+#==============================（CFV1208节点 - Vless类型）
+- name: CF_V1_www.visa.com_80
+  type: vless
+  server: www.visa.com
+  port: 80
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: false
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.fisheepike.workers.dev
+
+- name: CF_V2_cis.visa.com_8080
+  type: vless
+  server: cis.visa.com
+  port: 8080
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: false
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.fisheepike.workers.dev
+
+- name: CF_V3_africa.visa.com_8880
+  type: vless
+  server: africa.visa.com
+  port: 8880
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: false
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.fisheepike.workers.dev
+
+- name: CF_V4_www.visa.com.sg_2052
+  type: vless
+  server: www.visa.com.sg
+  port: 2052
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: false
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.fisheepike.workers.dev
+
+- name: CF_V5_www.visaeurope.at_2082
+  type: vless
+  server: www.visaeurope.at
+  port: 2082
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: false
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.fisheepike.workers.dev
+
+- name: CF_V6_www.visa.com.mt_2086_base
+  type: vless
+  server: www.visa.com.mt
+  port: 2086
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: false
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.fisheepike.workers.dev
+
+- name: CF_V7_qa.visamiddleeast.com_2095
+  type: vless
+  server: qa.visamiddleeast.com
+  port: 2095
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: false
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.fisheepike.workers.dev
+
+- name: CF_V8_usa.visa.com_443
+  type: vless
+  server: usa.visa.com
+  port: 443
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: true
+  sni: cfv1208.fisheepike.workers.dev
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.fisheepike.workers.dev
+
+- name: CF_V9_myanmar.visa.com_8443
+  type: vless
+  server: myanmar.visa.com
+  port: 8443
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: true
+  sni: cfv1208.fisheepike.workers.dev
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.fisheepike.workers.dev
+
+- name: CF_V10_www.visa.com.tw_2053
+  type: vless
+  server: www.visa.com.tw
+  port: 2053
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: true
+  sni: cfv1208.fisheepike.workers.dev
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.fisheepike.workers.dev
+
+- name: CF_V11_www.visaeurope.ch_2083
+  type: vless
+  server: www.visaeurope.ch
+  port: 2083
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: true
+  sni: cfv1208.fisheepike.workers.dev
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.fisheepike.workers.dev
+
+- name: CF_V12_www.visa.com.br_2087
+  type: vless
+  server: www.visa.com.br
+  port: 2087
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: true
+  sni: cfv1208.fisheepike.workers.dev
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.fisheepike.workers.dev
+
+- name: CF_V13_www.visasoutheasteurope.com_2096
+  type: vless
+  server: www.visasoutheasteurope.com
+  port: 2096
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: true
+  sni: cfv1208.fisheepike.workers.dev
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.fisheepike.workers.dev
+
+#==============================（yipandaqi-cfv1208节点 - Vless类型）
+- name: YP_V10_www.visa.com.tw_2053
+  type: vless
+  server: www.visa.com.tw
+  port: 2053
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: true
+  sni: cfv1208.yipandaqi.com
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.yipandaqi.com
+
+- name: YP_V11_www.visaeurope.ch_2083
+  type: vless
+  server: www.visaeurope.ch
+  port: 2083
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: true
+  sni: cfv1208.yipandaqi.com
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.yipandaqi.com
+
+- name: YP_V12_www.visa.com.br_2087
+  type: vless
+  server: www.visa.com.br
+  port: 2087
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: true
+  sni: cfv1208.yipandaqi.com
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.yipandaqi.com
+
+- name: YP_V13_www.visasoutheasteurope.com_2096
+  type: vless
+  server: www.visasoutheasteurope.com
+  port: 2096
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: true
+  sni: cfv1208.yipandaqi.com
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.yipandaqi.com
+
+- name: YP_V8_usa.visa.com_443
+  type: vless
+  server: usa.visa.com
+  port: 443
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: true
+  sni: cfv1208.yipandaqi.com
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.yipandaqi.com
+
+- name: YP_V9_myanmar.visa.com_8443
+  type: vless
+  server: myanmar.visa.com
+  port: 8443
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
+  udp: true
+  tls: true
+  sni: cfv1208.yipandaqi.com
+  network: ws
+  ws-opts:
+    path: /?ed=2560
+    headers:
+      Host: cfv1208.yipandaqi.com
