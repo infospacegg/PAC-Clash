@@ -1028,7 +1028,10 @@ proxy-groups:
     - cfzy
 
 - name: cfzy自动选择  
-  type: load-balance
+  type: url-test
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  tolerance: 50
   use:
     - cfzy
 
@@ -1164,3 +1167,4 @@ rules:
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,cfzy自动选择
+  
