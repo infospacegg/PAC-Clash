@@ -32,203 +32,26 @@ dns:
 # 直接列出所有节点，不使用proxy-providers
 
 proxies:
-# W312_HK - 修改为Clash Meta兼容的VLESS格式
-  - name: W312_4_Asia Pacific_HKG_1
-    type: vless
-    server: hk-w312.fisheepike.workers.dev
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: true
-    ws-opts:
-      path: "/?ed=2560"
-    client-fingerprint: chrome
+# W312_HK - 按照cg031503.yaml的格式
+  - { name: W312_4_Asia Pacific_HKG_1, type: vless, server: hk-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, udp: true, tls: true, network: ws, ws-opts: { path: "/?ed=2560", headers: { Host: hk-w312.fisheepike.workers.dev } } }
+  - { name: W312_4_Asia Pacific_HKG_2, type: vless, server: hk-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, udp: true, tls: true, network: ws, ws-opts: { path: "/?ed=2560", headers: { Host: hk-w312.fisheepike.workers.dev } } }
+  - { name: W312_4_Asia Pacific_HKG_3, type: vless, server: hk-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, udp: true, tls: true, network: ws, ws-opts: { path: "/?ed=2560", headers: { Host: hk-w312.fisheepike.workers.dev } } }
+  - { name: W312_4_Asia Pacific_HKG_4, type: vless, server: hk-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, udp: true, tls: true, network: ws, ws-opts: { path: "/?ed=2560", headers: { Host: hk-w312.fisheepike.workers.dev } } }
+  - { name: W312_4_Asia Pacific_HKG_5, type: vless, server: hk-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, udp: true, tls: true, network: ws, ws-opts: { path: "/?ed=2560", headers: { Host: hk-w312.fisheepike.workers.dev } } }
 
-  - name: W312_4_Asia Pacific_HKG_2
-    type: vless
-    server: hk-w312.fisheepike.workers.dev
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: true
-    ws-opts:
-      path: "/?ed=2560"
-    client-fingerprint: chrome
+# W312_EU - 按照cg031503.yaml的格式
+  - { name: W312_4_Europe_FRA_1, type: vless, server: eu-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, udp: true, tls: true, network: ws, ws-opts: { path: "/?ed=2560", headers: { Host: eu-w312.fisheepike.workers.dev } } }
+  - { name: W312_4_Europe_FRA_2, type: vless, server: eu-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, udp: true, tls: true, network: ws, ws-opts: { path: "/?ed=2560", headers: { Host: eu-w312.fisheepike.workers.dev } } }
+  - { name: W312_4_Europe_FRA_3, type: vless, server: eu-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, udp: true, tls: true, network: ws, ws-opts: { path: "/?ed=2560", headers: { Host: eu-w312.fisheepike.workers.dev } } }
+  - { name: W312_4_Europe_FRA_4, type: vless, server: eu-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, udp: true, tls: true, network: ws, ws-opts: { path: "/?ed=2560", headers: { Host: eu-w312.fisheepike.workers.dev } } }
+  - { name: W312_4_Europe_FRA_5, type: vless, server: eu-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, udp: true, tls: true, network: ws, ws-opts: { path: "/?ed=2560", headers: { Host: eu-w312.fisheepike.workers.dev } } }
 
-  - name: W312_4_Asia Pacific_HKG_3
-    type: vless
-    server: hk-w312.fisheepike.workers.dev
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: true
-    ws-opts:
-      path: "/?ed=2560"
-    client-fingerprint: chrome
-
-  - name: W312_4_Asia Pacific_HKG_4
-    type: vless
-    server: hk-w312.fisheepike.workers.dev
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: true
-    ws-opts:
-      path: "/?ed=2560"
-    client-fingerprint: chrome
-
-  - name: W312_4_Asia Pacific_HKG_5
-    type: vless
-    server: hk-w312.fisheepike.workers.dev
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: true
-    ws-opts:
-      path: "/?ed=2560"
-    client-fingerprint: chrome
-
-# W312_EU - 修改为Clash Meta兼容的VLESS格式
-  - name: W312_4_Europe_FRA_1
-    type: vless
-    server: eu-w312.fisheepike.workers.dev
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: true
-    ws-opts:
-      path: "/?ed=2560"
-    client-fingerprint: chrome
-
-  - name: W312_4_Europe_FRA_2
-    type: vless
-    server: eu-w312.fisheepike.workers.dev
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: true
-    ws-opts:
-      path: "/?ed=2560"
-    client-fingerprint: chrome
-
-  - name: W312_4_Europe_FRA_3
-    type: vless
-    server: eu-w312.fisheepike.workers.dev
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: true
-    ws-opts:
-      path: "/?ed=2560"
-    client-fingerprint: chrome
-
-  - name: W312_4_Europe_FRA_4
-    type: vless
-    server: eu-w312.fisheepike.workers.dev
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: true
-    ws-opts:
-      path: "/?ed=2560"
-    client-fingerprint: chrome
-
-  - name: W312_4_Europe_FRA_5
-    type: vless
-    server: eu-w312.fisheepike.workers.dev
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: true
-    ws-opts:
-      path: "/?ed=2560"
-    client-fingerprint: chrome
-
-# W312_NA - 修改为Clash Meta兼容的VLESS格式
-  - name: W312_4_North America_SJC_1
-    type: vless
-    server: na-w312.fisheepike.workers.dev
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: true
-    ws-opts:
-      path: "/?ed=2560"
-    client-fingerprint: chrome
-
-  - name: W312_4_North America_SJC_2
-    type: vless
-    server: na-w312.fisheepike.workers.dev
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: true
-    ws-opts:
-      path: "/?ed=2560"
-    client-fingerprint: chrome
-
-  - name: W312_4_North America_SJC_3
-    type: vless
-    server: na-w312.fisheepike.workers.dev
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: true
-    ws-opts:
-      path: "/?ed=2560"
-    client-fingerprint: chrome
-
-  - name: W312_4_North America_SJC_4
-    type: vless
-    server: na-w312.fisheepike.workers.dev
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: true
-    ws-opts:
-      path: "/?ed=2560"
-    client-fingerprint: chrome
-
-  - name: W312_4_North America_SJC_5
-    type: vless
-    server: na-w312.fisheepike.workers.dev
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    network: ws
-    tls: true
-    udp: true
-    skip-cert-verify: true
-    ws-opts:
-      path: "/?ed=2560"
-    client-fingerprint: chrome
+# W312_NA - 按照cg031503.yaml的格式
+  - { name: W312_4_North America_SJC_1, type: vless, server: na-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, udp: true, tls: true, network: ws, ws-opts: { path: "/?ed=2560", headers: { Host: na-w312.fisheepike.workers.dev } } }
+  - { name: W312_4_North America_SJC_2, type: vless, server: na-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, udp: true, tls: true, network: ws, ws-opts: { path: "/?ed=2560", headers: { Host: na-w312.fisheepike.workers.dev } } }
+  - { name: W312_4_North America_SJC_3, type: vless, server: na-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, udp: true, tls: true, network: ws, ws-opts: { path: "/?ed=2560", headers: { Host: na-w312.fisheepike.workers.dev } } }
+  - { name: W312_4_North America_SJC_4, type: vless, server: na-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, udp: true, tls: true, network: ws, ws-opts: { path: "/?ed=2560", headers: { Host: na-w312.fisheepike.workers.dev } } }
+  - { name: W312_4_North America_SJC_5, type: vless, server: na-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, udp: true, tls: true, network: ws, ws-opts: { path: "/?ed=2560", headers: { Host: na-w312.fisheepike.workers.dev } } }
 
 
 #（三区）==============================（代理分流）
