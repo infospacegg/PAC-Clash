@@ -48,6 +48,16 @@ proxy-providers:
       url: http://www.gstatic.com/generate_204
       interval: 300
 
+  cfzy0317:
+    type: http
+    path: ./ProxySet/cfzy/cfzy.yaml
+    url: "https://gitlab.com/api/v4/projects/67911760/repository/files/proxies0317.yaml/raw?ref=main&private_token=glpat-Eu2whgwSfLtBymi26RF9"
+    interval: 1800
+    filter: 
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
 
 proxies:
 
