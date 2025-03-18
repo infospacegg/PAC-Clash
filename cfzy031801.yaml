@@ -1,0 +1,24 @@
+proxies:
+
+# 执行时间 2025-03-17 23:32:29
+
+# W312_HK
+  - { name: W312_4_Asia Pacific_HKG_1, type: vless, server: hk-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+  - { name: W312_4_Asia Pacific_HKG_2, type: vless, server: hk-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+  - { name: W312_4_Asia Pacific_HKG_3, type: vless, server: hk-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+  - { name: W312_4_Asia Pacific_HKG_4, type: vless, server: hk-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+  - { name: W312_4_Asia Pacific_HKG_5, type: vless, server: hk-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+
+# W312_EU
+  - { name: W312_4_Europe_FRA_1, type: vless, server: eu-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+  - { name: W312_4_Europe_FRA_2, type: vless, server: eu-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+  - { name: W312_4_Europe_FRA_3, type: vless, server: eu-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+  - { name: W312_4_Europe_FRA_4, type: vless, server: eu-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+  - { name: W312_4_Europe_FRA_5, type: vless, server: eu-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+
+# W312_NA
+  - { name: W312_4_North America_SJC_1, type: vless, server: na-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+  - { name: W312_4_North America_SJC_2, type: vless, server: na-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+  - { name: W312_4_North America_SJC_3, type: vless, server: na-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+  - { name: W312_4_North America_SJC_4, type: vless, server: na-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+  - { name: W312_4_North America_SJC_5, type: vless, server: na-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
