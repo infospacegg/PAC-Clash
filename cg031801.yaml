@@ -1,0 +1,259 @@
+#（一区）=============================（clash配置）
+#dns可自行修改
+port: 7890
+allow-lan: true
+mode: rule
+log-level: info
+unified-delay: true
+global-client-fingerprint: chrome
+dns:
+  enable: true
+  listen: :53
+  ipv6: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver: 
+    - 223.5.5.5
+    - 8.8.8.8
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  fallback:
+    - https://1.0.0.1/dns-query
+    - tls://dns.google
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+
+
+#（二区）==============================（代理协议）
+#当前12个协议节点配置模版，按需求修改，如某协议节点不用，则无需删除，确保三区代理分流中没有该name节点名称即可
+proxy-providers:
+  cfzy031801:
+    type: http
+    url: "http://localhost:9090/clash/proxies?type=file&path=cfzy031801.yaml"
+    path: ./providers/cfzy031801.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: https://www.gstatic.com/generate_204
+
+
+proxies:
+
+
+#（三区）==============================（代理分流）
+#分流组可自行创建添加，proxies参数下的name节点名称，按需求自行增减，确保出现的name节点名称在二区代理协议中可查找
+proxy-groups:
+- name: 负载均衡
+  type: load-balance
+  use:
+    - cfzy031801
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  strategy: round-robin
+  filter: "CF_V6"
+
+
+- name: 自动选择
+  type: url-test
+  use:
+    - cfzy031801
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  tolerance: 50
+  filter: "CF_V6"
+
+    
+- name: 🌍选择代理节点
+  type: select
+  proxies:
+    - 负载均衡
+    - 自动选择
+    - DIRECT
+  use:
+    - cfzy031801
+  filter: "CF_V6"
+
+
+- name: "Gemini"
+  type: select
+  use:
+    - cfzy031801
+  filter: "Europe"
+
+
+- name: CF_V6HK节点组
+  type: select
+  use:
+    - cfzy031801
+  filter: "Asia"
+
+
+- name: CF_V6EU节点组
+  type: select
+  use:
+    - cfzy031801
+  filter: "Europe"
+
+
+- name: CF_V6NA节点组
+  type: select
+  use:
+    - cfzy031801
+  filter: "North America"
+
+
+- name: cfzy负载均衡
+  type: load-balance
+  use:
+    - cfzy031801
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  strategy: round-robin
+  filter: "CF_V6"
+
+- name: cfzy自动选择  
+  type: url-test
+  use:
+    - cfzy031801
+  url: https://cp.cloudflare.com/generate_204
+  interval: 300
+  tolerance: 50
+  filter: "CF_V6"
+
+#（四区）==============================（代理规则）
+#代理规则可自行添加 
+rule-providers:
+  reject:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+
+  icloud:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+
+  apple:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+    path: ./ruleset/apple.yaml
+    interval: 86400
+
+  google:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+    path: ./ruleset/google.yaml
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+
+  direct:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+    path: ./ruleset/tld-not-cn.yaml
+    interval: 86400
+
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+
+  applications:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
+    path: ./ruleset/applications.yaml
+    interval: 86400
+
+rules:
+# Gemini综合规则
+  - DOMAIN,ai.google.dev,Gemini
+  - DOMAIN,alkalimakersuite-pa.clients6.google.com,Gemini
+  - DOMAIN,makersuite.google.com,Gemini
+  - DOMAIN-SUFFIX,bard.google.com,Gemini
+  - DOMAIN-SUFFIX,deepmind.com,Gemini
+  - DOMAIN-SUFFIX,deepmind.google,Gemini
+  - DOMAIN-SUFFIX,gemini.google.com,Gemini
+  - DOMAIN-SUFFIX,generativeai.google,Gemini
+  - DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com,Gemini
+  - DOMAIN-SUFFIX,apis.google.com,Gemini
+  - DOMAIN-SUFFIX,aistudio.google.com,Gemini
+  - DOMAIN-SUFFIX,google-analytics.com,Gemini
+  - DOMAIN-SUFFIX,gstatic.com,Gemini
+  - DOMAIN-SUFFIX,googleusercontent.com,Gemini
+  - DOMAIN,accounts.google.com,Gemini
+  - DOMAIN-KEYWORD,colab,Gemini
+  - DOMAIN-KEYWORD,developerprofiles,Gemini
+  - DOMAIN-KEYWORD,generativelanguage,Gemini
+  - DOMAIN-KEYWORD,gemini,Gemini
+ 
+  - RULE-SET,applications,DIRECT
+  - DOMAIN,clash.razord.top,DIRECT
+  - DOMAIN,yacd.haishan.me,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,reject,REJECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,google,cfzy自动选择
+  - RULE-SET,proxy,cfzy自动选择
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,lancidr,DIRECT
+  - RULE-SET,cncidr,DIRECT
+  - RULE-SET,telegramcidr,cfzy自动选择
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,cfzy自动选择
+  
