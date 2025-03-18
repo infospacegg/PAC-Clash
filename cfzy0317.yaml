@@ -1,24 +1,241 @@
 proxies:
+#==============================（vless-reality-vision节点）
+- name: vless-reality-vision节点               #可自定义名称
+  type: vless
+  server: 1.2.3.4                             #解析的域名或IP
+  port: 12345                                 #自定义的端口
+  uuid: f897325d-053d-45d1-899c-566692331f8   #自定义的uuid
+  network: tcp
+  udp: true
+  tls: true
+  flow: xtls-rprx-vision
+  servername: www.yahoo.com                   #自定义的第三方域名
+  reality-opts: 
+    public-key: 4CiE7y7ZPBXIZWzMwphuSH7qdZyisNjD3CDQGjmilmI    #自定义的public-key
+    short-id: a8c031ce                        #自定义的short-id
+  client-fingerprint: chrome                  #自定义的浏览器指纹
 
-# 执行时间 2025-03-17 23:32:29
+#==============================（vless-reality-grpc节点）
+- name: vless-reality-grpc节点                  #可自定义名称
+  type: vless
+  server: 1.2.3.4                               #解析的域名或IP
+  port: 12345                                   #自定义的端口
+  uuid: 335ec5dd-61b1-4413-980e-5e009968f633    #自定义的uuid
+  network: grpc
+  tls: true
+  udp: true
+  flow:
+  client-fingerprint: chrome                    #自定义的浏览器指纹
+  servername: www.yahoo.com                     #自定义的第三方域名
+  grpc-opts:
+    grpc-service-name: "ygkkk"                  #" "内自定义的字符
+  reality-opts:
+    public-key: Aqp9oy2EFi4NNfRMZa3I3HdGhHbOIiSDZ8L28UCF73k    #自定义的public-key
+    short-id: 24410d1c                          #自定义的short-id
 
-# W312_HK
-  - { name: W312_4_Asia Pacific_HKG_1, type: vless, server: hk-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
-  - { name: W312_4_Asia Pacific_HKG_2, type: vless, server: hk-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
-  - { name: W312_4_Asia Pacific_HKG_3, type: vless, server: hk-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
-  - { name: W312_4_Asia Pacific_HKG_4, type: vless, server: hk-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
-  - { name: W312_4_Asia Pacific_HKG_5, type: vless, server: hk-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+#==============================（vless-xtls-rprx-vision节点）
+- name: vless-xtls-rprx-vision节点              #可自定义名称
+  type: vless
+  server: yg.ygkkk.eu.org                      #解析的域名
+  port: 12345                                  #自定义的端口
+  uuid: 5f74f86b-3ee8-44f4-adc4-6666be3d315    #自定义的uuid
+  network: tcp
+  tls: true
+  udp: true
+  flow: xtls-rprx-vision
+  client-fingerprint: chrome
 
-# W312_EU
-  - { name: W312_4_Europe_FRA_1, type: vless, server: eu-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
-  - { name: W312_4_Europe_FRA_2, type: vless, server: eu-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
-  - { name: W312_4_Europe_FRA_3, type: vless, server: eu-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
-  - { name: W312_4_Europe_FRA_4, type: vless, server: eu-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
-  - { name: W312_4_Europe_FRA_5, type: vless, server: eu-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+#==============================（vless-ws-tls节点）
+- name: vless-ws-tls节点                           #可自定义名称
+  type: vless
+  server: yg.ygkkk.eu.org                          #解析的域名或者优选域名IP
+  port: 12345                                      #自定义的端口
+  uuid: 3cc9a51c-db76-4ad2-a76b-8cb993bddb73       #自定义的uuid
+  udp: true
+  tls: true
+  network: ws
+  servername: abc.ygkkk.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/?ed=2048"                              #" "内自定义的path路径
+    headers:
+      Host: abc.ygkkk.eu.org                       #host域名，与上面的servername一致
 
-# W312_NA
-  - { name: W312_4_North America_SJC_1, type: vless, server: na-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
-  - { name: W312_4_North America_SJC_2, type: vless, server: na-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
-  - { name: W312_4_North America_SJC_3, type: vless, server: na-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
-  - { name: W312_4_North America_SJC_4, type: vless, server: na-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
-  - { name: W312_4_North America_SJC_5, type: vless, server: na-w312.fisheepike.workers.dev, port: 443, uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7, tls: true, udp: true, skip-cert-verify: true, network: ws, ws-opts: {path: '/?ed=2560'} }
+#==============================（vless-ws节点）
+- name: vless-ws节点                               #可自定义名称
+  type: vless
+  server: yg.ygkkk.eu.org                          #解析的域名或者优选域名IP
+  port: 8880                                       #自定义的端口
+  uuid: 77a571fb-4fd2-4b37-8596-1b7d9728bb5c       #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: abc.ygkkk.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/?ed=2048"                              #" "内自定义的path路径
+    headers:
+      Host: abc.ygkkk.eu.org                       #host域名，与上面的servername一致
+
+#==vmess-ws-tls节点1
+
+- name: CF_V6_www.visa.com.mt_2086_HKG4Asia PacificHong Kong40 ms_0103H-2                           #可自定义名称
+  type: vless
+  server: 2606:4700:839b:dad6:d211:6253:25dc:adc4                         #解析的域名或者优选域名IP
+  port: 2086                                     #自定义的端口
+  uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7     #自定义的uuid
+  udp: true
+  tls: false
+  network: ws
+  servername: cfv1208.fisheepike.workers.dev                #sni域名，与下面的host一致
+  ws-opts:
+    path: /?ed=2560                         #" "内自定义的path路径
+    headers:
+      Host: cfv1208.fisheepike.workers.dev                   #host域名，与上面的servername一致
+
+#==============================（vmess-ws-tls节点）
+- name: vmess-ws-tls节点                           #可自定义名称
+  type: vmess
+  server: yg.ygkkk.eu.org                          #解析的域名或者优选域名IP
+  port: 12345                                      #自定义的端口
+  uuid: 3cc9a51c-db76-4ad2-a76b-8cb993bddb73       #自定义的uuid
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: true
+  network: ws
+  servername: abc.ygkkk.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/?ed=2048"                              #自定义的path路径
+    headers:
+      Host: abc.ygkkk.eu.org                       #host域名，与上面的servername一致
+
+#==============================（vmess-ws节点）
+- name: vmess-ws节点                               #可自定义名称
+  type: vmess
+  server: yg.ygkkk.eu.org                          #解析的域名或者优选域名IP
+  port: 8880                                       #自定义的端口
+  uuid: 77a571fb-4fd2-4b37-8596-1b7d9728bb5c       #自定义的uuid
+  alterId: 0
+  cipher: auto
+  udp: true
+  tls: false
+  network: ws
+  servername: abc.ygkkk.eu.org                     #sni域名，与下面的host一致
+  ws-opts:
+    path: "/?ed=2048"                              #" "内自定义的path路径
+    headers:
+      Host: abc.ygkkk.eu.org                       #host域名，与上面的servername一致
+
+#==============================（trojan-tcp-tls节点）
+- name: trojan-tcp-tls节点                         #可自定义名称
+  type: trojan
+  server: yg.ygkkk.eu.org                          #解析的域名
+  port: 12345                                      #自定义的端口
+  password: 123456789                              #自定义的密码
+  client-fingerprint: chrome
+  udp: true
+  sni: yg.ygkkk.eu.org                             #sni域名，与上面server地址一致
+  alpn:
+    - h2
+    - http/1.1
+  skip-cert-verify: false
+    
+#==============================（hysteria1证书节点）
+- name: hysteria1证书节点                            #可自定义名称
+  type: hysteria
+  server: yg.ygkkk.eu.org                          #解析的域名
+  port: 12345                                      #自定义的端口，多端口改为 ports:空格1000,2000-3000
+  auth-str: 123456                                 #自定义的密码
+  alpn:
+    - h3
+  protocol: udp                                    #自定义协议：udp/wechat-video/faketcp
+  up: 20                                           #自定义的上传限制
+  down: 100                                        #自定义的下载限制
+  sni: yg.ygkkk.eu.org                             #sni域名，与上面server地址一致  
+  skip-cert-verify: false
+  fast-open: true
+    
+#==============================（hysteria1自签节点）
+- name: hysteria1自签节点                           #可自定义名称
+  type: hysteria
+  server: 1.2.3.4                                  #服务器本地IP
+  port: 12345                                      #自定义的端口，多端口改为 ports:空格1000,2000-3000
+  auth-str: 123456                                 #自定义的密码
+  alpn:
+    - h3
+  protocol: udp                                    #自定义协议：udp/wechat-video/faketcp
+  up: 20                                           #自定义的上传限制
+  down: 100                                        #自定义的下载限制
+  sni: www.bing.com                                #自签证书                     
+  skip-cert-verify: true
+  fast-open: true
+
+#==============================（hysteria2证书节点）
+- name: hysteria2证书节点                            #可自定义名称
+  type: hysteria2 
+  server: yg.ygkkk.eu.org                            #解析的域名
+  port: 12345                                        #自定义的端口，不支持多端口
+  password: 123456                                   #自定义的密码
+  obfs: salamander                                   #obfs混淆开启，未开启请删除此行
+  obfs-password: 123456                              #obfs混淆密码，未开启请删除此行
+  alpn:
+    - h3
+  sni: yg.ygkkk.eu.org                               #sni域名，与上面server地址一致 
+  skip-cert-verify: false
+  fast-open: true
+
+#==============================（hysteria2自签节点）
+- name: hysteria2自签节点                             #可自定义名称
+  type: hysteria2                                      
+  server: 1.2.3.4                                     #服务器本地IP
+  port: 12345                                         #自定义的端口，不支持多端口
+  password: 123456                                    #自定义的密码 
+  obfs: salamander                                    #obfs混淆开启，未开启请删除此行 
+  obfs-password: 123456                               #obfs混淆密码，未开启请删除此行     
+  alpn:
+    - h3
+  sni: www.bing.com                                    #自签证书
+  skip-cert-verify: true
+  fast-open: true
+    
+#==============================（tuic-V5证书节点）
+- name: tuic-V5证书节点                              #可自定义名称
+  server: yg.ygkkk.eu.org                          #解析的域名或IP
+  port: 12345                                      #自定义的端口
+  type: tuic
+  uuid: a806923b-737c-4581-8b13-56666f911866       #自定义的uuid
+  password: a806923b-737c-4581-8b13-56666f911866   #自定义的密码
+  alpn: [h3]
+  disable-sni: true
+  reduce-rtt: true
+  udp-relay-mode: native
+  congestion-controller: bbr
+  sni: yg.ygkkk.eu.org                            #sni域名，与上面server地址一致     
+  skip-cert-verify: false
+
+
+#==============================（tuic-V5自签节点）
+- name: tuic-V5自签节点                              #可自定义名称
+  server: 1.2.3.4                                   #服务器本地IP
+  port: 12345                                       #自定义的端口
+  type: tuic
+  uuid: a806923b-737c-4581-8b13-56666f911866       #自定义的uuid
+  password: a806923b-737c-4581-8b13-56666f911866   #自定义的密码
+  alpn: [h3]
+  disable-sni: true
+  reduce-rtt: true
+  udp-relay-mode: native
+  congestion-controller: bbr
+  sni: www.bing.com                                 #自签证书   
+  skip-cert-verify: true
+  
+
+#==============================（warp-wireguard节点）  
+- name: warp-wireguard节点                                   #可自定义名称
+  type: wireguard         
+  server: 162.159.193.10                                     #可自定义优选对端IP，与下面port的端口相对应
+  port: 2408                                                 #可自定义优选对端IP，与上面server的IP相对应
+  ip: 172.16.0.2
+  ipv6: 2606:4700:190:814e:7de3:5ddb:9d3e:9359               #与private-key相对应，如删除本行，表示仅IPV4
+  public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
+  private-key: gK3C8ijdVlT7sd5fsdf5ssdfgsdfgsdfgobT2U+rgHo=  #获取private-key，私key
+  udp: true
