@@ -33,7 +33,7 @@ dns:
 proxy-providers:
   cfzy031801:
     type: http
-    url: "http://localhost:9090/clash/proxies?type=file&path=cfzy031801.yaml"
+    url: "https://gitlab.com/api/v4/projects/67911760/repository/files/cfzy031801.yaml/raw?ref=main&private_token=glpat-Eu2whgwSfLtBymi26RF9"
     path: ./providers/cfzy031801.yaml
     health-check:
       enable: true
