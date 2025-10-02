@@ -34,21 +34,28 @@ proxies:
 # 4. 代理组 (Proxy Groups) - 替换为您自己的策略组
 proxy-groups:
   - name: "AI-SPECIAL-PROXY"
-    type: select
+    type: fallback
     proxies:
       - "M"
       - "V-CF"
+    url: 'https://www.gstatic.com/generate_204' # <--- 用于健康检查的网址
+    interval: 300              # <--- 每300秒（5分钟）检查一次节点健康状况
+
 
   - name: "DEFAULT-PROXY"
-    type: select
+    type: fallback
     proxies:
       - "V-CF"
       - "M"
+    url: 'https://www.gstatic.com/generate_204' # <--- 用于健康检查的网址
+    interval: 300              # <--- 每300秒（5分钟）检查一次节点健康状况
 
   - name: "Cloudflare-Check"  
-    type: select              # 使用 select 类型，方便您手动选择最有效的节点
+    type: fallback              # 使用 fallback 类型，自动选择最有效的节点
     proxies:
       - "M"
+    url: 'http://www.gstatic.com/generate_204' # <--- 用于健康检查的网址
+    interval: 300              # <--- 每300秒（5分钟）检查一次节点健康状况
 
 # 5. 规则 (Rules) - 在专业规则的基础上，增加了我们的规则
 rules:
@@ -56,6 +63,14 @@ rules:
   # --- 把以下两条规则放在所有规则的最前面 ---
   - DOMAIN-SUFFIX,challenges.cloudflare.com,Cloudflare-Check
   - DOMAIN-KEYWORD,hcaptcha,Cloudflare-Check
+
+  # 规则说明：
+  # - 网页版 Gemini (gemini.google.com)，走 M 路线 (保持原有习惯)
+  # - Obsidian 插件等 API 调用，走 V-CF 路线 (速度快，覆盖全)
+  - DOMAIN-SUFFIX,gemini.google.com,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,DEFAULT-PROXY
+  - DOMAIN-SUFFIX,aiplatform.googleapis.com,DEFAULT-PROXY # (采纳Grok建议) 补充 Google AI Platform 核心API域名
+  - DOMAIN-SUFFIX,ai.google.dev,DEFAULT-PROXY # Google AI Studio 和相关开发域名也走 V-CF
 
 
   # (5.0) 【新增】您的个人永久直连规则 (最高优先级之一)
