@@ -1,0 +1,429 @@
+# 1. 基础设置
+mixed-port: 7890
+allow-lan: true
+unified-delay: true
+tcp-concurrent: true
+ipv6: true
+bind-address: '*'
+mode: rule
+log-level: info
+external-controller: '127.0.0.1:9090'
+
+# 2. DNS 设置
+dns:
+  enable: true
+  ipv6: true
+  default-nameserver: [223.5.5.5, 119.29.29.29]
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  use-hosts: true
+  nameserver: ['https://dns.alidns.com/dns-query', 'https://doh.pub/dns-query']
+  fallback: ['https://8.8.8.8/dns-query', 'https://1.1.1.1/dns-query']
+  fallback-filter: { geoip: true, geoip-code: CN }
+
+# 3. 代理节点 (Proxies) - 替换为您自己的本地引擎
+proxies:
+  - name: "V-CF"
+    type: socks5
+    server: 127.0.0.1
+    port: 10808
+
+  - name: "M"
+    type: socks5
+    server: 127.0.0.1
+    port: 9909 # 请确认您的VPN端口是这个
+
+# 4. 代理组 (Proxy Groups) - 替换为您自己的策略组
+proxy-groups:
+  - name: "AI-SPECIAL-PROXY"
+    type: fallback
+    proxies:
+      - "M"
+      - "V-CF"
+    url: 'https://www.gstatic.com/generate_204' # <--- 用于健康检查的网址
+    interval: 300              # <--- 每300秒（5分钟）检查一次节点健康状况
+
+
+  - name: "DEFAULT-PROXY"
+    type: fallback
+    proxies:
+      - "V-CF"
+      - "M"
+    url: 'https://www.gstatic.com/generate_204' # <--- 用于健康检查的网址
+    interval: 300              # <--- 每300秒（5分钟）检查一次节点健康状况
+
+  - name: "Cloudflare-Check"  
+    type: fallback              # 使用 fallback 类型，自动选择最有效的节点
+    proxies:
+      - "M"
+    url: 'http://www.gstatic.com/generate_204' # <--- 用于健康检查的网址
+    interval: 300              # <--- 每300秒（5分钟）检查一次节点健康状况
+
+# 5. 规则 (Rules) - 在专业规则的基础上，增加了我们的规则
+rules:
+
+  # --- 把以下两条规则放在所有规则的最前面 ---
+  - DOMAIN-SUFFIX,challenges.cloudflare.com,Cloudflare-Check
+  - DOMAIN-KEYWORD,hcaptcha,Cloudflare-Check
+
+  # 规则说明：
+  # - 网页版 Gemini (gemini.google.com)，走 M 路线 (保持原有习惯)
+  # - Obsidian 插件等 API 调用，走 V-CF 路线 (速度快，覆盖全)
+  - DOMAIN-SUFFIX,gemini.google.com,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,DEFAULT-PROXY
+  - DOMAIN-SUFFIX,aiplatform.googleapis.com,DEFAULT-PROXY # (采纳Grok建议) 补充 Google AI Platform 核心API域名
+  - DOMAIN-SUFFIX,ai.google.dev,DEFAULT-PROXY # Google AI Studio 和相关开发域名也走 V-CF
+
+  # (5.0) 【新增】您的个人永久直连规则 (最高优先级之一)
+  #- DOMAIN-SUFFIX,anaconda.com,DIRECT
+  
+  # (5.1) 【新增】我们的特殊AI及工作网站规则 (最高优先级)
+  - DOMAIN-KEYWORD,grok,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,openai,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,claude,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,aistudio,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,makersuite,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,copilot.microsoft,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,bing.com,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,chat.bing,AI-SPECIAL-PROXY
+
+  # (5.2) 【沿用并修改】专业配置中的所有规则
+  # 我已将所有原来指向“🚀 节点选择”的规则，都改为了指向“DEFAULT-PROXY”
+  - 'DOMAIN-KEYWORD,amazon,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,google,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,gmail,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,youtube,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,facebook,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,fb.me,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,fbcdn.net,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,twitter,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,instagram,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,dropbox,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,twimg.com,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,blogspot,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,youtu.be,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,whatsapp,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,9to5mac.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,abpchina.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,adblockplus.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,adobe.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,akamaized.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,alfredapp.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,amplitude.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ampproject.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,android.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,angularjs.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,aolcdn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,apkpure.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,appledaily.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,appshopper.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,appspot.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,arcgis.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,archive.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,armorgames.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,aspnetcdn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,att.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,awsstatic.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,azureedge.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,azurewebsites.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bing.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bintray.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bit.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bit.ly,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bitbucket.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bjango.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bkrtx.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,blog.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,blogcdn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,blogger.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,blogsmithmedia.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,blogspot.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,blogspot.hk,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bloomberg.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,box.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,box.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cachefly.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,chromium.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cl.ly,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cloudflare.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cloudfront.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cloudmagic.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cmail19.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cnet.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cocoapods.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,comodoca.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,crashlytics.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,culturedcode.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,d.pr,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,danilo.to,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,dayone.me,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,db.tt,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,deskconnect.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,disq.us,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,disqus.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,disquscdn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,dnsimple.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,docker.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,dribbble.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,droplr.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,duckduckgo.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,dueapp.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,dytt8.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,edgecastcdn.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,edgekey.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,edgesuite.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,engadget.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,entrust.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,eurekavpt.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,evernote.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,fabric.io,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,fast.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,fastly.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,fc2.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,feedburner.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,feedly.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,feedsportal.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,fiftythree.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,firebaseio.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,flexibits.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,flickr.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,flipboard.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,g.co,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,gabia.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,geni.us,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,gfx.ms,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ggpht.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ghostnoteapp.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,git.io,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,github,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,globalsign.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,gmodules.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,godaddy.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,golang.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,gongm.in,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,goo.gl,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,goodreaders.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,goodreads.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,gravatar.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,gstatic.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,gvt0.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,hockeyapp.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,hotmail.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,icons8.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ifixit.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ift.tt,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ifttt.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,iherb.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,imageshack.us,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,img.ly,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,imgur.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,imore.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,instapaper.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ipn.li,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,is.gd,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,issuu.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,itgonglun.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,itun.es,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ixquick.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,j.mp,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,js.revsci.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,jshint.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,jtvnw.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,justgetflux.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,kat.cr,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,klip.me,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,libsyn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,linkedin.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,line-apps.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,linode.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,lithium.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,littlehj.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,live.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,live.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,livefilestore.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,llnwd.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,macid.co,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,macromedia.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,macrumors.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,mashable.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,mathjax.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,medium.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,mega.co.nz,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,mega.nz,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,megaupload.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,microsofttranslator.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,mindnode.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,mobile01.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,modmyi.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,msedge.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,myfontastic.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,name.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,nextmedia.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,nsstatic.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,nssurge.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,nyt.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,nytimes.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,omnigroup.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,onedrive.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,onenote.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ooyala.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,openvpn.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,openwrt.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,orkut.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,osxdaily.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,outlook.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ow.ly,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,paddleapi.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,parallels.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,parse.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,pdfexpert.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,periscope.tv,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,pinboard.in,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,pinterest.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,pixelmator.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,pixiv.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,playpcesor.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,playstation.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,playstation.com.hk,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,playstation.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,playstationnetwork.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,pushwoosh.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,rime.im,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,servebom.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,sfx.ms,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,shadowsocks.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,sharethis.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,shazam.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,skype.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,smartdnsDEFAULT-PROXY.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,smartmailcloud.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,sndcdn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,sony.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,soundcloud.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,sourceforge.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,spotify.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,squarespace.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,sstatic.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,st.luluku.pw,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,stackoverflow.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,startpage.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,staticflickr.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,steamcommunity.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,symauth.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,symcb.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,symcd.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tapbots.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tapbots.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tdesktop.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,techcrunch.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,techsmith.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,thepiratebay.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,theverge.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,time.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,timeinc.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tiny.cc,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tinypic.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tmblr.co,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,todoist.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,trello.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,trustasiassl.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tumblr.co,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tumblr.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tweetdeck.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tweetmarker.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,twitch.tv,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,txmblr.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,typekit.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ubertags.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ublock.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ubnt.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ulyssesapp.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,urchin.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,usertrust.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,v.gd,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,v2ex.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,vimeo.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,vimeocdn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,vine.co,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,vivaldi.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,vox-cdn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,vsco.co,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,vultr.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,w.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,w3schools.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,webtype.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wikiwand.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wikileaks.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wikimedia.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wikipedia.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wikipedia.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,windows.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,windows.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wire.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wordpress.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,workflowy.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wp.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wsj.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wsj.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,xda-developers.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,xeeno.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,xiti.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,yahoo.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,yimg.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ying.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,yoyo.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ytimg.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,telegra.ph,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,telegram.org,DEFAULT-PROXY'
+  - 'IP-CIDR,91.108.4.0/22,DEFAULT-PROXY,no-resolve'
+  - 'IP-CIDR,91.108.8.0/21,DEFAULT-PROXY,no-resolve'
+  - 'IP-CIDR,91.108.16.0/22,DEFAULT-PROXY,no-resolve'
+  - 'IP-CIDR,91.108.56.0/22,DEFAULT-PROXY,no-resolve'
+  - 'IP-CIDR,149.154.160.0/20,DEFAULT-PROXY,no-resolve'
+  - 'IP-CIDR6,2001:67c:4e8::/48,DEFAULT-PROXY,no-resolve'
+  - 'IP-CIDR6,2001:b28:f23d::/48,DEFAULT-PROXY,no-resolve'
+  - 'IP-CIDR6,2001:b28:f23f::/48,DEFAULT-PROXY,no-resolve'
+  - 'DOMAIN-SUFFIX,services.googleapis.cn,DEFAULT-PROXY'
+  - 'DOMAIN,developer.apple.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,digicert.com,DEFAULT-PROXY'
+  - 'DOMAIN,ocsp.apple.com,DEFAULT-PROXY'
+  - 'DOMAIN,ocsp.comodoca.com,DEFAULT-PROXY'
+  - 'DOMAIN,ocsp.usertrust.com,DEFAULT-PROXY'
+  - 'DOMAIN,ocsp.sectigo.com,DEFAULT-PROXY'
+  - 'DOMAIN,ocsp.verisign.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,apple-dns.net,DEFAULT-PROXY'
+  - 'DOMAIN,testflight.apple.com,DEFAULT-PROXY'
+  - 'DOMAIN,sandbox.itunes.apple.com,DEFAULT-PROXY'
+  - 'DOMAIN,itunes.apple.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,apps.apple.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,blobstore.apple.com,DEFAULT-PROXY'
+  - 'DOMAIN,cvws.icloud-content.com,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,admarvel,REJECT'
+  - 'DOMAIN-KEYWORD,admaster,REJECT'
+  - 'DOMAIN-KEYWORD,adsage,REJECT'
+  - 'DOMAIN-KEYWORD,adsmogo,REJECT'
+  - 'DOMAIN-KEYWORD,adsrvmedia,REJECT'
+  - 'DOMAIN-KEYWORD,adwords,REJECT'
+  - 'DOMAIN-KEYWORD,adservice,REJECT'
+  - 'DOMAIN-SUFFIX,appsflyer.com,REJECT'
+  - 'DOMAIN-KEYWORD,domob,REJECT'
+  - 'DOMAIN-SUFFIX,doubleclick.net,REJECT'
+  - 'DOMAIN-KEYWORD,duomeng,REJECT'
+  - 'DOMAIN-KEYWORD,dwtrack,REJECT'
+  - 'DOMAIN-KEYWORD,guanggao,REJECT'
+  - 'DOMAIN-KEYWORD,lianmeng,REJECT'
+  - 'DOMAIN-SUFFIX,mmstat.com,REJECT'
+  - 'DOMAIN-KEYWORD,mopub,REJECT'
+  - 'DOMAIN-KEYWORD,omgmta,REJECT'
+  - 'DOMAIN-KEYWORD,openx,REJECT'
+  - 'DOMAIN-KEYWORD,partnerad,REJECT'
+  - 'DOMAIN-KEYWORD,pingfore,REJECT'
+  - 'DOMAIN-KEYWORD,supersonicads,REJECT'
+  - 'DOMAIN-KEYWORD,uedas,REJECT'
+  - 'DOMAIN-KEYWORD,umeng,REJECT'
+  - 'DOMAIN-KEYWORD,usage,REJECT'
+  - 'DOMAIN-SUFFIX,vungle.com,REJECT'
+  - 'DOMAIN-KEYWORD,wlmonitor,REJECT'
+  - 'DOMAIN-KEYWORD,zjtoolbar,REJECT'
+  - 'GEOIP,CN,DIRECT'
+  - 'MATCH,DEFAULT-PROXY'
