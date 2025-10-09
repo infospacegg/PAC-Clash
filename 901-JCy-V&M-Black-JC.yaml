@@ -15,9 +15,17 @@ log-level: info
 external-controller: '127.0.0.1:9090'
 
 
-# DNS 设置（禁用 Clash DNS，依赖系统 DNS）
 dns:
-  enable: false  # 禁用 Clash DNS，让系统 DNS 处理解析
+    enable: true
+    ipv6: true
+    default-nameserver: [223.5.5.5, 119.29.29.29, 180.184.1.1]
+    enhanced-mode: fake-ip
+    fake-ip-range: 198.18.0.1/16
+    use-hosts: true
+    nameserver: ['https://dns.alidns.com/dns-query', 'https://doh.pub/dns-query', 180.184.1.1]
+    fallback: ['https://223.5.5.5/dns-query', 'https://223.6.6.6/dns-query', 'https://doh.360.cn/dns-query', 180.184.1.1]
+    fallback-filter: { geoip: true, geoip-code: CN, geosite: [gfw], ipcidr: [240.0.0.0/4], domain: [+.google.com, +.facebook.com, +.youtube.com] }
+
 
 # 3. 代理节点 (Proxies) - 替换为您自己的本地引擎
 proxies:
