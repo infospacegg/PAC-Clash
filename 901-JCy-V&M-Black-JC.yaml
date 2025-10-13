@@ -34,10 +34,12 @@ proxies:
 # 4. 代理组 (Proxy Groups) - 替换为您自己的策略组
 proxy-groups:
   - name: "AI-SPECIAL-PROXY"
-    type: select
+    type: fallback
     proxies:
       - "M"
       - "V-CF"
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 1200 # 每20分钟测速一次
 
   - name: "DEFAULT-PROXY"
     type: select
