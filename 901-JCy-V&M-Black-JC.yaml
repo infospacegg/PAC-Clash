@@ -15,9 +15,17 @@ log-level: info
 external-controller: '127.0.0.1:9090'
 
 
-# DNS 设置（禁用 Clash DNS，依赖系统 DNS）
 dns:
-  enable: false  # 禁用 Clash DNS，让系统 DNS 处理解析
+    enable: true
+    ipv6: true
+    default-nameserver: [223.5.5.5, 119.29.29.29, 180.184.1.1]
+    enhanced-mode: fake-ip
+    fake-ip-range: 198.18.0.1/16
+    use-hosts: true
+    nameserver: ['https://dns.alidns.com/dns-query', 'https://doh.pub/dns-query', 180.184.1.1]
+    fallback: ['https://223.5.5.5/dns-query', 'https://223.6.6.6/dns-query', 'https://doh.360.cn/dns-query', 180.184.1.1]
+    fallback-filter: { geoip: true, geoip-code: CN, geosite: [gfw], ipcidr: [240.0.0.0/4], domain: [+.google.com, +.facebook.com, +.youtube.com] }
+
 
 # 3. 代理节点 (Proxies) - 替换为您自己的本地引擎
 proxies:
@@ -31,15 +39,68 @@ proxies:
     server: 127.0.0.1
     port: 9909 # 请确认您的VPN端口是这个
 
+
+# 3.5. Proxy Providers - 关键部分！从这里开始
+proxy-providers:
+  # Provider 名称（自定义，后面会用到）
+  nc:
+    # 类型：http 表示从网络获取订阅
+    type: http
+    url: 'https://47.238.198.94/iv/verify_mode.htm?token=f0d75b3b31056ea9d8f16313b03506c4'
+    
+    # 更新间隔（秒）：3600 = 1小时自动更新一次
+    # 可选值：600(10分钟) / 1800(30分钟) / 3600(1小时) / 86400(1天)
+    interval: 3600
+    
+    # 本地缓存路径（相对于 Clash 配置目录）
+    # Clash 会把订阅内容保存到这里，下次启动时优先使用缓存
+    # 如果订阅链接失效，仍然可以使用缓存的节点
+    path: ./providers/nc.yaml
+    
+    # 健康检查配置
+    health-check:
+      # 是否启用健康检查
+      enable: true
+      
+      # 检查 URL（Clash 会定期访问这个地址测试节点）
+      # 204 响应快且流量小，是最佳选择
+      url: 'http://www.gstatic.com/generate_204'
+      
+      # 检查间隔（秒）：600 = 每10分钟检查一次节点是否可用
+      # 建议值：300(5分钟) / 600(10分钟) / 1800(30分钟)
+      interval: 600
+      
+      # 延迟加载：true = 只有当使用这个 provider 时才进行健康检查
+      # 好处：节省流量和资源，不会一直检测所有节点
+      lazy: true
+      
+      # 可选：超时时间（毫秒），默认 5000ms
+      # timeout: 5000
+
+
+
+
+
 # 4. 代理组 (Proxy Groups) - 替换为您自己的策略组
 proxy-groups:
   - name: "AI-SPECIAL-PROXY"
     type: fallback
     proxies:
-      - "M"
-      - "V-CF"
+      - "M"              # 优先级1：本地 M 节点（省流量）
+      - "V-CF"           # 优先级3：V-CF 节点（最后备用）
+    
+    # 使用 provider 的节点（会插入到 proxies 列表中间）
+    # 最终顺序：M → NC所有节点 → V-CF
+    use:
+      - nc           # 优先级2：NC 所有节点
+    
+    # 健康检查 URL
     url: 'http://www.gstatic.com/generate_204'
-    interval: 1200 # 每20分钟测速一次
+    
+    # 检查间隔：300秒 = 5分钟检查一次
+    interval: 300
+    # 延迟容忍度（毫秒）：如果当前节点延迟比最快节点高150ms以上就切换
+    tolerance: 1500
 
   - name: "DEFAULT-PROXY"
     type: select
