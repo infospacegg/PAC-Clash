@@ -54,7 +54,7 @@ proxy-providers:
     # 本地缓存路径（相对于 Clash 配置目录）
     # Clash 会把订阅内容保存到这里，下次启动时优先使用缓存
     # 如果订阅链接失效，仍然可以使用缓存的节点
-    path: ./providers/nc.yaml
+    path: ./providers/nc_gl.yaml
     
     # 健康检查配置
     health-check:
