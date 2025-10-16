@@ -45,7 +45,7 @@ proxy-providers:
   nc:
     # 类型：http 表示从网络获取订阅
     type: http
-    url: ''
+    url: 'https://47.238.198.94/iv/verify_mode.htm?token=f0d75b3b31056ea9d8f16313b03506c4'
     
     # 更新间隔（秒）：3600 = 1小时自动更新一次
     # 可选值：600(10分钟) / 1800(30分钟) / 3600(1小时) / 86400(1天)
@@ -58,7 +58,7 @@ proxy-providers:
     
     # 健康检查配置
     health-check:
-      # # # 是否启用健康检查
+      # 是否启用健康检查
       enable: true
       
       # 检查 URL（Clash 会定期访问这个地址测试节点）
@@ -87,19 +87,10 @@ proxy-groups:
     proxies:
       - "M"              # 优先级1：本地 M 节点（省流量）
       - "V-CF"           # 优先级3：V-CF 节点（最后备用）
-    
-    # 使用 provider 的节点（会插入到 proxies 列表中间）
-    # 最终顺序：M → NC所有节点 → V-CF
     use:
       - nc           # 优先级2：NC 所有节点
-    
-    # 健康检查 URL
     url: 'http://www.gstatic.com/generate_204'
-    
-    # 检查间隔：300秒 = 5分钟检查一次
     interval: 300
-    # 延迟容忍度（毫秒）：如果当前节点延迟比最快节点高150ms以上就切换
-    tolerance: 1500
 
   - name: "DEFAULT-PROXY"
     type: select
