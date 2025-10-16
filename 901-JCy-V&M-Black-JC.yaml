@@ -45,7 +45,7 @@ proxy-providers:
   nc:
     # 类型：http 表示从网络获取订阅
     type: http
-    url: 'https://47.238.198.94/iv/verify_mode.htm?token=f0d75b3b31056ea9d8f16313b03506c4'
+    url: ''
     
     # 更新间隔（秒）：3600 = 1小时自动更新一次
     # 可选值：600(10分钟) / 1800(30分钟) / 3600(1小时) / 86400(1天)
@@ -58,7 +58,7 @@ proxy-providers:
     
     # 健康检查配置
     health-check:
-      # 是否启用健康检查
+      # # # 是否启用健康检查
       enable: true
       
       # 检查 URL（Clash 会定期访问这个地址测试节点）
