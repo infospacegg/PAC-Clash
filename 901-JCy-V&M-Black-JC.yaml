@@ -38,6 +38,10 @@ proxies:
     server: 127.0.0.1
     port: 9909 # 请确认您的VPN端口是这个
 
+  - name: "M-h"
+    type: http
+    server: 127.0.0.1
+    port: 9910 # 请确认您的VPN端口是这个
 
 # 3.5. Proxy Providers - 关键部分！从这里开始
 proxy-providers:
@@ -54,12 +58,16 @@ proxy-providers:
     # 本地缓存路径（相对于 Clash 配置目录）
     # Clash 会把订阅内容保存到这里，下次启动时优先使用缓存
     # 如果订阅链接失效，仍然可以使用缓存的节点
-    path: ./providers/nc_gl.yaml
-    
+    path: ./providers/nc_local-1016.yaml
+
+    # 【核心新增】伪造User-Agent，模拟Clash Verge客户端
+    # user-agent: "Clash Verge/2.4.2" # <<<<<<<<<<<<<<<
+    user-agent: "Clash"
+
     # 健康检查配置
     health-check:
       # 是否启用健康检查
-      enable: true
+      enable: false
       
       # 检查 URL（Clash 会定期访问这个地址测试节点）
       # 204 响应快且流量小，是最佳选择
@@ -85,18 +93,63 @@ proxy-groups:
   - name: "AI-SPECIAL-PROXY"
     type: fallback
     proxies:
-      - "M"              # 优先级1：本地 M 节点（省流量）
-      - "V-CF"           # 优先级3：V-CF 节点（最后备用）
+      - "M" 
+      - "M-h"             # 优先级1：本地 M 节点（省流量）
+      - "NC-auto-LHZ-BGP"
+      - "NC-auto-猎户座US"
+      - "NC-auto-猎户座"
+      - "NC-auto-US"
+      - "NC-auto-all"
+      - "V-CF"
+
     use:
       - nc           # 优先级2：NC 所有节点
-    url: 'http://www.gstatic.com/generate_204'
-    interval: 300
+    url: 'http://www.gstatic.com/generate_204'      # 健康检查 URL
+    interval: 300       # 检查间隔：300秒 = 5分钟检查一次
+    tolerance: 1500       # 检查间隔：300秒 = 5分钟检查一次
 
   - name: "DEFAULT-PROXY"
     type: select
     proxies:
       - "V-CF"
       - "M"
+      - "M-h"
+
+  - name: "NC-auto-LHZ-BGP"
+    type: select
+    use:
+      - nc
+    filter: "BGP"     # 只包含BPG
+
+  - name: "NC-auto-HK"
+    type: select
+    use:
+      - nc
+    filter: "HK"
+
+  - name: "NC-auto-US"
+    type: select
+    use:
+      - nc
+    filter: "US"
+
+  - name: "NC-auto-猎户座"
+    type: select
+    use:
+      - nc
+    filter: "猎户座"
+
+  - name: "NC-auto-猎户座US"
+    type: select
+    use:
+      - nc
+    filter: "猎户座-US"
+
+  - name: "NC-auto-all"
+    type: select
+    use:
+      - nc
+
 
 # 5. 规则 (Rules) - 在专业规则的基础上，增加了我们的规则
 rules:
