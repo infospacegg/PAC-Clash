@@ -84,10 +84,6 @@ proxy-providers:
       # 可选：超时时间（毫秒），默认 5000ms
       # timeout: 5000
 
-
-
-
-
 # 4. 代理组 (Proxy Groups) - 替换为您自己的策略组
 proxy-groups:
   - name: "AI-SPECIAL-PROXY"
