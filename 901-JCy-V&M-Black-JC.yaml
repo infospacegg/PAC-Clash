@@ -284,7 +284,7 @@ proxy-groups:
     expected-status: 204
     lazy: true  # 只在用时测速
     use:
-    - v2c
+      - v2c
     filter: '.*FrankfurtF.*'  # 加 filter，只测 test 节点，减负载
   
   - name: "NC-auto-LHZ-BGP"
