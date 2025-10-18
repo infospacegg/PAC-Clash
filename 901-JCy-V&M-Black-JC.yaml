@@ -212,37 +212,18 @@ proxy-providers:
     url: 'https://47.238.198.94/iv/verify_mode.htm?token=f0d75b3b31056ea9d8f16313b03506c4'
     
     # 更新间隔（秒）：3600 = 1小时自动更新一次
-    # 可选值：600(10分钟) / 1800(30分钟) / 3600(1小时) / 86400(1天)
     interval: 3600
-    
-    # 本地缓存路径（相对于 Clash 配置目录）
-    # Clash 会把订阅内容保存到这里，下次启动时优先使用缓存
-    # 如果订阅链接失效，仍然可以使用缓存的节点
     path: ./providers/nc_local-1016.yaml
-
-    # 【核心新增】伪造User-Agent，模拟Clash Verge客户端
-    # user-agent: "Clash Verge/2.4.2" # <<<<<<<<<<<<<<<
-    user-agent: "Clash"
-
-    # 健康检查配置
+    # 移到 header 下
+    header:
+      User-Agent:
+        - "Clash Verge/2.4.2"  # 或 "Clash Verge/2.4.2" 来模拟 Verge 客户端
     health-check:
-      # 是否启用健康检查
       enable: false
-      
-      # 检查 URL（Clash 会定期访问这个地址测试节点）
-      # 204 响应快且流量小，是最佳选择
       url: 'http://www.gstatic.com/generate_204'
-      
-      # 检查间隔（秒）：600 = 每10分钟检查一次节点是否可用
-      # 建议值：300(5分钟) / 600(10分钟) / 1800(30分钟)
-      interval: 600
-      
-      # 延迟加载：true = 只有当使用这个 provider 时才进行健康检查
-      # 好处：节省流量和资源，不会一直检测所有节点
+      interval: 1800
       lazy: true
-      
-      # 可选：超时时间（毫秒），默认 5000ms
-      # timeout: 5000
+
   v2c:
     type: http
     url: "https://gitlab.com/api/v4/projects/67911760/repository/files/v2c.yaml/raw?ref=main&private_token=glpat-Eu2whgwSfLtBymi26RF9" # <-- 还是用同一个订阅链接
@@ -252,9 +233,7 @@ proxy-providers:
       enable: true
       interval: 600
       url: http://www.gstatic.com/generate_204
-    # --- 核心代码在这里 ---
-    # 这个 filter 会筛选出所有节点名称中包含 "Whzsmss" 字符串的节点
-    filter: '.*Whzsmss.*'
+
 # 4. 代理组 (Proxy Groups) - 替换为您自己的策略组2
 proxy-groups:
   - name: "AI-SPECIAL-PROXY"
@@ -272,10 +251,7 @@ proxy-groups:
       - "V-CF"
     url: 'http://www.gstatic.com/generate_204'      # 健康检查 URL
     interval: 300       # 检查间隔：300秒 = 5分钟检查一次
-    tolerance: 1500       # 检查间隔：300秒 = 5分钟检查一次
-   
-
-
+    tolerance: 1500      # 容忍延迟：1500毫秒 = 1.5秒
 
   - name: "DEFAULT-PROXY"
     type: select
@@ -290,14 +266,12 @@ proxy-groups:
     type: select
     use:
       - v2c
-    filter: "Whzsmss" 
+    filter: '.*Whzsmss.*'
 
   - name: "V2C-test"
     type: url-test # 自动测速，选择最快的
     url: 'http://www.gstatic.com/generate_204'
-    interval: 300
-    # --- 核心代码在这里 ---
-    # 使用 'use' 关键字，后面跟上您刚才创建的 provider 的名字
+    interval: 3000
     use:
       - v2c # Clash 会自动把 my-airport-whzsmss provider 里的所有节点都加进来
 
