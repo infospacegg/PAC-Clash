@@ -252,14 +252,7 @@ proxy-groups:
     interval: 300       # 检查间隔：300秒 = 5分钟检查一次
     tolerance: 1500      # 容忍延迟：1500毫秒 = 1.5秒
 
-  - name: "DEFAULT-PROXY"
-    type: select
-    proxies:
-      - "V2C-test"
-      - "V2C-Whzsmss"
-      - "V-CF"
-      - "M"
-      - "M-h"
+
 
   - name: "V2C-Whzsmss"
     type: select
@@ -277,6 +270,14 @@ proxy-groups:
     use:
       - v2c
 
+  - name: "DEFAULT-PROXY"
+    type: select
+    proxies:
+      - "V2C-test"
+      - "V2C-Whzsmss"
+      - "V-CF"
+      - "M"
+      - "M-h"
   
   - name: "NC-auto-LHZ-BGP"
     type: select
