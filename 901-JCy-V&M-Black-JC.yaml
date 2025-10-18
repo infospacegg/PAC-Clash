@@ -292,7 +292,7 @@ proxy-groups:
       - v2c
     filter: "Whzsmss" 
 
-  - name: "V2C"
+  - name: "V2C-test"
     type: url-test # 自动测速，选择最快的
     url: 'http://www.gstatic.com/generate_204'
     interval: 300
