@@ -273,6 +273,16 @@ proxy-groups:
   - name: "DEFAULT-PROXY"
     type: select
     proxies:
+      - Whzsmss96FrankfurtFRA1
+      - Whzsmss96FrankfurtFRA2
+      - Whzsmss96FrankfurtFRA3
+      - Whzsmss96FrankfurtFRA4
+      - Whzsmss96FrankfurtFRA5
+      - Whzsmss96San JoseSJC6
+      - Whzsmss96San JoseSJC7
+      - Whzsmss96San JoseSJC8
+      - Whzsmss96San JoseSJC9
+      - Whzsmss96San JoseSJC10
       - "V2C-test"
       - "V2C-Whzsmss"
       - "V-CF"
