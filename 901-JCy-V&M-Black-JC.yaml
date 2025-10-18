@@ -232,10 +232,10 @@ proxy-providers:
     health-check:
       enable: true
       interval: 300
-    url: 'https://cp.cloudflare.com/generate_204'   # 换成 Cloudflare，更稳定
-    timeout: 3000  # 3s 超时，防卡住
-    lazy: false  # 强制检查所有节点（默认 true 只在用时）
-    expected-status: 204  # 明确期望 204 响应
+      url: 'https://cp.cloudflare.com/generate_204'   # 换成 Cloudflare，更稳定
+      timeout: 3000  # 3s 超时，防卡住
+      lazy: false  # 强制检查所有节点（默认 true 只在用时）
+      expected-status: 204  # 明确期望 204 响应
 
 # 4. 代理组 (Proxy Groups) - 替换为您自己的策略组2
 proxy-groups:
