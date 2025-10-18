@@ -230,12 +230,8 @@ proxy-providers:
     interval: 3600
     path: ./providers/v2c.yaml # <-- 建议用一个新文件名
     health-check:
-      enable: true
-      interval: 300
-      url: 'https://cp.cloudflare.com/generate_204'   # 换成 Cloudflare，更稳定
-      timeout: 3000  # 3s 超时，防卡住
-      lazy: false  # 强制检查所有节点（默认 true 只在用时）
-      expected-status: 204  # 明确期望 204 响应
+      enable: false
+
 
 # 4. 代理组 (Proxy Groups) - 替换为您自己的策略组2
 proxy-groups:
@@ -270,11 +266,17 @@ proxy-groups:
     use:
       - v2c # Clash 会自动把 my-airport-whzsmss provider 里的所有节点都加进来
 
-
   - name: "V2C-test"
     type: url-test
+    url: 'https://cp.cloudflare.com/generate_204'
+    interval: 300
+    tolerance: 500  # 降低切换阈值
+    timeout: 3000
+    expected-status: 204
+    lazy: true  # 只在用时测速
     use:
-      - v2c # Clash 会自动把 my-airport-whzsmss provider 里的所有节点都加进来
+      - v2c
+
   
   - name: "NC-auto-LHZ-BGP"
     type: select
