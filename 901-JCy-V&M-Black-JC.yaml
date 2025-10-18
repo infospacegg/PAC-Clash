@@ -43,6 +43,15 @@ proxies:
     server: 127.0.0.1
     port: 9910 # 请确认您的VPN端口是这个
 
+  ############# 以下为您的“猎户座-BGP”A-F节点 ###########
+  - { name: ❇️猎户座-BGP-A, server: bgpa.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.1530fe2e.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: 4ad44441-99bd-4aa8-9b69-0c6118e32e3c }
+  - { name: ❇️猎户座-BGP-B, server: bgpb.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.cc16bd23.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: 4ad44441-99bd-4aa8-9b69-0c6118e32e3c }
+  - { name: ❇️猎户座-BGP-C, server: bgpc.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.7b0b7c27.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: 4ad44441-99bd-4aa8-9b69-0c6118e32e3c }
+  - { name: ❇️猎户座-BGP-D, server: bgpd.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.7e5b3b39.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: 4ad44441-99bd-4aa8-9b69-0c6118e32e3c }
+  - { name: ❇️猎户座-BGP-E, server: bgpe.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.c946fa3d.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: 4ad44441-99bd-4aa8-9b69-0c6118e32e3c }
+  - { name: ❇️猎户座-BGP-F, server: bgpf.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.1060b930.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: 4ad44441-99bd-4aa8-9b69-0c6118e32e3c }
+
+
 # 3.5. Proxy Providers - 关键部分！从这里开始
 proxy-providers:
   # Provider 名称（自定义，后面会用到）
