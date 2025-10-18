@@ -100,10 +100,9 @@ proxy-groups:
     proxies:
       - "M" 
       - "M-h"             # 优先级1：本地 M 节点（省流量）
-      - "NC-auto-LHZ-BGP"
-      - "NC-auto-猎户座US"
-      - "NC-auto-猎户座"
-      - "NC-auto-US"
+    use:
+      - nc           # 优先级2：NC 所有节点
+      
       - "NC-auto-all"
       - "V-CF"
 
@@ -112,6 +111,9 @@ proxy-groups:
     url: 'http://www.gstatic.com/generate_204'      # 健康检查 URL
     interval: 300       # 检查间隔：300秒 = 5分钟检查一次
     tolerance: 1500       # 检查间隔：300秒 = 5分钟检查一次
+    filter: '❇️猎户座-BGP-[ABCD]'   # 只包含猎户座-BGP的A-D节点
+
+
 
   - name: "DEFAULT-PROXY"
     type: select
