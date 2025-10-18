@@ -265,8 +265,7 @@ proxy-groups:
   - name: "V2C-Whzsmss"
     type: select
     use:
-      - v2c
-    filter: '.*Whzsmss.*'
+      - v2c # Clash 会自动把 my-airport-whzsmss provider 里的所有节点都加进来
 
   - name: "V2C-test"
     type: url-test # 自动测速，选择最快的
