@@ -292,6 +292,26 @@ proxy-groups:
       - "V-CF"
       - "M"
       - "M-h"
+
+
+  - name: "huggingface_ProxyGroup"
+    type: select
+    proxies:
+      - Whzsmss96San JoseSJC6
+      - Whzsmss96San JoseSJC7
+      - Whzsmss96San JoseSJC8
+      - Whzsmss96San JoseSJC9
+      - Whzsmss96San JoseSJC10
+      - Whzsmss96FrankfurtFRA1
+      - Whzsmss96FrankfurtFRA2
+      - Whzsmss96FrankfurtFRA3
+      - Whzsmss96FrankfurtFRA4
+      - Whzsmss96FrankfurtFRA5
+      - "V2C-test"
+      - "V2C-Whzsmss"
+      - "V-CF"
+      - "M"
+      - "M-h"
   
   - name: "NC-auto-LHZ-BGP"
     type: select
@@ -345,6 +365,11 @@ rules:
   - DOMAIN-KEYWORD,chat.bing,AI-SPECIAL-PROXY
   - DOMAIN-KEYWORD,gitlab.com,AI-SPECIAL-PROXY
   # - DOMAIN-KEYWORD,huggingface.co,AI-SPECIAL-PROXY
+  
+  
+  #- huggingface 等流量很大，但对节点又有要求的网站，单独列出来
+  - DOMAIN-KEYWORD,huggingface.co,huggingface_ProxyGroup
+
 
   # (5.2) 【沿用并修改】专业配置中的所有规则
   # 我已将所有原来指向“🚀 节点选择”的规则，都改为了指向“DEFAULT-PROXY”
