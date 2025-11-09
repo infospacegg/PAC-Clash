@@ -256,22 +256,6 @@ proxy-groups:
 
 
 
-  - name: "V2C-Whzsmss"
-    type: select
-    use:
-      - v2c # Clash 会自动把 my-airport-whzsmss provider 里的所有节点都加进来
-
-  - name: "V2C-test"
-    type: url-test
-    url: 'https://cp.cloudflare.com/generate_204'
-    interval: 300
-    tolerance: 500  # 降低切换阈值
-    timeout: 3000
-    expected-status: 204
-    lazy: true  # 只在用时测速
-    use:
-      - v2c
-
   - name: "DEFAULT-PROXY"
     type: select
     proxies:
@@ -311,6 +295,24 @@ proxy-groups:
       - "M"
       - "M-h"
   
+
+  - name: "V2C-Whzsmss"
+    type: select
+    use:
+      - v2c # Clash 会自动把 my-airport-whzsmss provider 里的所有节点都加进来
+
+  - name: "V2C-test"
+    type: url-test
+    url: 'https://cp.cloudflare.com/generate_204'
+    interval: 300
+    tolerance: 500  # 降低切换阈值
+    timeout: 3000
+    expected-status: 204
+    lazy: true  # 只在用时测速
+    use:
+      - v2c
+
+
   - name: "NC-auto-LHZ-BGP"
     type: select
     use:
