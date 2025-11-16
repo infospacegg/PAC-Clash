@@ -302,6 +302,11 @@ proxy-groups:
       - "M-h"
 
 
+  - name: "NC-auto-all"
+    type: select
+    use:
+      - nc
+
   - name: "huggingface_ProxyGroup"
     type: select
     proxies:
@@ -361,10 +366,7 @@ proxy-groups:
       - nc
     filter: "美"
 
-  - name: "NC-auto-all"
-    type: select
-    use:
-      - nc
+
 
 
 # 5. 规则 (Rules) - 在专业规则的基础上，增加了我们的规则
