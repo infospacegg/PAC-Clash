@@ -246,24 +246,23 @@ proxy-groups:
     proxies:
       - "M" 
       - "M-h"             # 优先级1：本地 M 节点（省流量）
-      - { name: ❇️白羊座-AGP(通用), type: tuic, server: hkv6a.de180997-0810-4174-8f14-eb8d79d47a0c.a5e6e977.demo-chat-airport.com, port: 52892, uuid: 1223b0a7-21be-445a-b54d-819511bc258e, password: 1223b0a7-21be-445a-b54d-819511bc258e, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-      - { name: ❇️白羊座-BGP(通用), type: tuic, server: hkv6b.de180997-0810-4174-8f14-eb8d79d47a0c.7cc0aa7a.demo-chat-airport.com, port: 52892, uuid: 1223b0a7-21be-445a-b54d-819511bc258e, password: 1223b0a7-21be-445a-b54d-819511bc258e, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-      - { name: ❇️白羊座-CGP(通用), type: tuic, server: alv6b.de180997-0810-4174-8f14-eb8d79d47a0c.7cc0aa7a.demo-chat-airport.com, port: 52892, uuid: 1223b0a7-21be-445a-b54d-819511bc258e, password: 1223b0a7-21be-445a-b54d-819511bc258e, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-      - { name: ❇️白羊座-DGP(通用), server: jp.539bb8de-73bb-4398-8c9b-d145a8901e8f.5201a354.demo-chat-airport.com, port: 56892, sni: www.bing.com, up: 50, down: 50, skip-cert-verify: true, type: hysteria2, password: 1223b0a7-21be-445a-b54d-819511bc258e }
-      - { name: ❇️白羊座-EGP(流量), server: jpv6.539bb8de-73bb-4398-8c9b-d145a8901e8f.5e63934c.demo-chat-airport.com, port: 56892, sni: addons.mozilla.org, up: 50, down: 50, skip-cert-verify: true, type: hysteria2, password: 1223b0a7-21be-445a-b54d-819511bc258e }
-      - { name: ❇️白羊座-FGP(流量), type: trojan, server: tgv6a.4eb56bd3-45b8-49c5-a967-a1e497dceb67.23b83910.demo-chat-airport.com, port: 56806, password: 1223b0a7-21be-445a-b54d-819511bc258e, udp: true, sni: 47.76.247.91 }
-      - { name: ❇️白羊座-GGP(通用), type: tuic, server: jp.539bb8de-73bb-4398-8c9b-d145a8901e8f.5201a354.demo-chat-airport.com, port: 52892, uuid: 1223b0a7-21be-445a-b54d-819511bc258e, password: 1223b0a7-21be-445a-b54d-819511bc258e, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-      - { name: ❇️白羊座-HGP(流量), type: tuic, server: jpv6.539bb8de-73bb-4398-8c9b-d145a8901e8f.5e63934c.demo-chat-airport.com, port: 52892, uuid: 1223b0a7-21be-445a-b54d-819511bc258e, password: 1223b0a7-21be-445a-b54d-819511bc258e, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-      - { name: ❇️白羊座-IGP(通用), type: tuic, server: jpa.539bb8de-73bb-4398-8c9b-d145a8901e8f.b01401d1.demo-chat-airport.com, port: 52892, uuid: 1223b0a7-21be-445a-b54d-819511bc258e, password: 1223b0a7-21be-445a-b54d-819511bc258e, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-      - { name: ❇️白羊座-JGP(流量), type: tuic, server: jpb.539bb8de-73bb-4398-8c9b-d145a8901e8f.693242dc.demo-chat-airport.com, port: 52892, uuid: 1223b0a7-21be-445a-b54d-819511bc258e, password: 1223b0a7-21be-445a-b54d-819511bc258e, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-      - { name: 🇺🇸美国-A(通用), server: usa.e974c2d6-0b71-4913-931a-4d38f58a71fc.bea0aeb5.demo-chat-airport.com, port: 56770, sni: www.bing.com, up: 200, down: 200, skip-cert-verify: true, type: hysteria2, password: 1223b0a7-21be-445a-b54d-819511bc258e }
-      - { name: 🇺🇸美国-B(流量), server: usb.e974c2d6-0b71-4913-931a-4d38f58a71fc.6786edb8.demo-chat-airport.com, port: 56770, sni: www.bing.com, up: 200, down: 200, skip-cert-verify: true, type: hysteria2, password: 1223b0a7-21be-445a-b54d-819511bc258e }
-      - { name: 🇭🇰香江-E(流量), type: vless, server: cos-cdn-d.alicdn.win, port: 443, uuid: 1223b0a7-21be-445a-b54d-819511bc258e, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-rende-e.aliapp.men, client-fingerprint: edge, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-rende-e.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-rende-e.aliapp.men } }
-      - { name: 🇭🇰香江-F(流量), type: vless, server: cos-cdn-e.alicdn.win, port: 443, uuid: 1223b0a7-21be-445a-b54d-819511bc258e, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-rende-f.aliapp.men, client-fingerprint: firefox, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-rende-f.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-rende-f.aliapp.men } }
-      - { name: 🇭🇰香江-G(流量), type: vless, server: cos-cdn-f.alicdn.win, port: 443, uuid: 1223b0a7-21be-445a-b54d-819511bc258e, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-rende-g.aliapp.men, client-fingerprint: ios, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-rende-g.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-rende-g.aliapp.men } }
-      - { name: 🇭🇰香江-H(流量), type: vless, server: cos-cdn-z.alicdn.win, port: 443, uuid: 1223b0a7-21be-445a-b54d-819511bc258e, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-rende-h.aliapp.men, client-fingerprint: safari, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-rende-h.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-rende-h.aliapp.men } }
-      - { name: 🇭🇰香港-A(通用), type: tuic, server: hk.de180997-0810-4174-8f14-eb8d79d47a0c.4c8f0b93.demo-chat-airport.com, port: 52892, uuid: 1223b0a7-21be-445a-b54d-819511bc258e, password: 1223b0a7-21be-445a-b54d-819511bc258e, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-      - { name: 🇭🇰香港-B(流量), type: tuic, server: hkv6.de180997-0810-4174-8f14-eb8d79d47a0c.4612afe1.demo-chat-airport.com, port: 52892, uuid: 1223b0a7-21be-445a-b54d-819511bc258e, password: 1223b0a7-21be-445a-b54d-819511bc258e, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
+      - ❇️白羊座-AGP(通用)
+      - ❇️白羊座-BGP(通用)
+      - ❇️白羊座-CGP(通用)
+      - ❇️白羊座-DGP(通用)
+      - ❇️白羊座-EGP(流量)
+      - ❇️白羊座-FGP(流量)
+      - ❇️白羊座-GGP(通用)
+      - ❇️白羊座-HGP(流量)
+      - ❇️白羊座-IGP(通用)
+      - 🇺🇸美国-A(通用)
+      - 🇺🇸美国-B(流量)
+      - 🇭🇰香江-E(流量)
+      - 🇭🇰香江-F(流量)
+      - 🇭🇰香江-G(流量)
+      - 🇭🇰香江-H(流量)
+      - 🇭🇰香港-A(通用)
+      - 🇭🇰香港-B(流量)
 
 
       - "V-CF"
