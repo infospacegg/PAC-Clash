@@ -339,12 +339,6 @@ proxy-groups:
       - nc
     filter: "香"
 
-  - name: "NC-auto-US"
-    type: select
-    use:
-      - nc
-    filter: "US"
-
   - name: "NC-auto-白羊座"
     type: select
     use:
