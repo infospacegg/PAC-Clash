@@ -215,7 +215,7 @@ proxy-providers:
 
     # 更新间隔（秒）：3600 = 1小时自动更新一次
     interval: 3600
-    path: ./providers/nc_local-1016.yaml
+    path: ./providers/nc_local-1116.yaml
     # 移到 header 下
     header:
       User-Agent:
