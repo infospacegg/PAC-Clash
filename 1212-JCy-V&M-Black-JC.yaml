@@ -441,6 +441,7 @@ rules:
 
   # (5.2) 【沿用并修改】专业配置中的所有规则
   # 我已将所有原来指向“🚀 节点选择”的规则，都改为了指向“DEFAULT-PROXY”
+  - 'DOMAIN-KEYWORD,openai365.top,DEFAULT-PROXY' 
   - 'DOMAIN-KEYWORD,amazon,DEFAULT-PROXY'
   - 'DOMAIN-KEYWORD,google,DEFAULT-PROXY'
   - 'DOMAIN-KEYWORD,gmail,DEFAULT-PROXY'
