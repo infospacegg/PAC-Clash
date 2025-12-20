@@ -413,7 +413,8 @@ proxy-groups:
 rules:
   # (5.0) 【新增】您的个人永久直连规则 (最高优先级之一)
   #- DOMAIN-SUFFIX,anaconda.com,DIRECT
-  
+  - DOMAIN-KEYWORD,openai365.top,DIRECT
+
   # (5.1) 【新增】我们的特殊AI及工作网站规则 (最高优先级)
   - DOMAIN-KEYWORD,grok,AI-SPECIAL-PROXY
   - DOMAIN-KEYWORD,openai,AI-SPECIAL-PROXY
@@ -432,7 +433,6 @@ rules:
 
   # (5.2) 【沿用并修改】专业配置中的所有规则
   # 我已将所有原来指向“🚀 节点选择”的规则，都改为了指向“DEFAULT-PROXY”
-  - 'DOMAIN-KEYWORD,openai365.top,DEFAULT-PROXY' 
   - 'DOMAIN-KEYWORD,amazon,DEFAULT-PROXY'
   - 'DOMAIN-KEYWORD,google,DEFAULT-PROXY'
   - 'DOMAIN-KEYWORD,gmail,DEFAULT-PROXY'
