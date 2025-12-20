@@ -348,9 +348,7 @@ proxy-groups:
       - 🇸🇬狮城-F(流量)
       - 🇸🇬狮城-G(流量)
       - 🇸🇬狮城-H(流量)
-      
-
-
+     
   - name: "NC-auto-all"
     type: select
     use:
@@ -420,7 +418,20 @@ proxy-groups:
 rules:
   # (5.0) 【新增】您的个人永久直连规则 (最高优先级之一)
   #- DOMAIN-SUFFIX,anaconda.com,DIRECT
-  - 'DOMAIN-KEYWORD,openai365.top,DIRECT'
+  - DOMAIN-KEYWORD,openai365.top,DIRECT
+  - DOMAIN-SUFFIX,tuna.tsinghua.edu.cn,DIRECT
+  - DOMAIN-SUFFIX,mirrors.aliyun.com,DIRECT
+  - DOMAIN-SUFFIX,pypi.doubanio.com,DIRECT
+
+
+  # 5.0.1. 优先走CF代理其次直连（Conda & PyPI）
+  - DOMAIN-SUFFIX,anaconda.org,CF-D
+  - DOMAIN-SUFFIX,conda.io,CF-D
+  - DOMAIN-SUFFIX,conda-forge.org,CF-D
+  - DOMAIN-SUFFIX,pypi.org,CF-D
+  - DOMAIN-SUFFIX,pythonhosted.org,CF-D # pip下载包实际的域名
+  - DOMAIN-SUFFIX,files.pythonhosted.org,CF-D
+  - DOMAIN-SUFFIX,githubusercontent.com,CF-D # 很多库从这里下源码
 
   # (5.1) 【新增】我们的特殊AI及工作网站规则 (最高优先级)
   - DOMAIN-KEYWORD,grok,AI-SPECIAL-PROXY
