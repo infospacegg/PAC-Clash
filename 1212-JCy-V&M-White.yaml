@@ -294,8 +294,14 @@ proxy-groups:
     interval: 300       # 检查间隔：300秒 = 5分钟检查一次
     tolerance: 1500      # 容忍延迟：1500毫秒 = 1.5秒
 
-
-
+  - name: "CF-D"  # 策略组名字，你可以随便改
+    type: fallback
+    url: 'http://www.gstatic.com/generate_204' # 用于测试连通性的地址
+    interval: 300   # 每300秒检测一次
+    tolerance: 50   # 容差，防止频繁跳动
+    proxies:
+      - "V-CF"
+      - DIRECT
 
 
   - name: "DEFAULT-PROXY"
