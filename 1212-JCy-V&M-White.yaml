@@ -454,7 +454,7 @@ rules:
   - DOMAIN-SUFFIX,pythonhosted.org,CF-D # pip下载包实际的域名
   - DOMAIN-SUFFIX,files.pythonhosted.org,CF-D
   - DOMAIN-SUFFIX,githubusercontent.com,CF-D # 很多库从这里下源码
-
+  - DOMAIN-KEYWORD,gvt2.com,CF-D
 
   # (5.1) 【新增】我们的特殊AI及工作网站规则 (最高优先级)
   - DOMAIN-KEYWORD,grok,AI-SPECIAL-PROXY
