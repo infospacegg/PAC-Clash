@@ -392,6 +392,7 @@ proxy-groups:
       - "V-CF"
       - "M"
       - "M-h"
+      - Whzsmss20260212-ypdq
 
   - name: "V2C-Whzsmss"
     type: select
