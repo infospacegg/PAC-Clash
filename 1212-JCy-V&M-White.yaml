@@ -320,6 +320,7 @@ proxy-groups:
     tolerance: 50   # 容差，防止频繁跳动
     proxies:
       - "V-CF"
+      - Whzsmss20260212-ypdq
       - DIRECT
 
 

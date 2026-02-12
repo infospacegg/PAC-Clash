@@ -321,6 +321,7 @@ proxy-groups:
     proxies:
       - "V-CF"
       - DIRECT
+      - Whzsmss20260212-ypdq
 
 
 
