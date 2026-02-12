@@ -465,6 +465,7 @@ rules:
   - DOMAIN-KEYWORD,chat.bing,AI-SPECIAL-PROXY
   - DOMAIN-KEYWORD,gitlab.com,AI-SPECIAL-PROXY
   - DOMAIN-KEYWORD,challenges.cloudflare.com,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,antigravity,AI-SPECIAL-PROXY
   
   # - DOMAIN-KEYWORD,huggingface.co,AI-SPECIAL-PROXY
   
