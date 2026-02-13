@@ -458,6 +458,14 @@ rules:
   - DOMAIN-SUFFIX,githubusercontent.com,CF-D # 很多库从这里下源码
   - DOMAIN-KEYWORD,gvt2.com,CF-D
 
+ # 5.0.2 Antigravity 走自建
+  - DOMAIN-SUFFIX,antigravity.google,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,googleapis.com,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,cloudcode-pa.googleapis.com,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,antigravity,AI-SPECIAL-PROXY   # 兜底
+
+
   # (5.1) 【新增】我们的特殊AI及工作网站规则 (最高优先级)
   - DOMAIN-KEYWORD,grok,AI-SPECIAL-PROXY
   - DOMAIN-KEYWORD,openai,AI-SPECIAL-PROXY
