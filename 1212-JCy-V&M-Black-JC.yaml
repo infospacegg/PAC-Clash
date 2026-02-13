@@ -309,6 +309,7 @@ proxy-groups:
       - 🇸🇬狮城-H(流量)
 
       - "V-CF"
+      - Whzsmss20260212-ypdq
     url: 'http://www.gstatic.com/generate_204'      # 健康检查 URL
     interval: 300       # 检查间隔：300秒 = 5分钟检查一次
     tolerance: 1500      # 容忍延迟：1500毫秒 = 1.5秒
