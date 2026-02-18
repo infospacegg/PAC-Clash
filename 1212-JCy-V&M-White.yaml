@@ -287,7 +287,7 @@ proxy-providers:
     type: http
     url: "https://gitlab.com/api/v4/projects/67911760/repository/files/nc.yaml/raw?ref=main&private_token=glpat-Eu2whgwSfLtBymi26RF9"
     interval: 3600
-    path: ./providers/nc_0218.yaml
+    path: ./providers/local_White_glados.yaml
     health-check:
       enable: true
       url: 'https://1.1.1.1/cdn-cgi/trace' 
