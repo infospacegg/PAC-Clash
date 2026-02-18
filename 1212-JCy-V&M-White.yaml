@@ -270,18 +270,18 @@ proxy-providers:
       interval: 1800
       lazy: true
 
-  # v2c:
-  #   type: http
-  #   url: "https://gitlab.com/api/v4/projects/67911760/repository/files/v2c.yaml/raw?ref=main&private_token=glpat-Eu2whgwSfLtBymi26RF9" # <-- 还是用同一个订阅链接
-  #   interval: 3600
-  #   path: ./providers/v2c_0218.yaml # <-- 建议用一个新文件名
-  #   health-check:
-  #     enable: true
-  #     url: 'https://1.1.1.1/cdn-cgi/trace' 
-  #     interval: 180
-  #     timeout: 2000  # 2s 超时，防卡
-  #     lazy: true  # 只在用时查
-  #     expected-status: 200  # 明确响应码
+  v2c:
+    type: http
+    url: "https://gitlab.com/api/v4/projects/67911760/repository/files/v2c.yaml/raw?ref=main&private_token=glpat-Eu2whgwSfLtBymi26RF9" # <-- 还是用同一个订阅链接
+    interval: 3600
+    path: ./providers/v2c_0218.yaml # <-- 建议用一个新文件名
+    health-check:
+      enable: true
+      url: 'https://1.1.1.1/cdn-cgi/trace' 
+      interval: 180
+      timeout: 2000  # 2s 超时，防卡
+      lazy: true  # 只在用时查
+      expected-status: 200  # 明确响应码
 
 # 4. 代理组 (Proxy Groups) - 替换为您自己的策略组2
 proxy-groups:
