@@ -283,6 +283,19 @@ proxy-providers:
       lazy: true  # 只在用时查
       expected-status: 200  # 明确响应码
 
+  GLaDOS-Nodes:
+    type: http
+    url: "https://gitlab.com/api/v4/projects/67911760/repository/files/nc.yaml/raw?ref=main&private_token=glpat-Eu2whgwSfLtBymi26RF9"
+    interval: 3600
+    path: ./providers/nc_0218.yaml
+    health-check:
+      enable: true
+      url: 'https://1.1.1.1/cdn-cgi/trace' 
+      interval: 180
+      timeout: 2000  # 2s 超时，防卡
+      lazy: true  # 只在用时查
+      expected-status: 200  # 明确响应码
+
 # 4. 代理组 (Proxy Groups) - 替换为您自己的策略组2
 proxy-groups:
   - name: "AI-SPECIAL-PROXY"
@@ -324,7 +337,17 @@ proxy-groups:
       - 🇸🇬狮城-F(流量)
       - 🇸🇬狮城-G(流量)
       - 🇸🇬狮城-H(流量)
-
+      - GLaDOS-SG
+      - GLaDOS-US
+      - GLaDOS-HK
+      - GLaDOS-JP
+      - GLaDOS-TW
+      - GLaDOS-DE
+      - GLaDOS-UK
+      - GLaDOS-KR
+      - GLaDOS-CA
+      - GLaDOS-AU
+      - GLaDOS-FR
 
 
       - "M" 
@@ -471,7 +494,71 @@ proxy-groups:
       - nc
     filter: "美"
 
+  - name: "GLaDOS-SG"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "SG|Singapore"  # 正则过滤：只显示新加坡节点
 
+  - name: "GLaDOS-US"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "US|United States"  # 正则过滤：只显示美国节点
+
+  - name: "GLaDOS-HK"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "HK|Hong Kong"  # 正则过滤：只显示香港节点
+
+  - name: "GLaDOS-JP"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "JP|Japan"  # 正则过滤：只显示日本节点
+
+  - name: "GLaDOS-TW"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "TW|Taiwan"  # 正则过滤：只显示台湾节点
+
+  - name: "GLaDOS-DE"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "DE|Germany"  # 正则过滤：只显示德国节点
+
+  - name: "GLaDOS-UK"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "UK|United Kingdom"  # 正则过滤：只显示英国节点
+
+  - name: "GLaDOS-KR"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "KR|Korea"  # 正则过滤：只显示韩国节点
+
+  - name: "GLaDOS-CA"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "CA|Canada"  # 正则过滤：只显示加拿大节点
+
+  - name: "GLaDOS-AU"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "AU|Australia"  # 正则过滤：只显示澳大利亚节点
+
+  - name: "GLaDOS-FR"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "FR|France"  # 正则过滤：只显示法国节点
 
 
 # 5. 规则 (Rules) - 在专业规则的基础上，增加了我们的规则
@@ -485,6 +572,14 @@ rules:
   - DOMAIN-SUFFIX,pypi.doubanio.com,DIRECT
 
 
+ # 5.0.2 Antigravity 走AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,antigravity.google,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,googleapis.com,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,cloudcode-pa.googleapis.com,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,antigravity,AI-SPECIAL-PROXY   # 兜底
+  - DOMAIN-KEYWORD,gvt2.com,CF-D
+
   # 5.0.1. 优先走CF代理其次直连（Conda & PyPI）
   - DOMAIN-SUFFIX,anaconda.org,CF-D
   - DOMAIN-SUFFIX,conda.io,CF-D
@@ -493,14 +588,7 @@ rules:
   - DOMAIN-SUFFIX,pythonhosted.org,CF-D # pip下载包实际的域名
   - DOMAIN-SUFFIX,files.pythonhosted.org,CF-D
   - DOMAIN-SUFFIX,githubusercontent.com,CF-D # 很多库从这里下源码
-  - DOMAIN-KEYWORD,gvt2.com,CF-D
-
- # 5.0.2 Antigravity 走自建
-  - DOMAIN-SUFFIX,antigravity.google,AI-SPECIAL-PROXY
-  - DOMAIN-SUFFIX,googleapis.com,AI-SPECIAL-PROXY
-  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,AI-SPECIAL-PROXY
-  - DOMAIN-SUFFIX,cloudcode-pa.googleapis.com,AI-SPECIAL-PROXY
-  - DOMAIN-KEYWORD,antigravity,AI-SPECIAL-PROXY   # 兜底
+  # - DOMAIN-KEYWORD,gvt2.com,CF-D
 
 
   # (5.1) 【新增】我们的特殊AI及工作网站规则 (最高优先级)
