@@ -348,7 +348,7 @@ proxy-groups:
       - "V-CF"
       - DIRECT
       - Whzsmss20260212-ypdq
-
+      - GLaDOS-SG
 
 
   - name: "DEFAULT-PROXY"
@@ -370,7 +370,7 @@ proxy-groups:
       - "V-CF"
       - "M"
       - "M-h"
-
+      - GLaDOS-SG
 
       - '♻️ 自动选择'
       - ❇️猎户座-BGP-A
