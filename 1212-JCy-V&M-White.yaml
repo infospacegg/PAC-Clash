@@ -285,16 +285,13 @@ proxy-providers:
 
   GLaDOS-Nodes:
     type: http
-    url: "https://gitlab.com/api/v4/projects/67911760/repository/files/nc.yaml/raw?ref=main&private_token=glpat-Eu2whgwSfLtBymi26RF9"
+    url: "https://update.glados-config.com/mihomo/685533/bfbfc7d/83489/glados.yaml"
     interval: 3600
     path: ./providers/local_White_glados.yaml
     health-check:
       enable: true
-      url: 'https://1.1.1.1/cdn-cgi/trace' 
-      interval: 180
-      timeout: 2000  # 2s 超时，防卡
-      lazy: true  # 只在用时查
-      expected-status: 200  # 明确响应码
+      interval: 600
+      url: http://www.gstatic.com/generate_204
 
 # 4. 代理组 (Proxy Groups) - 替换为您自己的策略组2
 proxy-groups:
