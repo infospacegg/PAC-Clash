@@ -255,11 +255,11 @@ proxy-providers:
   nc:
     # 类型：http 表示从网络获取订阅
     type: http
-    url: 'https://47.238.198.94/iv/verify_mode.htm?token=c6cdc6c5dd2de3c990b70f4d47c49d85'
+    url: 'https://47.238.198.94/iv/verify_mode.htm?token=8cd96993c7eb65a4d1ea9ed27e37b362'
 
     # 更新间隔（秒）：3600 = 1小时自动更新一次
     interval: 3600
-    path: ./providers/nc_local-1116.yaml
+    path: ./providers/nc_local-0218.yaml
     # 移到 header 下
     header:
       User-Agent:
