@@ -567,6 +567,7 @@ rules:
   - DOMAIN-SUFFIX,tuna.tsinghua.edu.cn,DIRECT
   - DOMAIN-SUFFIX,mirrors.aliyun.com,DIRECT
   - DOMAIN-SUFFIX,pypi.doubanio.com,DIRECT
+  - DOMAIN-SUFFIX,cron-job.org,DIRECT
 
  # 5.0.2 Antigravity 走AI-SPECIAL-PROXY
   - DOMAIN-SUFFIX,antigravity.google,AI-SPECIAL-PROXY
