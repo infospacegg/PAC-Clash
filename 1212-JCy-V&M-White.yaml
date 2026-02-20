@@ -592,6 +592,27 @@ rules:
   - DOMAIN-SUFFIX,githubusercontent.com,CF-D # 很多库从这里下源码
   # - DOMAIN-KEYWORD,gvt2.com,CF-D
 
+  # 5.0.1.1 优先走CF代理其次直连（Google全家桶）
+  - DOMAIN-SUFFIX,gvt0.com,CF-D
+  - DOMAIN-SUFFIX,gvt1.com,CF-D
+  - DOMAIN-SUFFIX,gvt2.com,CF-D
+  - DOMAIN-SUFFIX,gvt3.com,CF-D
+  - DOMAIN-SUFFIX,gvt4.com,CF-D
+  - DOMAIN-SUFFIX,gvt5.com,CF-D
+  - DOMAIN-SUFFIX,gvt6.com,CF-D
+  - DOMAIN-SUFFIX,gvt7.com,CF-D
+  - DOMAIN-SUFFIX,gvt8.com,CF-D
+  - DOMAIN-SUFFIX,gvt9.com,CF-D
+  - DOMAIN-SUFFIX,gstatic.com,CF-D
+  - DOMAIN-SUFFIX,googleusercontent.com,CF-D
+  - DOMAIN-SUFFIX,google.com,CF-D
+  - DOMAIN-SUFFIX,googleapis.com,CF-D
+  - DOMAIN-SUFFIX,youtube-nocookie.com,CF-D
+  - DOMAIN-SUFFIX,ytimg.com,CF-D
+  - DOMAIN-SUFFIX,ggpht.com,CF-D
+  - DOMAIN-SUFFIX,youtu.be,CF-D
+  - DOMAIN-SUFFIX,youtube.com,CF-D
+
 
   # (5.1) 【新增】我们的特殊AI及工作网站规则 (最高优先级)
   - DOMAIN-KEYWORD,grok,AI-SPECIAL-PROXY
