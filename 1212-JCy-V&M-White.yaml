@@ -568,6 +568,10 @@ rules:
   - DOMAIN-SUFFIX,mirrors.aliyun.com,DIRECT
   - DOMAIN-SUFFIX,pypi.doubanio.com,DIRECT
   - DOMAIN-SUFFIX,cron-job.org,DIRECT
+ # npm
+  - DOMAIN-SUFFIX,npmjs.com,DIRECT
+  - DOMAIN-SUFFIX,registry.npmjs.org,DIRECT
+  - DOMAIN-SUFFIX,yarnpkg.com,DIRECT
 
  # 5.0.2 Antigravity 走AI-SPECIAL-PROXY
   - DOMAIN-SUFFIX,antigravity.google,AI-SPECIAL-PROXY
