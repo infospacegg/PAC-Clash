@@ -623,13 +623,15 @@ rules:
   - DOMAIN-KEYWORD,copilot.microsoft,AI-SPECIAL-PROXY
   - DOMAIN-KEYWORD,bing.com,AI-SPECIAL-PROXY
   - DOMAIN-KEYWORD,chat.bing,AI-SPECIAL-PROXY
-  - DOMAIN-KEYWORD,gitlab.com,AI-SPECIAL-PROXY
+
   - DOMAIN-KEYWORD,antigravity,AI-SPECIAL-PROXY
   # - DOMAIN-KEYWORD,huggingface.co,AI-SPECIAL-PROXY
 
   # GLADOS 走nc
   - DOMAIN-KEYWORD,glados,NC-auto-all 
 
+  # gitlab 走cf
+  - DOMAIN-KEYWORD,gitlab.com,CF-D
   
   #- huggingface 等流量很大，但对节点又有要求的网站，单独列出来
   - DOMAIN-KEYWORD,huggingface.co,huggingface_ProxyGroup
