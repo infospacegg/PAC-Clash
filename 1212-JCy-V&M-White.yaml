@@ -626,7 +626,10 @@ rules:
   - DOMAIN-KEYWORD,gitlab.com,AI-SPECIAL-PROXY
   - DOMAIN-KEYWORD,antigravity,AI-SPECIAL-PROXY
   # - DOMAIN-KEYWORD,huggingface.co,AI-SPECIAL-PROXY
-  
+
+  # GLADOS 走nc
+  - DOMAIN-KEYWORD,glados,NC-auto-all 
+
   
   #- huggingface 等流量很大，但对节点又有要求的网站，单独列出来
   - DOMAIN-KEYWORD,huggingface.co,huggingface_ProxyGroup
