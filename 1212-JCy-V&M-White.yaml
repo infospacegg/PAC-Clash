@@ -637,7 +637,9 @@ rules:
   - DOMAIN-KEYWORD,gitlab.com,NC-auto-all
   # 走nc PushDeer
   - DOMAIN-SUFFIX,pushdeer.com,NC-auto-all
-  
+  - DOMAIN-KEYWORD,chat.bing,NC-auto-all 
+
+
   #- huggingface 等流量很大，但对节点又有要求的网站，单独列出来
   - DOMAIN-KEYWORD,huggingface.co,huggingface_ProxyGroup
 

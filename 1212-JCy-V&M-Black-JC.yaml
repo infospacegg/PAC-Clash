@@ -560,6 +560,10 @@ rules:
   - DOMAIN-SUFFIX,mirrors.aliyun.com,DIRECT
   - DOMAIN-SUFFIX,pypi.doubanio.com,DIRECT
   - DOMAIN-SUFFIX,cron-job.org,DIRECT
+  # npm
+  - DOMAIN-SUFFIX,npmjs.com,DIRECT
+  - DOMAIN-SUFFIX,registry.npmjs.org,DIRECT
+  - DOMAIN-SUFFIX,yarnpkg.com,DIRECT
 
  # 5.0.2 Antigravity 走AI-SPECIAL-PROXY
   - DOMAIN-SUFFIX,antigravity.google,AI-SPECIAL-PROXY
@@ -615,8 +619,8 @@ rules:
   - DOMAIN-KEYWORD,aistudio,AI-SPECIAL-PROXY
   - DOMAIN-KEYWORD,makersuite,AI-SPECIAL-PROXY
   - DOMAIN-KEYWORD,copilot.microsoft,AI-SPECIAL-PROXY
-  - DOMAIN-KEYWORD,bing.com,AI-SPECIAL-PROXY
-  - DOMAIN-KEYWORD,chat.bing,AI-SPECIAL-PROXY
+  # - DOMAIN-KEYWORD,bing.com,AI-SPECIAL-PROXY
+
 
   - DOMAIN-KEYWORD,challenges.cloudflare.com,AI-SPECIAL-PROXY
   
@@ -626,7 +630,9 @@ rules:
   - DOMAIN-KEYWORD,glados,NC-auto-all
   - DOMAIN-KEYWORD,gitlab.com,NC-auto-all
   - DOMAIN-SUFFIX,pushdeer.com,NC-auto-all
+  - DOMAIN-KEYWORD,chat.bing,NC-auto-all
   
+   
   #- huggingface 等流量很大，但对节点又有要求的网站，单独列出来
   - DOMAIN-KEYWORD,huggingface.co,huggingface_ProxyGroup
 
