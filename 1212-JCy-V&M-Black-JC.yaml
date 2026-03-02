@@ -45,198 +45,11 @@ proxies:
     server: 127.0.0.1
     port: 9910 # 请确认您的VPN端口是这个
 
-  - { name: ❇️猎户座-BGP-A, server: bgpa.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.1530fe2e.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-  - { name: ❇️猎户座-BGP-B, server: bgpb.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.cc16bd23.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-  - { name: ❇️猎户座-BGP-C, server: bgpc.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.7b0b7c27.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-  - { name: ❇️猎户座-BGP-D, server: bgpd.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.7e5b3b39.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-  - { name: ❇️猎户座-BGP-E, server: bgpe.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.c946fa3d.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-  - { name: ❇️猎户座-BGP-F, server: bgpf.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.1060b930.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-  - { name: ❇️猎户座-BGP-G, type: tuic, server: bgpg.c9aee41f-979e-48be-8ad5-e0c8eb90f38c.a77d7834.demo-chat-airport.com, port: 18662, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-  - { name: ❇️猎户座-BGP-H, type: tuic, server: bgph.edc75321-7544-48f3-aea1-3068c0711ea8.1ac0370c.demo-chat-airport.com, port: 18662, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-  - { name: ❇️猎户座-BGP-I, type: tuic, server: bgpI.96ce655c-9bd0-449c-8bc5-28e6dc3e141c.adddf608.demo-chat-airport.com, port: 18662, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-  - { name: ❇️猎户座-BGP-J, type: tuic, server: bgpj.553996da-bd33-4177-882c-dcb1b09f5f88.74fbb505.demo-chat-airport.com, port: 18662, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-  - { name: 🇭🇰香江-E(流量), type: vless, server: cos-cdn-d.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-version-e.aliapp.men, client-fingerprint: ios, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-version-e.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-version-e.aliapp.men } }
-  - { name: 🇭🇰香江-F(流量), type: vless, server: cos-cdn-e.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-version-f.aliapp.men, client-fingerprint: edge, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-version-f.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-version-f.aliapp.men } }
-  - { name: 🇭🇰香江-G(流量), type: vless, server: cos-cdn-f.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-version-g.aliapp.men, client-fingerprint: ios, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-version-g.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-version-g.aliapp.men } }
-  - { name: 🇭🇰香江-H(流量), type: vless, server: cos-cdn-z.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-version-h.aliapp.men, client-fingerprint: qq, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-version-h.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-version-h.aliapp.men } }
-  - { name: 🇺🇸西美-E(流量), type: vless, server: cos-cdn-h.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-origin-e.aliapp.men, client-fingerprint: edge, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-origin-e.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-origin-e.aliapp.men } }
-  - { name: 🇺🇸西美-F(流量), type: vless, server: cos-cdn-j.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-origin-f.aliapp.men, client-fingerprint: qq, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-origin-f.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-origin-f.aliapp.men } }
-  - { name: 🇺🇸西美-G(流量), type: vless, server: cos-cdn-l.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-origin-g.aliapp.men, client-fingerprint: edge, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-origin-g.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-origin-g.aliapp.men } }
-  - { name: 🇺🇸西美-H(流量), type: vless, server: cos-cdn-n.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-origin-h.aliapp.men, client-fingerprint: edge, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-origin-h.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-origin-h.aliapp.men } }
-  - { name: 🇸🇬狮城-E(流量), type: vless, server: cos-cdn-d.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-lication-e.aliapp.men, client-fingerprint: safari, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-lication-e.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-lication-e.aliapp.men } }
-  - { name: 🇸🇬狮城-F(流量), type: vless, server: cos-cdn-e.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-lication-f.aliapp.men, client-fingerprint: qq, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-lication-f.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-lication-f.aliapp.men } }
-  - { name: 🇸🇬狮城-G(流量), type: vless, server: cos-cdn-f.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-lication-g.aliapp.men, client-fingerprint: edge, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-lication-g.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-lication-g.aliapp.men } }
-  - { name: 🇸🇬狮城-H(流量), type: vless, server: cos-cdn-z.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-lication-h.aliapp.men, client-fingerprint: firefox, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-lication-h.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-lication-h.aliapp.men } }
-
-  - name: Whzsmss96FrankfurtFRA1
-    type: vless
-    server: 104.24.22.26
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
 
 
-  - name: Whzsmss20260212-ypdq  # 确保唯一
-    type: vless
-    server: cfv1208.yipandaqi.com
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: true
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: chrome
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
 
 
-  - name: Whzsmss96FrankfurtFRA2
-    type: vless
-    server: 104.24.11.84
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96FrankfurtFRA3
-    type: vless
-    server: 104.24.8.86
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96FrankfurtFRA4
-    type: vless
-    server: 104.24.7.182
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96FrankfurtFRA5
-    type: vless
-    server: 104.24.19.33
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96San JoseSJC6
-    type: vless
-    server: 104.17.18.95
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96San JoseSJC7
-    type: vless
-    server: 104.17.19.231
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96San JoseSJC8
-    type: vless
-    server: 104.17.84.35
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96San JoseSJC9
-    type: vless
-    server: 104.16.167.240
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96San JoseSJC10
-    type: vless
-    server: 104.17.27.188
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
+
 
 # 3.5. Proxy Providers - 关键部分！从这里开始
 proxy-providers:
@@ -286,63 +99,26 @@ proxy-providers:
 proxy-groups:
   - name: "AI-SPECIAL-PROXY"
     type: select
+    use:
+      - nc
+      - v2c
+      - GLaDOS-Nodes
+    filter: "(?i)HK|Hong Kong|SG|Singapore|US|United States|Tw|Taiwan|Jp|Japan|猎户座|Whzsmss" # 只要这些节点用于此策略组（示例过滤）
     proxies:
-
       - '♻️ 自动选择'
-      - ❇️猎户座-BGP-A
-
-      - ❇️猎户座-BGP-B
-      - ❇️猎户座-BGP-C
-      - ❇️猎户座-BGP-D
-      - ❇️猎户座-BGP-E
-      - ❇️猎户座-BGP-F
-      - ❇️猎户座-BGP-G
-      - ❇️猎户座-BGP-H
-      - ❇️猎户座-BGP-I
-      - ❇️猎户座-BGP-J
-      - ❇️优选-B(流量)
-      - ❇️优选-C(通用)
-      - ❇️优选-D(流量)
-      - ❇️优选-E(通用)
-      - ❇️优选-F(流量)
-      - ❇️优选-G(通用)
-      - ❇️优选-H(流量)
-      - 🇭🇰香江-E(流量)
-      - 🇭🇰香江-F(流量)
-      - 🇭🇰香江-G(流量)
-      - 🇭🇰香江-H(流量)
-      - 🇺🇸西美-E(流量)
-      - 🇺🇸西美-F(流量)
-      - 🇺🇸西美-G(流量)
-      - 🇺🇸西美-H(流量)
-      - 🇯🇵东京-E(流量)
-      - 🇯🇵东京-F(流量)
-      - 🇯🇵东京-G(流量)
-      - 🇯🇵东京-H(流量)
-      - 🇸🇬狮城-E(流量)
-      - 🇸🇬狮城-F(流量)
-      - 🇸🇬狮城-G(流量)
-      - 🇸🇬狮城-H(流量)    
-      - GLaDOS-SG
-      - GLaDOS-US
-      - GLaDOS-HK
-      - GLaDOS-JP
-      - GLaDOS-TW
-      - GLaDOS-DE
-      - GLaDOS-UK
-      - GLaDOS-KR
-      - GLaDOS-CA
-      - GLaDOS-AU
-      - GLaDOS-FR
       - "M" 
       - "M-h"             # 优先级1：本地 M 节点（省流量）
       - "V-CF"
-      - Whzsmss20260212-ypdq
     url: 'http://www.gstatic.com/generate_204'      # 健康检查 URL
     interval: 300       # 检查间隔：300秒 = 5分钟检查一次
     tolerance: 1500      # 容忍延迟：1500毫秒 = 1.5秒
 
-  - { name: '♻️ 自动选择', type: url-test, proxies: [❇️猎户座-BGP-A, ❇️猎户座-BGP-B, ❇️猎户座-BGP-C, ❇️猎户座-BGP-D, ❇️猎户座-BGP-E, ❇️猎户座-BGP-F, ❇️猎户座-BGP-G, ❇️猎户座-BGP-H, ❇️猎户座-BGP-I, ❇️猎户座-BGP-J, ❇️优选-B(流量), ❇️优选-C(通用), ❇️优选-D(流量), ❇️优选-E(通用), ❇️优选-F(流量), ❇️优选-G(通用), ❇️优选-H(流量), 🇭🇰香江-E(流量), 🇭🇰香江-F(流量), 🇭🇰香江-G(流量), 🇭🇰香江-H(流量), 🇺🇸西美-E(流量), 🇺🇸西美-F(流量), 🇺🇸西美-G(流量), 🇺🇸西美-H(流量), 🇯🇵东京-E(流量), 🇯🇵东京-F(流量), 🇯🇵东京-G(流量), 🇯🇵东京-H(流量), 🇸🇬狮城-E(流量), 🇸🇬狮城-F(流量), 🇸🇬狮城-G(流量), 🇸🇬狮城-H(流量)], url: 'http://www.gstatic.com/generate_204', interval: 1800 }
+  - name: '♻️ 自动选择'
+    type: url-test
+    use:
+      - nc
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 1800
 
 
   - name: "CF-D"  # 策略组名字，你可以随便改
@@ -359,60 +135,18 @@ proxy-groups:
 
   - name: "DEFAULT-PROXY"
     type: select
+    use:
+      - nc
+      - v2c
+      - GLaDOS-Nodes
     proxies:
-      - Whzsmss20260212-ypdq
-      - Whzsmss96FrankfurtFRA1
-      - Whzsmss96FrankfurtFRA2
-      - Whzsmss96FrankfurtFRA3
-      - Whzsmss96FrankfurtFRA4
-      - Whzsmss96FrankfurtFRA5
-      - Whzsmss96San JoseSJC6
-      - Whzsmss96San JoseSJC7
-      - Whzsmss96San JoseSJC8
-      - Whzsmss96San JoseSJC9
-      - Whzsmss96San JoseSJC10
       - "V2C-test"
       - "V2C-Whzsmss"
       - "V-CF"
       - "M"
       - "M-h"
       - GLaDOS-SG
-
       - '♻️ 自动选择'
-      - ❇️猎户座-BGP-A
-      - ❇️猎户座-BGP-B
-      - ❇️猎户座-BGP-C
-      - ❇️猎户座-BGP-D
-      - ❇️猎户座-BGP-E
-      - ❇️猎户座-BGP-F
-      - ❇️猎户座-BGP-G
-      - ❇️猎户座-BGP-H
-      - ❇️猎户座-BGP-I
-      - ❇️猎户座-BGP-J
-      - ❇️优选-A(通用)
-      - ❇️优选-B(流量)
-      - ❇️优选-C(通用)
-      - ❇️优选-D(流量)
-      - ❇️优选-E(通用)
-      - ❇️优选-F(流量)
-      - ❇️优选-G(通用)
-      - ❇️优选-H(流量)
-      - 🇭🇰香江-E(流量)
-      - 🇭🇰香江-F(流量)
-      - 🇭🇰香江-G(流量)
-      - 🇭🇰香江-H(流量)
-      - 🇺🇸西美-E(流量)
-      - 🇺🇸西美-F(流量)
-      - 🇺🇸西美-G(流量)
-      - 🇺🇸西美-H(流量)
-      - 🇯🇵东京-E(流量)
-      - 🇯🇵东京-F(流量)
-      - 🇯🇵东京-G(流量)
-      - 🇯🇵东京-H(流量)
-      - 🇸🇬狮城-E(流量)
-      - 🇸🇬狮城-F(流量)
-      - 🇸🇬狮城-G(流量)
-      - 🇸🇬狮城-H(流量)    
      
   - name: "NC-auto-all"
     type: select
@@ -421,23 +155,14 @@ proxy-groups:
 
   - name: "huggingface_ProxyGroup"
     type: select
+    use:
+      - v2c
     proxies:
-      - Whzsmss96San JoseSJC6
-      - Whzsmss96San JoseSJC7
-      - Whzsmss96San JoseSJC8
-      - Whzsmss96San JoseSJC9
-      - Whzsmss96San JoseSJC10
-      - Whzsmss96FrankfurtFRA1
-      - Whzsmss96FrankfurtFRA2
-      - Whzsmss96FrankfurtFRA3
-      - Whzsmss96FrankfurtFRA4
-      - Whzsmss96FrankfurtFRA5
       - "V2C-test"
       - "V2C-Whzsmss"
       - "V-CF"
       - "M"
       - "M-h"
-      - Whzsmss20260212-ypdq
 
   - name: "V2C-Whzsmss"
     type: select
