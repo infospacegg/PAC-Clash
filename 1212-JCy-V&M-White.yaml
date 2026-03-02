@@ -42,212 +42,12 @@ proxies:
     server: 127.0.0.1
     port: 9910 # 请确认您的VPN端口是这个
 
-  - { name: ❇️猎户座-BGP-A, server: bgpa.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.1530fe2e.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-  - { name: ❇️优选-X(通用), type: anytls, server: tgtwa.102435eb-fe2e-41ce-9d32-034a0bb644d8.902d52f1.edu-header-airport.com, port: 62212, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
-  - { name: ❇️猎户座-BGP-B, server: bgpb.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.cc16bd23.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-  - { name: ❇️猎户座-BGP-C, server: bgpc.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.7b0b7c27.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-  - { name: ❇️猎户座-BGP-D, server: bgpd.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.7e5b3b39.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-  - { name: ❇️猎户座-BGP-E, server: bgpe.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.c946fa3d.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-  - { name: ❇️猎户座-BGP-F, server: bgpf.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.1060b930.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-  - { name: ❇️猎户座-BGP-G, type: tuic, server: bgpg.c9aee41f-979e-48be-8ad5-e0c8eb90f38c.a77d7834.demo-chat-airport.com, port: 18662, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-  - { name: ❇️猎户座-BGP-H, type: tuic, server: bgph.edc75321-7544-48f3-aea1-3068c0711ea8.1ac0370c.demo-chat-airport.com, port: 18662, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-  - { name: ❇️猎户座-BGP-I, type: tuic, server: bgpI.96ce655c-9bd0-449c-8bc5-28e6dc3e141c.adddf608.demo-chat-airport.com, port: 18662, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-  - { name: ❇️猎户座-BGP-J, type: tuic, server: bgpj.553996da-bd33-4177-882c-dcb1b09f5f88.74fbb505.demo-chat-airport.com, port: 18662, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-  - { name: ❇️优选-A(通用), type: anytls, server: bgpe.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.c946fa3d.demo-chat-airport.com, port: 62212, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
-  - { name: ❇️优选-B(流量), type: anytls, server: bgpf.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.1060b930.demo-chat-airport.com, port: 62212, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
-  - { name: ❇️优选-C(通用), type: anytls, server: bgpI.96ce655c-9bd0-449c-8bc5-28e6dc3e141c.adddf608.demo-chat-airport.com, port: 62212, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
-  - { name: ❇️优选-D(流量), type: anytls, server: bgpj.553996da-bd33-4177-882c-dcb1b09f5f88.74fbb505.demo-chat-airport.com, port: 62212, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
-  - { name: ❇️优选-E(通用), type: anytls, server: bgpg.c9aee41f-979e-48be-8ad5-e0c8eb90f38c.a77d7834.demo-chat-airport.com, port: 62212, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
-  - { name: ❇️优选-F(流量), type: anytls, server: bgph.edc75321-7544-48f3-aea1-3068c0711ea8.1ac0370c.demo-chat-airport.com, port: 62212, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
-  - { name: ❇️优选-G(通用), type: anytls, server: bgpa.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.1530fe2e.demo-chat-airport.com, port: 62212, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
-  - { name: ❇️优选-H(流量), type: anytls, server: bgpb.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.cc16bd23.demo-chat-airport.com, port: 62212, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, client-fingerprint: chrome, udp: true, alpn: [h2, http/1.1], sni: www.bing.com, skip-cert-verify: true }
-  - { name: 🇭🇰香江-E(流量), type: vless, server: cos-cdn-d.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-version-e.coscdn.men, client-fingerprint: ios, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-version-e.coscdn.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-version-e.coscdn.men } }
-  - { name: 🇭🇰香江-F(流量), type: vless, server: cos-cdn-e.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-version-f.coscdn.men, client-fingerprint: qq, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-version-f.coscdn.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-version-f.coscdn.men } }
-  - { name: 🇭🇰香江-G(流量), type: vless, server: cos-cdn-f.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-version-g.aliapp.men, client-fingerprint: edge, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-version-g.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-version-g.aliapp.men } }
-  - { name: 🇭🇰香江-H(流量), type: vless, server: cos-cdn-z.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-version-h.aliapp.men, client-fingerprint: firefox, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-version-h.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-version-h.aliapp.men } }
-  - { name: 🇺🇸西美-E(流量), type: vless, server: cos-cdn-h.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-origin-e.coscdn.men, client-fingerprint: ios, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-origin-e.coscdn.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-origin-e.coscdn.men } }
-  - { name: 🇺🇸西美-F(流量), type: vless, server: cos-cdn-j.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-origin-f.coscdn.men, client-fingerprint: ios, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-origin-f.coscdn.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-origin-f.coscdn.men } }
-  - { name: 🇺🇸西美-G(流量), type: vless, server: cos-cdn-l.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-origin-g.aliapp.men, client-fingerprint: edge, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-origin-g.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-origin-g.aliapp.men } }
-  - { name: 🇺🇸西美-H(流量), type: vless, server: cos-cdn-n.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-origin-h.aliapp.men, client-fingerprint: edge, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-origin-h.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-origin-h.aliapp.men } }
-  - { name: 🇯🇵东京-E(流量), type: vless, server: cos-cdn-p.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-edit-e.coscdn.men, client-fingerprint: ios, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-edit-e.coscdn.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-edit-e.coscdn.men } }
-  - { name: 🇯🇵东京-F(流量), type: vless, server: cos-cdn-r.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-edit-f.coscdn.men, client-fingerprint: safari, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-edit-f.coscdn.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-edit-f.coscdn.men } }
-  - { name: 🇯🇵东京-G(流量), type: vless, server: cos-cdn-t.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-edit-g.aliapp.men, client-fingerprint: qq, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-edit-g.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-edit-g.aliapp.men } }
-  - { name: 🇯🇵东京-H(流量), type: vless, server: cos-cdn-y.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-edit-h.aliapp.men, client-fingerprint: qq, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-edit-h.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-edit-h.aliapp.men } }
-  - { name: 🇸🇬狮城-E(流量), type: vless, server: cos-cdn-d.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-lication-e.coscdn.men, client-fingerprint: ios, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-lication-e.coscdn.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-lication-e.coscdn.men } }
-  - { name: 🇸🇬狮城-F(流量), type: vless, server: cos-cdn-e.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-lication-f.coscdn.men, client-fingerprint: qq, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-lication-f.coscdn.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-lication-f.coscdn.men } }
-  - { name: 🇸🇬狮城-G(流量), type: vless, server: cos-cdn-f.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-lication-g.aliapp.men, client-fingerprint: edge, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-lication-g.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-lication-g.aliapp.men } }
-  - { name: 🇸🇬狮城-H(流量), type: vless, server: cos-cdn-z.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-lication-h.aliapp.men, client-fingerprint: ios, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-lication-h.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-lication-h.aliapp.men } }
-
-  - name: Whzsmss96FrankfurtFRA1
-    type: vless
-    server: 104.24.22.26
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-
-
-  - name: Whzsmss20260212-ypdq  # 确保唯一
-    type: vless
-    server: cfv1208.yipandaqi.com
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: true
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: chrome
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
 
 
 
-  - name: Whzsmss96FrankfurtFRA2
-    type: vless
-    server: 104.24.11.84
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96FrankfurtFRA3
-    type: vless
-    server: 104.24.8.86
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96FrankfurtFRA4
-    type: vless
-    server: 104.24.7.182
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96FrankfurtFRA5
-    type: vless
-    server: 104.24.19.33
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96San JoseSJC6
-    type: vless
-    server: 104.17.18.95
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96San JoseSJC7
-    type: vless
-    server: 104.17.19.231
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96San JoseSJC8
-    type: vless
-    server: 104.17.84.35
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96San JoseSJC9
-    type: vless
-    server: 104.16.167.240
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
-  - name: Whzsmss96San JoseSJC10
-    type: vless
-    server: 104.17.27.188
-    port: 443
-    uuid: 7a99e792-9c5e-42f0-b94b-6add4062acb7
-    udp: true
-    tls: true
-    network: ws
-    skip-cert-verify: false
-    servername: cfv1208.yipandaqi.com
-    client-fingerprint: randomized
-    ws-opts:
-      path: /?ed=2560
-      headers:
-        Host: cfv1208.yipandaqi.com
+
+
+
 
 # 3.5. Proxy Providers - 关键部分！从这里开始
 proxy-providers:
@@ -298,7 +98,7 @@ proxy-groups:
   - name: "AI-SPECIAL-PROXY"
     type: select
     proxies:
-      - '♻️ 自动选择'
+      - '♻️ NC自动选择'
       - ❇️猎户座-BGP-A
       - ❇️优选-X(通用)
       - ❇️猎户座-BGP-B
@@ -353,15 +153,20 @@ proxy-groups:
       - Whzsmss20260212-ypdq
       
     url: 'http://www.gstatic.com/generate_204'      # 健康检查 URL
-    interval: 300       # 检查间隔：300秒 = 5分钟检查一次
+    interval: 1800       # 检查间隔：300秒 = 5分钟检查一次
     tolerance: 1500      # 容忍延迟：1500毫秒 = 1.5秒
 
-  - { name: '♻️ 自动选择', type: url-test, proxies: [❇️猎户座-BGP-A, ❇️优选-X(通用), ❇️猎户座-BGP-B, ❇️猎户座-BGP-C, ❇️猎户座-BGP-D, ❇️猎户座-BGP-E, ❇️猎户座-BGP-F, ❇️猎户座-BGP-G, ❇️猎户座-BGP-H, ❇️猎户座-BGP-I, ❇️猎户座-BGP-J, ❇️优选-A(通用), ❇️优选-B(流量), ❇️优选-C(通用), ❇️优选-D(流量), ❇️优选-E(通用), ❇️优选-F(流量), ❇️优选-G(通用), ❇️优选-H(流量), 🇭🇰香江-E(流量), 🇭🇰香江-F(流量), 🇭🇰香江-G(流量), 🇭🇰香江-H(流量), 🇺🇸西美-E(流量), 🇺🇸西美-F(流量), 🇺🇸西美-G(流量), 🇺🇸西美-H(流量), 🇯🇵东京-E(流量), 🇯🇵东京-F(流量), 🇯🇵东京-G(流量), 🇯🇵东京-H(流量), 🇸🇬狮城-E(流量), 🇸🇬狮城-F(流量), 🇸🇬狮城-G(流量), 🇸🇬狮城-H(流量)], url: 'http://www.gstatic.com/generate_204', interval: 1800 }
+  - name: '♻️ NC自动选择'
+    type: url-test
+    use:
+      - nc
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 1800
 
   - name: "CF-D"  # 策略组名字，你可以随便改
     type: select
     url: 'http://www.gstatic.com/generate_204' # 用于测试连通性的地址
-    interval: 300   # 每300秒检测一次
+    interval: 1800   # 每300秒检测一次
     tolerance: 50   # 容差，防止频繁跳动
     proxies:
       - "V-CF"
@@ -389,7 +194,7 @@ proxy-groups:
       - "M"
       - "M-h"
 
-      - '♻️ 自动选择'
+      - '♻️ NC自动选择'
       - ❇️猎户座-BGP-A
       - ❇️优选-X(通用)
       - ❇️猎户座-BGP-B
@@ -459,7 +264,7 @@ proxy-groups:
   - name: "V2C-test"
     type: url-test
     url: 'https://cp.cloudflare.com/generate_204'
-    interval: 300
+    interval: 1800
     tolerance: 500  # 降低切换阈值
     timeout: 3000
     expected-status: 204
