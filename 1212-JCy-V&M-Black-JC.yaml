@@ -105,15 +105,15 @@ proxy-groups:
       - GLaDOS-Nodes
     filter: "(?i)HK|Hong Kong|SG|Singapore|US|United States|Tw|Taiwan|Jp|Japan|猎户座|Whzsmss" # 只要这些节点用于此策略组（示例过滤）
     proxies:
-      - '♻️ 自动选择'
+      - '♻️ NC自动选择'
       - "M" 
       - "M-h"             # 优先级1：本地 M 节点（省流量）
       - "V-CF"
     url: 'http://www.gstatic.com/generate_204'      # 健康检查 URL
-    interval: 300       # 检查间隔：300秒 = 5分钟检查一次
+    interval: 1800       # 检查间隔：300秒 = 5分钟检查一次
     tolerance: 1500      # 容忍延迟：1500毫秒 = 1.5秒
 
-  - name: '♻️ 自动选择'
+  - name: '♻️ NC自动选择'
     type: url-test
     use:
       - nc
@@ -124,7 +124,7 @@ proxy-groups:
   - name: "CF-D"  # 策略组名字，你可以随便改
     type: select
     url: 'http://www.gstatic.com/generate_204' # 用于测试连通性的地址
-    interval: 300   # 每300秒检测一次
+    interval: 1800   # 每300秒检测一次
     tolerance: 50   # 容差，防止频繁跳动
     proxies:
       - "V-CF"
@@ -146,7 +146,7 @@ proxy-groups:
       - "M"
       - "M-h"
       - GLaDOS-SG
-      - '♻️ 自动选择'
+      - '♻️ NC自动选择'
      
   - name: "NC-auto-all"
     type: select
@@ -172,7 +172,7 @@ proxy-groups:
   - name: "V2C-test"
     type: url-test
     url: 'https://cp.cloudflare.com/generate_204'
-    interval: 300
+    interval: 1800
     tolerance: 500  # 降低切换阈值
     timeout: 3000
     expected-status: 204
