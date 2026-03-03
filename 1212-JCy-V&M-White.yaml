@@ -97,61 +97,16 @@ proxy-providers:
 proxy-groups:
   - name: "AI-SPECIAL-PROXY"
     type: select
+    use:
+      - nc
+      - v2c
+      - GLaDOS-Nodes
+    filter: "(?i)HK|Hong Kong|SG|Singapore|US|United States|Tw|Taiwan|Jp|Japan|猎户座|Whzsmss" # 只要这些节点用于此策略组（示例过滤）
     proxies:
       - '♻️ NC自动选择'
-      - ❇️猎户座-BGP-A
-      - ❇️优选-X(通用)
-      - ❇️猎户座-BGP-B
-      - ❇️猎户座-BGP-C
-      - ❇️猎户座-BGP-D
-      - ❇️猎户座-BGP-E
-      - ❇️猎户座-BGP-F
-      - ❇️猎户座-BGP-G
-      - ❇️猎户座-BGP-H
-      - ❇️猎户座-BGP-I
-      - ❇️猎户座-BGP-J
-      - ❇️优选-A(通用)
-      - ❇️优选-B(流量)
-      - ❇️优选-C(通用)
-      - ❇️优选-D(流量)
-      - ❇️优选-E(通用)
-      - ❇️优选-F(流量)
-      - ❇️优选-G(通用)
-      - ❇️优选-H(流量)
-      - 🇭🇰香江-E(流量)
-      - 🇭🇰香江-F(流量)
-      - 🇭🇰香江-G(流量)
-      - 🇭🇰香江-H(流量)
-      - 🇺🇸西美-E(流量)
-      - 🇺🇸西美-F(流量)
-      - 🇺🇸西美-G(流量)
-      - 🇺🇸西美-H(流量)
-      - 🇯🇵东京-E(流量)
-      - 🇯🇵东京-F(流量)
-      - 🇯🇵东京-G(流量)
-      - 🇯🇵东京-H(流量)
-      - 🇸🇬狮城-E(流量)
-      - 🇸🇬狮城-F(流量)
-      - 🇸🇬狮城-G(流量)
-      - 🇸🇬狮城-H(流量)
-      - GLaDOS-SG
-      - GLaDOS-US
-      - GLaDOS-HK
-      - GLaDOS-JP
-      - GLaDOS-TW
-      - GLaDOS-DE
-      - GLaDOS-UK
-      - GLaDOS-KR
-      - GLaDOS-CA
-      - GLaDOS-AU
-      - GLaDOS-FR
-
-
       - "M" 
       - "M-h"             # 优先级1：本地 M 节点（省流量）
       - "V-CF"
-      - Whzsmss20260212-ypdq
-      
     url: 'http://www.gstatic.com/generate_204'      # 健康检查 URL
     interval: 1800       # 检查间隔：300秒 = 5分钟检查一次
     tolerance: 1500      # 容忍延迟：1500毫秒 = 1.5秒
