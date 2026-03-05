@@ -122,14 +122,15 @@ proxy-groups:
     type: select
     use:
       - v2c
-    url: 'http://www.gstatic.com/generate_204' # 用于测试连通性的地址
-    interval: 1800   # 每半小时检测一次
-    tolerance: 50   # 容差，防止频繁跳动
-
     proxies:
       - "V-CF"
       - Whzsmss20260212-ypdq
       - DIRECT
+    url: 'http://www.gstatic.com/generate_204' # 用于测试连通性的地址
+    interval: 1800   # 每半小时检测一次
+    tolerance: 50   # 容差，防止频繁跳动
+
+
 
 
   - name: "DEFAULT-PROXY"
