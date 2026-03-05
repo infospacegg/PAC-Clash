@@ -131,60 +131,16 @@ proxy-groups:
 
   - name: "DEFAULT-PROXY"
     type: select
+    use:
+      - nc
+      - v2c
+      - GLaDOS-Nodes
     proxies:
-      - Whzsmss20260212-ypdq
-      - Whzsmss96FrankfurtFRA1
-      - Whzsmss96FrankfurtFRA2
-      - Whzsmss96FrankfurtFRA3
-      - Whzsmss96FrankfurtFRA4
-      - Whzsmss96FrankfurtFRA5
-      - Whzsmss96San JoseSJC6
-      - Whzsmss96San JoseSJC7
-      - Whzsmss96San JoseSJC8
-      - Whzsmss96San JoseSJC9
-      - Whzsmss96San JoseSJC10
-      - "V2C-test"
-      - "V2C-Whzsmss"
+
       - "V-CF"
       - "M"
       - "M-h"
 
-      - '♻️ NC自动选择'
-      - ❇️猎户座-BGP-A
-      - ❇️优选-X(通用)
-      - ❇️猎户座-BGP-B
-      - ❇️猎户座-BGP-C
-      - ❇️猎户座-BGP-D
-      - ❇️猎户座-BGP-E
-      - ❇️猎户座-BGP-F
-      - ❇️猎户座-BGP-G
-      - ❇️猎户座-BGP-H
-      - ❇️猎户座-BGP-I
-      - ❇️猎户座-BGP-J
-      - ❇️优选-A(通用)
-      - ❇️优选-B(流量)
-      - ❇️优选-C(通用)
-      - ❇️优选-D(流量)
-      - ❇️优选-E(通用)
-      - ❇️优选-F(流量)
-      - ❇️优选-G(通用)
-      - ❇️优选-H(流量)
-      - 🇭🇰香江-E(流量)
-      - 🇭🇰香江-F(流量)
-      - 🇭🇰香江-G(流量)
-      - 🇭🇰香江-H(流量)
-      - 🇺🇸西美-E(流量)
-      - 🇺🇸西美-F(流量)
-      - 🇺🇸西美-G(流量)
-      - 🇺🇸西美-H(流量)
-      - 🇯🇵东京-E(流量)
-      - 🇯🇵东京-F(流量)
-      - 🇯🇵东京-G(流量)
-      - 🇯🇵东京-H(流量)
-      - 🇸🇬狮城-E(流量)
-      - 🇸🇬狮城-F(流量)
-      - 🇸🇬狮城-G(流量)
-      - 🇸🇬狮城-H(流量)    
 
   - name: "NC-auto-all"
     type: select
