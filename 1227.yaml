@@ -1,3 +1,4 @@
+# 1. 基础设置
 mixed-port: 7890
 allow-lan: true
 unified-delay: true
@@ -10,629 +11,692 @@ external-controller: '127.0.0.1:9090'
 hosts:
     dns.alidns.com: [223.5.5.5, '2400:3200::1']
     doh.pub: [1.12.12.12, 120.53.53.53]
+
+# 2. DNS 设置
+
+
 dns:
     enable: true
-    listen: '127.0.0.1:1053'
     ipv6: true
-    default-nameserver: [223.5.5.5, 119.29.29.29, 114.114.114.114]
+    default-nameserver: [223.5.5.5, 119.29.29.29, 180.184.1.1]
     enhanced-mode: fake-ip
-    fake-ip-range: 28.0.0.1/8
+    fake-ip-range: 198.18.0.1/16
     use-hosts: true
-    nameserver: ['https://223.5.5.5/dns-query', 'https://doh.pub/dns-query', 'https://doh.360.cn/dns-query', 'tls://223.6.6.6:853', 'https://8.8.8.8/dns-query', 'tls://8.8.8.8:853']
-    fake-ip-filter: ['*.lan', '*.localdomain', '*.example', '*.invalid', '*.localhost', '*.test', '*.local', '*.home.arpa', 'time.*.com', 'time.*.gov', 'time.*.edu.cn', 'time.*.apple.com', 'time1.*.com', 'time2.*.com', 'time3.*.com', 'time4.*.com', 'time5.*.com', 'time6.*.com', 'time7.*.com', 'ntp.*.com', 'ntp1.*.com', 'ntp2.*.com', 'ntp3.*.com', 'ntp4.*.com', 'ntp5.*.com', 'ntp6.*.com', 'ntp7.*.com', '*.time.edu.cn', '*.ntp.org.cn', +.pool.ntp.org, time1.cloud.tencent.com, music.163.com, '*.music.163.com', '*.126.net', musicapi.taihe.com, music.taihe.com, songsearch.kugou.com, trackercdn.kugou.com, '*.kuwo.cn', api-jooxtt.sanook.com, api.joox.com, joox.com, y.qq.com, '*.y.qq.com', streamoc.music.tc.qq.com, mobileoc.music.tc.qq.com, isure.stream.qqmusic.qq.com, dl.stream.qqmusic.qq.com, aqqmusic.tc.qq.com, amobile.music.tc.qq.com, '*.xiami.com', '*.music.migu.cn', music.migu.cn, +.msftconnecttest.com, +.msftncsi.com, msftconnecttest.com, msftncsi.com, localhost.ptlogin2.qq.com, localhost.sec.qq.com, +.srv.nintendo.net, +.stun.playstation.net, 'xbox.*.microsoft.com', xnotify.xboxlive.com, +.ipv6.microsoft.com, +.battlenet.com.cn, +.wotgame.cn, +.wggames.cn, +.wowsgame.cn, +.wargaming.net, proxy.golang.org, 'stun.*.*', 'stun.*.*.*', '+.stun.*.*', '+.stun.*.*.*', '+.stun.*.*.*.*', heartbeat.belkin.com, '*.linksys.com', '*.linksyssmartwifi.com', '*.router.asus.com', mesu.apple.com, swscan.apple.com, swquery.apple.com, swdownload.apple.com, swcdn.apple.com, swdist.apple.com, lens.l.google.com, stun.l.google.com, '*.square-enix.com', '*.finalfantasyxiv.com', '*.ffxiv.com', '*.ff14.sdo.com', ff.dorado.sdo.com, '*.mcdn.bilivideo.cn', +.media.dssott.com, +.pvp.net]
+    nameserver: ['https://dns.alidns.com/dns-query', 'https://doh.pub/dns-query']
+    fallback: ['https://223.5.5.5/dns-query', 'https://223.6.6.6/dns-query', 'https://doh.360.cn/dns-query']
+    fallback-filter: { geoip: true, geoip-code: CN, geosite: [gfw], ipcidr: [240.0.0.0/4], domain: [+.google.com, +.facebook.com, +.youtube.com] }
+
+
+
+# 3. 代理节点 (Proxies) - 替换为您自己的本地引擎
 proxies:
-    - { name: ❇️猎户座-BGP-A, server: bgpa.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.1530fe2e.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-    - { name: ❇️猎户座-BGP-B, server: bgpb.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.cc16bd23.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-    - { name: ❇️猎户座-BGP-C, server: bgpc.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.7b0b7c27.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-    - { name: ❇️猎户座-BGP-D, server: bgpd.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.7e5b3b39.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-    - { name: ❇️猎户座-BGP-E, server: bgpe.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.c946fa3d.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-    - { name: ❇️猎户座-BGP-F, server: bgpf.dd7431c0-38e1-4998-ae2b-dc830b4e6bdb.1060b930.demo-chat-airport.com, port: 16883, sni: www.bing.com, up: 30, down: 30, skip-cert-verify: true, type: hysteria2, password: a44f03b6-c430-403d-b6bd-7ddf168329a9 }
-    - { name: ❇️猎户座-BGP-G, type: tuic, server: bgpg.c9aee41f-979e-48be-8ad5-e0c8eb90f38c.a77d7834.demo-chat-airport.com, port: 18662, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-    - { name: ❇️猎户座-BGP-H, type: tuic, server: bgph.edc75321-7544-48f3-aea1-3068c0711ea8.1ac0370c.demo-chat-airport.com, port: 18662, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-    - { name: ❇️猎户座-BGP-I, type: tuic, server: bgpI.96ce655c-9bd0-449c-8bc5-28e6dc3e141c.adddf608.demo-chat-airport.com, port: 18662, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-    - { name: ❇️猎户座-BGP-J, type: tuic, server: bgpj.553996da-bd33-4177-882c-dcb1b09f5f88.74fbb505.demo-chat-airport.com, port: 18662, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, password: a44f03b6-c430-403d-b6bd-7ddf168329a9, alpn: [h3], disable-sni: false, reduce-rtt: false, udp-relay-mode: native, congestion-controller: bbr, skip-cert-verify: true, sni: www.bing.com }
-    - { name: 🔴文档下载Nano客户端, type: vless, server: cos-cdn-c.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: yfjcus-6.oppocdn.sbs, client-fingerprint: ios, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: yfjcus-6.oppocdn.sbs } }, ws-path: /newlogin/login.do, ws-headers: { Host: yfjcus-6.oppocdn.sbs } }
-    - { name: 🔴Nano订阅更多节点, type: vless, server: cos-cdn-k.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: alicdn-1.sioln.me, client-fingerprint: ios, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: alicdn-1.sioln.me } }, ws-path: /newlogin/login.do, ws-headers: { Host: alicdn-1.sioln.me } }
-    - { name: 🔴请更换Nano客户端, type: vless, server: cos-cdn-a.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: 360cdn-1.linkong.tech, client-fingerprint: ios, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: 360cdn-1.linkong.tech } }, ws-path: /newlogin/login.do, ws-headers: { Host: 360cdn-1.linkong.tech } }
-    - { name: 🇭🇰香江-E(流量), type: vless, server: cos-cdn-d.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-version-e.aliapp.men, client-fingerprint: safari, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-version-e.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-version-e.aliapp.men } }
-    - { name: 🇭🇰香江-F(流量), type: vless, server: cos-cdn-e.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-version-f.aliapp.men, client-fingerprint: safari, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-version-f.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-version-f.aliapp.men } }
-    - { name: 🇭🇰香江-G(流量), type: vless, server: cos-cdn-f.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-version-g.aliapp.men, client-fingerprint: edge, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-version-g.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-version-g.aliapp.men } }
-    - { name: 🇭🇰香江-H(流量), type: vless, server: cos-cdn-z.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-version-h.aliapp.men, client-fingerprint: edge, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-version-h.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-version-h.aliapp.men } }
-    - { name: 🇺🇸西美-E(流量), type: vless, server: cos-cdn-h.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-origin-e.aliapp.men, client-fingerprint: edge, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-origin-e.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-origin-e.aliapp.men } }
-    - { name: 🇺🇸西美-F(流量), type: vless, server: cos-cdn-j.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-origin-f.aliapp.men, client-fingerprint: qq, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-origin-f.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-origin-f.aliapp.men } }
-    - { name: 🇺🇸西美-G(流量), type: vless, server: cos-cdn-l.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-origin-g.aliapp.men, client-fingerprint: firefox, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-origin-g.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-origin-g.aliapp.men } }
-    - { name: 🇺🇸西美-H(流量), type: vless, server: cos-cdn-n.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-origin-h.aliapp.men, client-fingerprint: safari, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-origin-h.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-origin-h.aliapp.men } }
-    - { name: 🇸🇬狮城-E(流量), type: vless, server: cos-cdn-d.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-lication-e.aliapp.men, client-fingerprint: firefox, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-lication-e.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-lication-e.aliapp.men } }
-    - { name: 🇸🇬狮城-F(流量), type: vless, server: cos-cdn-e.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-lication-f.aliapp.men, client-fingerprint: edge, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-lication-f.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-lication-f.aliapp.men } }
-    - { name: 🇸🇬狮城-G(流量), type: vless, server: cos-cdn-f.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-lication-g.aliapp.men, client-fingerprint: qq, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-lication-g.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-lication-g.aliapp.men } }
-    - { name: 🇸🇬狮城-H(流量), type: vless, server: cos-cdn-z.alicdn.win, port: 443, uuid: a44f03b6-c430-403d-b6bd-7ddf168329a9, alterId: 0, cipher: auto, udp: true, tls: true, servername: mms-static-lication-h.aliapp.men, client-fingerprint: safari, network: ws, ws-opts: { path: /newlogin/login.do, headers: { Host: mms-static-lication-h.aliapp.men } }, ws-path: /newlogin/login.do, ws-headers: { Host: mms-static-lication-h.aliapp.men } }
+  - name: "V-CF"
+    type: socks5
+    server: 127.0.0.1
+    port: 10808
+
+  - name: "M"
+    type: socks5
+    server: 127.0.0.1
+    port: 9909 # 请确认您的VPN端口是这个
+
+  - name: "M-h"
+    type: http
+    server: 127.0.0.1
+    port: 9910 # 请确认您的VPN端口是这个
+
+
+
+
+
+
+
+# 3.5. Proxy Providers - 关键部分！从这里开始
+proxy-providers:
+  # Provider 名称（自定义，后面会用到）
+  nc:
+    # 类型：http 表示从网络获取订阅
+    type: http
+    url: 'https://47.238.198.94/iv/verify_mode.htm?token=8cd96993c7eb65a4d1ea9ed27e37b362'
+
+    # 更新间隔（秒）：3600 = 1小时自动更新一次
+    interval: 3600
+    path: ./providers/nc_local-black-1116.yaml
+    # 移到 header 下
+    header:
+      User-Agent:
+        - "Clash Verge/2.4.2"  # 或 "Clash Verge/2.4.2" 来模拟 Verge 客户端
+    health-check:
+      enable: false
+      url: 'http://www.gstatic.com/generate_204'
+      interval: 1800
+      lazy: true
+
+  v2c:
+    type: http
+    url: "https://gitlab.com/api/v4/projects/67911760/repository/files/v2c.yaml/raw?ref=main&private_token=glpat-Eu2whgwSfLtBymi26RF9" # <-- 还是用同一个订阅链接
+    interval: 3600
+    path: ./providers/v2c.yaml # <-- 建议用一个新文件名
+    health-check:
+      enable: true
+      url: 'https://1.1.1.1/cdn-cgi/trace' 
+      interval: 180
+      timeout: 2000  # 2s 超时，防卡
+      lazy: true  # 只在用时查
+      expected-status: 200  # 明确响应码
+
+  GLaDOS-Nodes:
+    type: http
+    url: "https://update.glados-config.com/mihomo/685533/bfbfc7d/83489/glados.yaml"
+    interval: 3600
+    path: ./providers/local_glados.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+
+# 4. 代理组 (Proxy Groups) - 替换为您自己的策略组2
 proxy-groups:
-    - { name: '🚀 节点选择', type: select, proxies: ['♻️ 自动选择', ❇️猎户座-BGP-A, ❇️猎户座-BGP-B, ❇️猎户座-BGP-C, ❇️猎户座-BGP-D, ❇️猎户座-BGP-E, ❇️猎户座-BGP-F, ❇️猎户座-BGP-G, ❇️猎户座-BGP-H, ❇️猎户座-BGP-I, ❇️猎户座-BGP-J, 🔴文档下载Nano客户端, 🔴Nano订阅更多节点, 🔴请更换Nano客户端, 🇭🇰香江-E(流量), 🇭🇰香江-F(流量), 🇭🇰香江-G(流量), 🇭🇰香江-H(流量), 🇺🇸西美-E(流量), 🇺🇸西美-F(流量), 🇺🇸西美-G(流量), 🇺🇸西美-H(流量), 🇸🇬狮城-E(流量), 🇸🇬狮城-F(流量), 🇸🇬狮城-G(流量), 🇸🇬狮城-H(流量)] }
-    - { name: '♻️ 自动选择', type: url-test, proxies: [❇️猎户座-BGP-A, ❇️猎户座-BGP-B, ❇️猎户座-BGP-C, ❇️猎户座-BGP-D, ❇️猎户座-BGP-E, ❇️猎户座-BGP-F, ❇️猎户座-BGP-G, ❇️猎户座-BGP-H, ❇️猎户座-BGP-I, ❇️猎户座-BGP-J, 🔴文档下载Nano客户端, 🔴Nano订阅更多节点, 🔴请更换Nano客户端, 🇭🇰香江-E(流量), 🇭🇰香江-F(流量), 🇭🇰香江-G(流量), 🇭🇰香江-H(流量), 🇺🇸西美-E(流量), 🇺🇸西美-F(流量), 🇺🇸西美-G(流量), 🇺🇸西美-H(流量), 🇸🇬狮城-E(流量), 🇸🇬狮城-F(流量), 🇸🇬狮城-G(流量), 🇸🇬狮城-H(流量)], url: 'http://www.apple.com/library/test/success.html', interval: 1800 }
+  - name: "AI-SPECIAL-PROXY"
+    type: select
+    use:
+      - nc
+      - v2c
+      - GLaDOS-Nodes
+    filter: "(?i)HK|Hong Kong|SG|Singapore|US|United States|Tw|Taiwan|Jp|Japan|猎户座|Whzsmss" # 只要这些节点用于此策略组（示例过滤）
+    proxies:
+      - '♻️ NC自动选择'
+      - "M" 
+      - "M-h"             # 优先级1：本地 M 节点（省流量）
+      - "V-CF"
+    url: 'http://www.gstatic.com/generate_204'      # 健康检查 URL
+    interval: 1800       # 检查间隔：300秒 = 5分钟检查一次
+    tolerance: 1500      # 容忍延迟：1500毫秒 = 1.5秒
+
+  - name: '♻️ NC自动选择'
+    type: url-test
+    use:
+      - nc
+    url: 'http://www.gstatic.com/generate_204'
+    interval: 1800
+
+
+  - name: "CF-D"  # 策略组名字，你可以随便改
+    type: select
+    use:
+      - v2c
+    proxies:
+      - "V-CF"
+      - DIRECT
+      - GLaDOS-SG
+    url: 'http://www.gstatic.com/generate_204' # 用于测试连通性的地址
+    interval: 1800   # 每半小时检测一次
+    tolerance: 50   # 容差，防止频繁跳动
+
+
+
+  - name: "DEFAULT-PROXY"
+    type: select
+    use:
+      - nc
+      - v2c
+      - GLaDOS-Nodes
+    proxies:
+      - "V2C-test"
+      - "V2C-Whzsmss"
+      - "V-CF"
+      - "M"
+      - "M-h"
+      - GLaDOS-SG
+      - '♻️ NC自动选择'
+     
+  - name: "NC-auto-all"
+    type: select
+    use:
+      - nc
+
+  - name: "huggingface_ProxyGroup"
+    type: select
+    use:
+      - v2c
+    proxies:
+      - "V2C-test"
+      - "V2C-Whzsmss"
+      - "V-CF"
+      - "M"
+      - "M-h"
+
+  - name: "V2C-Whzsmss"
+    type: select
+    use:
+      - v2c # Clash 会自动把 my-airport-whzsmss provider 里的所有节点都加进来
+
+  - name: "V2C-test"
+    type: url-test
+    url: 'https://cp.cloudflare.com/generate_204'
+    interval: 1800
+    tolerance: 500  # 降低切换阈值
+    timeout: 3000
+    expected-status: 204
+    lazy: true  # 只在用时测速
+    use:
+      - v2c
+
+  - name: "NC-auto-LHZ-BGP"
+    type: select
+    use:
+      - nc
+    filter: "GP"     # 只包含PG
+
+  - name: "NC-auto-HK"
+    type: select
+    use:
+      - nc
+    filter: "香"
+
+  - name: "NC-auto-猎户座"
+    type: select
+    use:
+      - nc
+    filter: "猎户座"
+
+  - name: "NC-auto-US"
+    type: select
+    use:
+      - nc
+    filter: "美"
+
+  - name: "GLaDOS-SG"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "SG|Singapore"  # 正则过滤：只显示新加坡节点
+
+  - name: "GLaDOS-US"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "US|United States"  # 正则过滤：只显示美国节点
+
+  - name: "GLaDOS-HK"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "HK|Hong Kong"  # 正则过滤：只显示香港节点
+
+  - name: "GLaDOS-JP"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "JP|Japan"  # 正则过滤：只显示日本节点
+
+  - name: "GLaDOS-TW"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "TW|Taiwan"  # 正则过滤：只显示台湾节点
+
+  - name: "GLaDOS-DE"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "DE|Germany"  # 正则过滤：只显示德国节点
+
+  - name: "GLaDOS-UK"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "UK|United Kingdom"  # 正则过滤：只显示英国节点
+
+  - name: "GLaDOS-KR"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "KR|Korea"  # 正则过滤：只显示韩国节点
+
+  - name: "GLaDOS-CA"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "CA|Canada"  # 正则过滤：只显示加拿大节点
+
+  - name: "GLaDOS-AU"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "AU|Australia"  # 正则过滤：只显示澳大利亚节点
+
+  - name: "GLaDOS-FR"
+    type: select
+    use:
+      - GLaDOS-Nodes
+    filter: "FR|France"  # 正则过滤：只显示法国节点
+
+
+# 5. 规则 (Rules) - 在专业规则的基础上，增加了我们的规则
 rules:
-    - 'IP-CIDR,104.19.49.227/32,DIRECT,no-resolve'
-    - 'IP-CIDR,104.18.30.251/32,DIRECT,no-resolve'
-    - 'IP-CIDR,104.18.43.195/32,DIRECT,no-resolve'
-    - 'IP-CIDR,43.216.197.158/32,DIRECT,no-resolve'
-    - 'IP-CIDR,35.78.92.86/32,DIRECT,no-resolve'
-    - 'IP-CIDR,43.217.83.216/32,DIRECT,no-resolve'
-    - 'IP-CIDR,15.152.78.169/32,DIRECT,no-resolve'
-    - 'IP-CIDR,46.51.230.251/32,DIRECT,no-resolve'
-    - 'DOMAIN,nano-github.52iplc.com,DIRECT'
-    - 'PROCESS-NAME,air.tv.douyu.android,DIRECT'
-    - 'PROCESS-NAME,com.mt.mtxx.mtxx,DIRECT'
-    - 'PROCESS-NAME,eg.android.AlipayGphone,DIRECT'
-    - 'PROCESS-NAME,com.tencent.mm,DIRECT'
-    - 'PROCESS-NAME,com.tencent.mobileqq,DIRECT'
-    - 'PROCESS-NAME,xingin.xhs,DIRECT'
-    - 'PROCESS-NAME,zhihu.android,DIRECT'
-    - 'PROCESS-NAME,com.ss.android.ugc.aweme,DIRECT'
-    - 'PROCESS-NAME,taobao.idlefish,DIRECT'
-    - 'PROCESS-NAME,com.taobao.taobao,DIRECT'
-    - 'PROCESS-NAME,com.wangyin.payment,DIRECT'
-    - 'PROCESS-NAME,com.jingdong.app.mall,DIRECT'
-    - 'PROCESS-NAME,xunmeng.pinduoduo,DIRECT'
-    - 'PROCESS-NAME,com.sankuai.meituan,DIRECT'
-    - 'PROCESS-NAME,com.sankuai.meituan.takeoutnew,DIRECT'
-    - 'PROCESS-NAME,com.xunlei.downloadprovider,DIRECT'
-    - 'PROCESS-NAME,me.ele,DIRECT'
-    - 'PROCESS-NAME,com.autonavi.minimap,DIRECT'
-    - 'PROCESS-NAME,com.baidu.BaiduMap,DIRECT'
-    - 'PROCESS-NAME,com.tencent.qqmusic,DIRECT'
-    - 'PROCESS-NAME,com.netease.cloudmusic,DIRECT'
-    - 'PROCESS-NAME,com.tencent.qqlive,DIRECT'
-    - 'PROCESS-NAME,tv.danmaku.bili,DIRECT'
-    - 'PROCESS-NAME,com.qiyi.video,DIRECT'
-    - 'PROCESS-NAME,com.netease.cc,DIRECT'
-    - 'PROCESS-NAME,com.duowan.kiwi,DIRECT'
-    - 'PROCESS-NAME,com.alibaba.android.rimet,DIRECT'
-    - 'PROCESS-NAME,com.tmall.wireless,DIRECT'
-    - 'PROCESS-NAME,com.sina.weibo,DIRECT'
-    - 'PROCESS-NAME,com.sdu.didi.psnger,DIRECT'
-    - 'PROCESS-NAME,com.baidu.searchbox,DIRECT'
-    - 'PROCESS-NAME,com.sohu.inputmethod.sogou,DIRECT'
-    - 'PROCESS-NAME,com.baidu.input,DIRECT'
-    - 'PROCESS-NAME,com.qidian.QDReader,DIRECT'
-    - 'PROCESS-NAME,com.chaozh.iReaderFree,DIRECT'
-    - 'PROCESS-NAME,com.kmxs.reader,DIRECT'
-    - 'DOMAIN-SUFFIX,services.googleapis.cn,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,xn--ngstr-lra8j.com,🚀 节点选择'
-    - 'DOMAIN,safebrowsing.urlsec.qq.com,DIRECT'
-    - 'DOMAIN,safebrowsing.googleapis.com,DIRECT'
-    - 'DOMAIN,developer.apple.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,digicert.com,🚀 节点选择'
-    - 'DOMAIN,ocsp.apple.com,🚀 节点选择'
-    - 'DOMAIN,ocsp.comodoca.com,🚀 节点选择'
-    - 'DOMAIN,ocsp.usertrust.com,🚀 节点选择'
-    - 'DOMAIN,ocsp.sectigo.com,🚀 节点选择'
-    - 'DOMAIN,ocsp.verisign.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,apple-dns.net,🚀 节点选择'
-    - 'DOMAIN,testflight.apple.com,🚀 节点选择'
-    - 'DOMAIN,sandbox.itunes.apple.com,🚀 节点选择'
-    - 'DOMAIN,itunes.apple.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,apps.apple.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,blobstore.apple.com,🚀 节点选择'
-    - 'DOMAIN,cvws.icloud-content.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,mzstatic.com,DIRECT'
-    - 'DOMAIN-SUFFIX,itunes.apple.com,DIRECT'
-    - 'DOMAIN-SUFFIX,icloud.com,DIRECT'
-    - 'DOMAIN-SUFFIX,icloud-content.com,DIRECT'
-    - 'DOMAIN-SUFFIX,me.com,DIRECT'
-    - 'DOMAIN-SUFFIX,aaplimg.com,DIRECT'
-    - 'DOMAIN-SUFFIX,cdn20.com,DIRECT'
-    - 'DOMAIN-SUFFIX,cdn-apple.com,DIRECT'
-    - 'DOMAIN-SUFFIX,akadns.net,DIRECT'
-    - 'DOMAIN-SUFFIX,akamaiedge.net,DIRECT'
-    - 'DOMAIN-SUFFIX,edgekey.net,DIRECT'
-    - 'DOMAIN-SUFFIX,mwcloudcdn.com,DIRECT'
-    - 'DOMAIN-SUFFIX,mwcname.com,DIRECT'
-    - 'DOMAIN-SUFFIX,apple.com,DIRECT'
-    - 'DOMAIN-SUFFIX,apple-cloudkit.com,DIRECT'
-    - 'DOMAIN-SUFFIX,apple-mapkit.com,DIRECT'
-    - 'DOMAIN,cn.bing.com,DIRECT'
-    - 'DOMAIN-SUFFIX,126.com,DIRECT'
-    - 'DOMAIN-SUFFIX,126.net,DIRECT'
-    - 'DOMAIN-SUFFIX,127.net,DIRECT'
-    - 'DOMAIN-SUFFIX,163.com,DIRECT'
-    - 'DOMAIN-SUFFIX,360buyimg.com,DIRECT'
-    - 'DOMAIN-SUFFIX,36kr.com,DIRECT'
-    - 'DOMAIN-SUFFIX,acfun.tv,DIRECT'
-    - 'DOMAIN-SUFFIX,air-matters.com,DIRECT'
-    - 'DOMAIN-SUFFIX,aixifan.com,DIRECT'
-    - 'DOMAIN-KEYWORD,alicdn,DIRECT'
-    - 'DOMAIN-KEYWORD,alipay,DIRECT'
-    - 'DOMAIN-KEYWORD,taobao,DIRECT'
-    - 'DOMAIN-SUFFIX,amap.com,DIRECT'
-    - 'DOMAIN-SUFFIX,autonavi.com,DIRECT'
-    - 'DOMAIN-KEYWORD,baidu,DIRECT'
-    - 'DOMAIN-SUFFIX,bdimg.com,DIRECT'
-    - 'DOMAIN-SUFFIX,bdstatic.com,DIRECT'
-    - 'DOMAIN-SUFFIX,bilibili.com,DIRECT'
-    - 'DOMAIN-SUFFIX,bilivideo.com,DIRECT'
-    - 'DOMAIN-SUFFIX,caiyunapp.com,DIRECT'
-    - 'DOMAIN-SUFFIX,clouddn.com,DIRECT'
-    - 'DOMAIN-SUFFIX,cnbeta.com,DIRECT'
-    - 'DOMAIN-SUFFIX,cnbetacdn.com,DIRECT'
-    - 'DOMAIN-SUFFIX,cootekservice.com,DIRECT'
-    - 'DOMAIN-SUFFIX,csdn.net,DIRECT'
-    - 'DOMAIN-SUFFIX,ctrip.com,DIRECT'
-    - 'DOMAIN-SUFFIX,dgtle.com,DIRECT'
-    - 'DOMAIN-SUFFIX,dianping.com,DIRECT'
-    - 'DOMAIN-SUFFIX,douban.com,DIRECT'
-    - 'DOMAIN-SUFFIX,doubanio.com,DIRECT'
-    - 'DOMAIN-SUFFIX,duokan.com,DIRECT'
-    - 'DOMAIN-SUFFIX,easou.com,DIRECT'
-    - 'DOMAIN-SUFFIX,ele.me,DIRECT'
-    - 'DOMAIN-SUFFIX,feng.com,DIRECT'
-    - 'DOMAIN-SUFFIX,fir.im,DIRECT'
-    - 'DOMAIN-SUFFIX,frdic.com,DIRECT'
-    - 'DOMAIN-SUFFIX,g-cores.com,DIRECT'
-    - 'DOMAIN-SUFFIX,godic.net,DIRECT'
-    - 'DOMAIN-SUFFIX,gtimg.com,DIRECT'
-    - 'DOMAIN,cdn.hockeyapp.net,DIRECT'
-    - 'DOMAIN-SUFFIX,hongxiu.com,DIRECT'
-    - 'DOMAIN-SUFFIX,hxcdn.net,DIRECT'
-    - 'DOMAIN-SUFFIX,iciba.com,DIRECT'
-    - 'DOMAIN-SUFFIX,ifeng.com,DIRECT'
-    - 'DOMAIN-SUFFIX,ifengimg.com,DIRECT'
-    - 'DOMAIN-SUFFIX,ipip.net,DIRECT'
-    - 'DOMAIN-SUFFIX,iqiyi.com,DIRECT'
-    - 'DOMAIN-SUFFIX,jd.com,DIRECT'
-    - 'DOMAIN-SUFFIX,jianshu.com,DIRECT'
-    - 'DOMAIN-SUFFIX,knewone.com,DIRECT'
-    - 'DOMAIN-SUFFIX,le.com,DIRECT'
-    - 'DOMAIN-SUFFIX,lecloud.com,DIRECT'
-    - 'DOMAIN-SUFFIX,lemicp.com,DIRECT'
-    - 'DOMAIN-SUFFIX,licdn.com,DIRECT'
-    - 'DOMAIN-SUFFIX,luoo.net,DIRECT'
-    - 'DOMAIN-SUFFIX,meituan.com,DIRECT'
-    - 'DOMAIN-SUFFIX,meituan.net,DIRECT'
-    - 'DOMAIN-SUFFIX,mi.com,DIRECT'
-    - 'DOMAIN-SUFFIX,miaopai.com,DIRECT'
-    - 'DOMAIN-SUFFIX,microsoft.com,DIRECT'
-    - 'DOMAIN-SUFFIX,microsoftonline.com,DIRECT'
-    - 'DOMAIN-SUFFIX,miui.com,DIRECT'
-    - 'DOMAIN-SUFFIX,miwifi.com,DIRECT'
-    - 'DOMAIN-SUFFIX,mob.com,DIRECT'
-    - 'DOMAIN-SUFFIX,netease.com,DIRECT'
-    - 'DOMAIN-SUFFIX,office.com,DIRECT'
-    - 'DOMAIN-SUFFIX,office365.com,DIRECT'
-    - 'DOMAIN-KEYWORD,officecdn,DIRECT'
-    - 'DOMAIN-SUFFIX,oschina.net,DIRECT'
-    - 'DOMAIN-SUFFIX,ppsimg.com,DIRECT'
-    - 'DOMAIN-SUFFIX,pstatp.com,DIRECT'
-    - 'DOMAIN-SUFFIX,qcloud.com,DIRECT'
-    - 'DOMAIN-SUFFIX,qdaily.com,DIRECT'
-    - 'DOMAIN-SUFFIX,qdmm.com,DIRECT'
-    - 'DOMAIN-SUFFIX,qhimg.com,DIRECT'
-    - 'DOMAIN-SUFFIX,qhres.com,DIRECT'
-    - 'DOMAIN-SUFFIX,qidian.com,DIRECT'
-    - 'DOMAIN-SUFFIX,qihucdn.com,DIRECT'
-    - 'DOMAIN-SUFFIX,qiniu.com,DIRECT'
-    - 'DOMAIN-SUFFIX,qiniucdn.com,DIRECT'
-    - 'DOMAIN-SUFFIX,qiyipic.com,DIRECT'
-    - 'DOMAIN-SUFFIX,qq.com,DIRECT'
-    - 'DOMAIN-SUFFIX,qqurl.com,DIRECT'
-    - 'DOMAIN-SUFFIX,rarbg.to,DIRECT'
-    - 'DOMAIN-SUFFIX,ruguoapp.com,DIRECT'
-    - 'DOMAIN-SUFFIX,segmentfault.com,DIRECT'
-    - 'DOMAIN-SUFFIX,sinaapp.com,DIRECT'
-    - 'DOMAIN-SUFFIX,smzdm.com,DIRECT'
-    - 'DOMAIN-SUFFIX,snapdrop.net,DIRECT'
-    - 'DOMAIN-SUFFIX,sogou.com,DIRECT'
-    - 'DOMAIN-SUFFIX,sogoucdn.com,DIRECT'
-    - 'DOMAIN-SUFFIX,sohu.com,DIRECT'
-    - 'DOMAIN-SUFFIX,soku.com,DIRECT'
-    - 'DOMAIN-SUFFIX,speedtest.net,DIRECT'
-    - 'DOMAIN-SUFFIX,sspai.com,DIRECT'
-    - 'DOMAIN-SUFFIX,suning.com,DIRECT'
-    - 'DOMAIN-SUFFIX,taobao.com,DIRECT'
-    - 'DOMAIN-SUFFIX,tencent.com,DIRECT'
-    - 'DOMAIN-SUFFIX,tenpay.com,DIRECT'
-    - 'DOMAIN-SUFFIX,tianyancha.com,DIRECT'
-    - 'DOMAIN-SUFFIX,tmall.com,DIRECT'
-    - 'DOMAIN-SUFFIX,tudou.com,DIRECT'
-    - 'DOMAIN-SUFFIX,umetrip.com,DIRECT'
-    - 'DOMAIN-SUFFIX,upaiyun.com,DIRECT'
-    - 'DOMAIN-SUFFIX,upyun.com,DIRECT'
-    - 'DOMAIN-SUFFIX,veryzhun.com,DIRECT'
-    - 'DOMAIN-SUFFIX,weather.com,DIRECT'
-    - 'DOMAIN-SUFFIX,weibo.com,DIRECT'
-    - 'DOMAIN-SUFFIX,xiami.com,DIRECT'
-    - 'DOMAIN-SUFFIX,xiami.net,DIRECT'
-    - 'DOMAIN-SUFFIX,xiaomicp.com,DIRECT'
-    - 'DOMAIN-SUFFIX,ximalaya.com,DIRECT'
-    - 'DOMAIN-SUFFIX,xmcdn.com,DIRECT'
-    - 'DOMAIN-SUFFIX,xunlei.com,DIRECT'
-    - 'DOMAIN-SUFFIX,yhd.com,DIRECT'
-    - 'DOMAIN-SUFFIX,yihaodianimg.com,DIRECT'
-    - 'DOMAIN-SUFFIX,yinxiang.com,DIRECT'
-    - 'DOMAIN-SUFFIX,ykimg.com,DIRECT'
-    - 'DOMAIN-SUFFIX,youdao.com,DIRECT'
-    - 'DOMAIN-SUFFIX,youku.com,DIRECT'
-    - 'DOMAIN-SUFFIX,zealer.com,DIRECT'
-    - 'DOMAIN-SUFFIX,zhihu.com,DIRECT'
-    - 'DOMAIN-SUFFIX,zhimg.com,DIRECT'
-    - 'DOMAIN-SUFFIX,zimuzu.tv,DIRECT'
-    - 'DOMAIN-SUFFIX,zoho.com,DIRECT'
-    - 'DOMAIN-SUFFIX,api.pandalive.co.kr,DIRECT'
-    - 'DOMAIN,steamcdn-a.akamaihd.net,DIRECT'
-    - 'DOMAIN-SUFFIX,cm.steampowered.com,DIRECT'
-    - 'DOMAIN-SUFFIX,steamserver.net,DIRECT'
-    - 'IP-CIDR,45.121.184.0/24,DIRECT'
-    - 'IP-CIDR,103.10.124.0/23,DIRECT'
-    - 'IP-CIDR,103.28.54.0/24,DIRECT'
-    - 'IP-CIDR,146.66.152.0/24,DIRECT'
-    - 'IP-CIDR,146.66.155.0/24,DIRECT'
-    - 'IP-CIDR,153.254.86.0/24,DIRECT'
-    - 'IP-CIDR,155.133.224.0/22,DIRECT'
-    - 'IP-CIDR,155.133.230.0/24,DIRECT'
-    - 'IP-CIDR,155.133.232.0/23,DIRECT'
-    - 'IP-CIDR,155.133.234.0/24,DIRECT'
-    - 'IP-CIDR,155.133.236.0/22,DIRECT'
-    - 'IP-CIDR,155.133.240.0/23,DIRECT'
-    - 'IP-CIDR,155.133.244.0/23,DIRECT'
-    - 'IP-CIDR,155.133.246.0/24,DIRECT'
-    - 'IP-CIDR,155.133.248.0/21,DIRECT'
-    - 'IP-CIDR,162.254.192.0/21,DIRECT'
-    - 'IP-CIDR,185.25.182.0/23,DIRECT'
-    - 'IP-CIDR,190.217.32.0/22,DIRECT'
-    - 'IP-CIDR,192.69.96.0/22,DIRECT'
-    - 'IP-CIDR,205.196.6.0/24,DIRECT'
-    - 'IP-CIDR,208.64.200.0/22,DIRECT'
-    - 'IP-CIDR,208.78.164.0/22,DIRECT'
-    - 'IP-CIDR,205.185.194.0/24,DIRECT'
-    - 'DOMAIN-KEYWORD,amazon,🚀 节点选择'
-    - 'DOMAIN-KEYWORD,google,🚀 节点选择'
-    - 'DOMAIN-KEYWORD,gmail,🚀 节点选择'
-    - 'DOMAIN-KEYWORD,youtube,🚀 节点选择'
-    - 'DOMAIN-KEYWORD,facebook,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,fb.me,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,fbcdn.net,🚀 节点选择'
-    - 'DOMAIN-KEYWORD,twitter,🚀 节点选择'
-    - 'DOMAIN-KEYWORD,instagram,🚀 节点选择'
-    - 'DOMAIN-KEYWORD,dropbox,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,twimg.com,🚀 节点选择'
-    - 'DOMAIN-KEYWORD,blogspot,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,youtu.be,🚀 节点选择'
-    - 'DOMAIN-KEYWORD,whatsapp,🚀 节点选择'
-    - 'DOMAIN-KEYWORD,admarvel,REJECT'
-    - 'DOMAIN-KEYWORD,admaster,REJECT'
-    - 'DOMAIN-KEYWORD,adsage,REJECT'
-    - 'DOMAIN-KEYWORD,adsmogo,REJECT'
-    - 'DOMAIN-KEYWORD,adsrvmedia,REJECT'
-    - 'DOMAIN-KEYWORD,adwords,REJECT'
-    - 'DOMAIN-KEYWORD,adservice,REJECT'
-    - 'DOMAIN-SUFFIX,appsflyer.com,REJECT'
-    - 'DOMAIN-KEYWORD,domob,REJECT'
-    - 'DOMAIN-SUFFIX,doubleclick.net,REJECT'
-    - 'DOMAIN-KEYWORD,duomeng,REJECT'
-    - 'DOMAIN-KEYWORD,dwtrack,REJECT'
-    - 'DOMAIN-KEYWORD,guanggao,REJECT'
-    - 'DOMAIN-KEYWORD,lianmeng,REJECT'
-    - 'DOMAIN-SUFFIX,mmstat.com,REJECT'
-    - 'DOMAIN-KEYWORD,mopub,REJECT'
-    - 'DOMAIN-KEYWORD,omgmta,REJECT'
-    - 'DOMAIN-KEYWORD,openx,REJECT'
-    - 'DOMAIN-KEYWORD,partnerad,REJECT'
-    - 'DOMAIN-KEYWORD,pingfore,REJECT'
-    - 'DOMAIN-KEYWORD,supersonicads,REJECT'
-    - 'DOMAIN-KEYWORD,uedas,REJECT'
-    - 'DOMAIN-KEYWORD,umeng,REJECT'
-    - 'DOMAIN-KEYWORD,usage,REJECT'
-    - 'DOMAIN-SUFFIX,vungle.com,REJECT'
-    - 'DOMAIN-KEYWORD,wlmonitor,REJECT'
-    - 'DOMAIN-KEYWORD,zjtoolbar,REJECT'
-    - 'DOMAIN-SUFFIX,9to5mac.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,abpchina.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,adblockplus.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,adobe.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,akamaized.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,alfredapp.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,amplitude.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ampproject.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,android.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,angularjs.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,aolcdn.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,apkpure.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,appledaily.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,appshopper.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,appspot.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,arcgis.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,archive.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,armorgames.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,aspnetcdn.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,att.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,awsstatic.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,azureedge.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,azurewebsites.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,bing.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,bintray.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,bit.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,bit.ly,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,bitbucket.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,bjango.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,bkrtx.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,blog.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,blogcdn.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,blogger.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,blogsmithmedia.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,blogspot.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,blogspot.hk,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,bloomberg.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,box.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,box.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,cachefly.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,chromium.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,cl.ly,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,cloudflare.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,cloudfront.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,cloudmagic.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,cmail19.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,cnet.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,cocoapods.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,comodoca.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,crashlytics.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,culturedcode.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,d.pr,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,danilo.to,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,dayone.me,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,db.tt,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,deskconnect.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,disq.us,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,disqus.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,disquscdn.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,dnsimple.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,docker.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,dribbble.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,droplr.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,duckduckgo.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,dueapp.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,dytt8.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,edgecastcdn.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,edgekey.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,edgesuite.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,engadget.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,entrust.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,eurekavpt.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,evernote.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,fabric.io,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,fast.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,fastly.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,fc2.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,feedburner.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,feedly.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,feedsportal.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,fiftythree.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,firebaseio.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,flexibits.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,flickr.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,flipboard.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,g.co,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,gabia.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,geni.us,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,gfx.ms,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ggpht.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ghostnoteapp.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,git.io,🚀 节点选择'
-    - 'DOMAIN-KEYWORD,github,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,globalsign.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,gmodules.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,godaddy.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,golang.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,gongm.in,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,goo.gl,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,goodreaders.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,goodreads.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,gravatar.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,gstatic.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,gvt0.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,hockeyapp.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,hotmail.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,icons8.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ifixit.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ift.tt,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ifttt.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,iherb.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,imageshack.us,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,img.ly,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,imgur.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,imore.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,instapaper.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ipn.li,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,is.gd,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,issuu.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,itgonglun.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,itun.es,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ixquick.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,j.mp,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,js.revsci.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,jshint.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,jtvnw.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,justgetflux.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,kat.cr,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,klip.me,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,libsyn.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,linkedin.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,line-apps.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,linode.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,lithium.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,littlehj.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,live.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,live.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,livefilestore.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,llnwd.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,macid.co,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,macromedia.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,macrumors.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,mashable.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,mathjax.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,medium.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,mega.co.nz,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,mega.nz,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,megaupload.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,microsofttranslator.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,mindnode.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,mobile01.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,modmyi.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,msedge.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,myfontastic.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,name.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,nextmedia.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,nsstatic.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,nssurge.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,nyt.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,nytimes.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,omnigroup.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,onedrive.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,onenote.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ooyala.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,openvpn.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,openwrt.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,orkut.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,osxdaily.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,outlook.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ow.ly,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,paddleapi.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,parallels.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,parse.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,pdfexpert.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,periscope.tv,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,pinboard.in,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,pinterest.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,pixelmator.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,pixiv.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,playpcesor.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,playstation.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,playstation.com.hk,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,playstation.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,playstationnetwork.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,pushwoosh.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,rime.im,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,servebom.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,sfx.ms,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,shadowsocks.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,sharethis.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,shazam.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,skype.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,smartdns🚀 节点选择.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,smartmailcloud.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,sndcdn.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,sony.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,soundcloud.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,sourceforge.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,spotify.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,squarespace.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,sstatic.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,st.luluku.pw,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,stackoverflow.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,startpage.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,staticflickr.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,steamcommunity.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,symauth.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,symcb.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,symcd.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,tapbots.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,tapbots.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,tdesktop.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,techcrunch.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,techsmith.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,thepiratebay.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,theverge.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,time.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,timeinc.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,tiny.cc,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,tinypic.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,tmblr.co,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,todoist.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,trello.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,trustasiassl.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,tumblr.co,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,tumblr.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,tweetdeck.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,tweetmarker.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,twitch.tv,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,txmblr.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,typekit.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ubertags.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ublock.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ubnt.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ulyssesapp.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,urchin.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,usertrust.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,v.gd,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,v2ex.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,vimeo.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,vimeocdn.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,vine.co,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,vivaldi.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,vox-cdn.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,vsco.co,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,vultr.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,w.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,w3schools.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,webtype.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,wikiwand.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,wikileaks.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,wikimedia.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,wikipedia.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,wikipedia.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,windows.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,windows.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,wire.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,wordpress.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,workflowy.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,wp.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,wsj.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,wsj.net,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,xda-developers.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,xeeno.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,xiti.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,yahoo.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,yimg.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ying.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,yoyo.org,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,ytimg.com,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,telegra.ph,🚀 节点选择'
-    - 'DOMAIN-SUFFIX,telegram.org,🚀 节点选择'
-    - 'IP-CIDR,91.108.4.0/22,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,91.108.8.0/21,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,91.108.16.0/22,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,91.108.56.0/22,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,149.154.160.0/20,🚀 节点选择,no-resolve'
-    - 'IP-CIDR6,2001:67c:4e8::/48,🚀 节点选择,no-resolve'
-    - 'IP-CIDR6,2001:b28:f23d::/48,🚀 节点选择,no-resolve'
-    - 'IP-CIDR6,2001:b28:f23f::/48,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,120.232.181.162/32,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,120.241.147.226/32,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,120.253.253.226/32,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,120.253.255.162/32,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,120.253.255.34/32,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,120.253.255.98/32,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,180.163.150.162/32,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,180.163.150.34/32,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,180.163.151.162/32,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,180.163.151.34/32,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,203.208.39.0/24,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,203.208.40.0/24,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,203.208.41.0/24,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,203.208.43.0/24,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,203.208.50.0/24,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,220.181.174.162/32,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,220.181.174.226/32,🚀 节点选择,no-resolve'
-    - 'IP-CIDR,220.181.174.34/32,🚀 节点选择,no-resolve'
-    - 'DOMAIN,injections.adguard.org,DIRECT'
-    - 'DOMAIN,local.adguard.org,DIRECT'
-    - 'DOMAIN-SUFFIX,local,DIRECT'
-    - 'IP-CIDR,127.0.0.0/8,DIRECT'
-    - 'IP-CIDR,172.16.0.0/12,DIRECT'
-    - 'IP-CIDR,192.168.0.0/16,DIRECT'
-    - 'IP-CIDR,10.0.0.0/8,DIRECT'
-    - 'IP-CIDR,17.0.0.0/8,DIRECT'
-    - 'IP-CIDR,100.64.0.0/10,DIRECT'
-    - 'IP-CIDR,224.0.0.0/4,DIRECT'
-    - 'IP-CIDR6,fe80::/10,DIRECT'
-    - 'DOMAIN-SUFFIX,cn,DIRECT'
-    - 'DOMAIN-KEYWORD,-cn,DIRECT'
-    - 'GEOIP,CN,DIRECT'
-    - 'MATCH,🚀 节点选择'
+  # (5.0) 【新增】您的个人永久直连规则 (最高优先级之一)
+  #- DOMAIN-SUFFIX,anaconda.com,DIRECT
+  - DOMAIN-KEYWORD,openai365.top,DIRECT
+  - DOMAIN-SUFFIX,tuna.tsinghua.edu.cn,DIRECT
+  - DOMAIN-SUFFIX,mirrors.aliyun.com,DIRECT
+  - DOMAIN-SUFFIX,pypi.doubanio.com,DIRECT
+  - DOMAIN-SUFFIX,cron-job.org,DIRECT
+  - DOMAIN-SUFFIX,qwen.ai,DIRECT
+  # npm
+  - DOMAIN-SUFFIX,npmjs.com,DIRECT
+  - DOMAIN-SUFFIX,registry.npmjs.org,DIRECT
+  - DOMAIN-SUFFIX,yarnpkg.com,DIRECT
+
+ # 5.0.2 Antigravity 走AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,antigravity.google,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,accounts.google.com,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,oauth2.googleapis.com,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,googleapis.com,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,cloudcode-pa.googleapis.com,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,daily-cloudcode-pa.sandbox.googleapis.com,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,play.googleapis.com,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,run.app,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,antigravity,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,generativelanguage.googleapis.com,AI-SPECIAL-PROXY
+  - DOMAIN-SUFFIX,google.com,AI-SPECIAL-PROXY
+
+  # 5.0.1. 优先走CF代理其次直连（Conda & PyPI）
+  - DOMAIN-SUFFIX,anaconda.org,CF-D
+  - DOMAIN-SUFFIX,conda.io,CF-D
+  - DOMAIN-SUFFIX,conda-forge.org,CF-D
+  - DOMAIN-SUFFIX,pypi.org,CF-D
+  - DOMAIN-SUFFIX,pythonhosted.org,CF-D # pip下载包实际的域名
+  - DOMAIN-SUFFIX,files.pythonhosted.org,CF-D
+  - DOMAIN-SUFFIX,githubusercontent.com,CF-D # 很多库从这里下源码
+  
+  # 5.0.1.1 优先走CF代理其次直连（Google全家桶）
+  - DOMAIN-SUFFIX,gvt0.com,CF-D
+  - DOMAIN-SUFFIX,gvt1.com,CF-D
+  - DOMAIN-SUFFIX,gvt2.com,CF-D
+  - DOMAIN-SUFFIX,gvt3.com,CF-D
+  - DOMAIN-SUFFIX,gvt4.com,CF-D
+  - DOMAIN-SUFFIX,gvt5.com,CF-D
+  - DOMAIN-SUFFIX,gvt6.com,CF-D
+  - DOMAIN-SUFFIX,gvt7.com,CF-D
+  - DOMAIN-SUFFIX,gvt8.com,CF-D
+  - DOMAIN-SUFFIX,gvt9.com,CF-D
+  - DOMAIN-SUFFIX,gstatic.com,CF-D
+  - DOMAIN-SUFFIX,googleusercontent.com,CF-D
+  - DOMAIN-SUFFIX,google.com,CF-D
+  - DOMAIN-SUFFIX,googleapis.com,CF-D
+  - DOMAIN-SUFFIX,youtube-nocookie.com,CF-D
+  - DOMAIN-SUFFIX,ytimg.com,CF-D
+  - DOMAIN-SUFFIX,ggpht.com,CF-D
+  - DOMAIN-SUFFIX,youtu.be,CF-D
+  - DOMAIN-SUFFIX,youtube.com,CF-D
+
+
+
+
+  # (5.1) 【新增】我们的特殊AI及工作网站规则 (最高优先级)
+  - DOMAIN-KEYWORD,grok,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,openai,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,chatgpt,AI-SPECIAL-PROXY 
+  - DOMAIN-KEYWORD,claude,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,aistudio,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,makersuite,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,copilot.microsoft,AI-SPECIAL-PROXY
+  # - DOMAIN-KEYWORD,bing.com,AI-SPECIAL-PROXY
+
+
+  - DOMAIN-KEYWORD,challenges.cloudflare.com,AI-SPECIAL-PROXY
+  
+  # - DOMAIN-KEYWORD,huggingface.co,AI-SPECIAL-PROXY
+  
+  # GLADOS 走nc
+  - DOMAIN-KEYWORD,glados,NC-auto-all
+  - DOMAIN-KEYWORD,gitlab.com,NC-auto-all
+  - DOMAIN-SUFFIX,pushdeer.com,NC-auto-all
+  - DOMAIN-KEYWORD,chat.bing,NC-auto-all
+  
+   
+  #- huggingface 等流量很大，但对节点又有要求的网站，单独列出来
+  - DOMAIN-KEYWORD,huggingface.co,huggingface_ProxyGroup
+
+
+  # (5.2) 【沿用并修改】专业配置中的所有规则
+  # 我已将所有原来指向“🚀 节点选择”的规则，都改为了指向“DEFAULT-PROXY”
+  - 'DOMAIN-KEYWORD,amazon,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,google,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,gmail,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,youtube,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,facebook,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,fb.me,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,fbcdn.net,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,twitter,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,instagram,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,dropbox,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,twimg.com,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,blogspot,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,youtu.be,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,whatsapp,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,9to5mac.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,abpchina.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,adblockplus.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,adobe.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,akamaized.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,alfredapp.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,amplitude.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ampproject.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,android.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,angularjs.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,aolcdn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,apkpure.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,appledaily.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,appshopper.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,appspot.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,arcgis.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,archive.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,armorgames.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,aspnetcdn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,att.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,awsstatic.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,azureedge.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,azurewebsites.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bing.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bintray.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bit.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bit.ly,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bitbucket.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bjango.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bkrtx.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,blog.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,blogcdn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,blogger.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,blogsmithmedia.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,blogspot.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,blogspot.hk,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,bloomberg.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,box.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,box.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cachefly.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,chromium.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cl.ly,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cloudflare.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cloudfront.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cloudmagic.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cmail19.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cnet.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,cocoapods.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,comodoca.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,crashlytics.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,culturedcode.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,d.pr,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,danilo.to,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,dayone.me,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,db.tt,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,deskconnect.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,disq.us,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,disqus.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,disquscdn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,dnsimple.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,docker.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,dribbble.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,droplr.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,duckduckgo.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,dueapp.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,dytt8.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,edgecastcdn.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,edgekey.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,edgesuite.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,engadget.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,entrust.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,eurekavpt.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,evernote.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,fabric.io,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,fast.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,fastly.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,fc2.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,feedburner.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,feedly.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,feedsportal.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,fiftythree.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,firebaseio.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,flexibits.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,flickr.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,flipboard.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,g.co,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,gabia.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,geni.us,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,gfx.ms,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ggpht.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ghostnoteapp.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,git.io,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,github,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,globalsign.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,gmodules.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,godaddy.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,golang.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,gongm.in,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,goo.gl,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,goodreaders.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,goodreads.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,gravatar.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,gstatic.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,gvt0.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,hockeyapp.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,hotmail.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,icons8.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ifixit.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ift.tt,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ifttt.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,iherb.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,imageshack.us,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,img.ly,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,imgur.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,imore.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,instapaper.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ipn.li,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,is.gd,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,issuu.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,itgonglun.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,itun.es,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ixquick.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,j.mp,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,js.revsci.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,jshint.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,jtvnw.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,justgetflux.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,kat.cr,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,klip.me,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,libsyn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,linkedin.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,line-apps.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,linode.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,lithium.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,littlehj.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,live.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,live.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,livefilestore.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,llnwd.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,macid.co,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,macromedia.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,macrumors.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,mashable.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,mathjax.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,medium.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,mega.co.nz,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,mega.nz,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,megaupload.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,microsofttranslator.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,mindnode.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,mobile01.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,modmyi.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,msedge.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,myfontastic.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,name.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,nextmedia.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,nsstatic.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,nssurge.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,nyt.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,nytimes.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,omnigroup.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,onedrive.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,onenote.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ooyala.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,openvpn.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,openwrt.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,orkut.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,osxdaily.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,outlook.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ow.ly,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,paddleapi.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,parallels.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,parse.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,pdfexpert.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,periscope.tv,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,pinboard.in,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,pinterest.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,pixelmator.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,pixiv.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,playpcesor.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,playstation.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,playstation.com.hk,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,playstation.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,playstationnetwork.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,pushwoosh.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,rime.im,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,servebom.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,sfx.ms,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,shadowsocks.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,sharethis.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,shazam.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,skype.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,smartdnsDEFAULT-PROXY.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,smartmailcloud.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,sndcdn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,sony.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,soundcloud.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,sourceforge.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,spotify.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,squarespace.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,sstatic.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,st.luluku.pw,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,stackoverflow.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,startpage.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,staticflickr.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,steamcommunity.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,symauth.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,symcb.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,symcd.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tapbots.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tapbots.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tdesktop.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,techcrunch.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,techsmith.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,thepiratebay.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,theverge.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,time.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,timeinc.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tiny.cc,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tinypic.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tmblr.co,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,todoist.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,trello.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,trustasiassl.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tumblr.co,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tumblr.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tweetdeck.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,tweetmarker.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,twitch.tv,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,txmblr.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,typekit.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ubertags.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ublock.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ubnt.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ulyssesapp.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,urchin.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,usertrust.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,v.gd,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,v2ex.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,vimeo.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,vimeocdn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,vine.co,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,vivaldi.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,vox-cdn.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,vsco.co,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,vultr.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,w.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,w3schools.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,webtype.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wikiwand.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wikileaks.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wikimedia.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wikipedia.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wikipedia.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,windows.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,windows.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wire.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wordpress.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,workflowy.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wp.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wsj.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,wsj.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,xda-developers.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,xeeno.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,xiti.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,yahoo.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,yimg.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ying.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,yoyo.org,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,ytimg.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,telegra.ph,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,telegram.org,DEFAULT-PROXY'
+  - 'IP-CIDR,91.108.4.0/22,DEFAULT-PROXY,no-resolve'
+  - 'IP-CIDR,91.108.8.0/21,DEFAULT-PROXY,no-resolve'
+  - 'IP-CIDR,91.108.16.0/22,DEFAULT-PROXY,no-resolve'
+  - 'IP-CIDR,91.108.56.0/22,DEFAULT-PROXY,no-resolve'
+  - 'IP-CIDR,149.154.160.0/20,DEFAULT-PROXY,no-resolve'
+  - 'IP-CIDR6,2001:67c:4e8::/48,DEFAULT-PROXY,no-resolve'
+  - 'IP-CIDR6,2001:b28:f23d::/48,DEFAULT-PROXY,no-resolve'
+  - 'IP-CIDR6,2001:b28:f23f::/48,DEFAULT-PROXY,no-resolve'
+  - 'DOMAIN-SUFFIX,services.googleapis.cn,DEFAULT-PROXY'
+  - 'DOMAIN,developer.apple.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,digicert.com,DEFAULT-PROXY'
+  - 'DOMAIN,ocsp.apple.com,DEFAULT-PROXY'
+  - 'DOMAIN,ocsp.comodoca.com,DEFAULT-PROXY'
+  - 'DOMAIN,ocsp.usertrust.com,DEFAULT-PROXY'
+  - 'DOMAIN,ocsp.sectigo.com,DEFAULT-PROXY'
+  - 'DOMAIN,ocsp.verisign.net,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,apple-dns.net,DEFAULT-PROXY'
+  - 'DOMAIN,testflight.apple.com,DEFAULT-PROXY'
+  - 'DOMAIN,sandbox.itunes.apple.com,DEFAULT-PROXY'
+  - 'DOMAIN,itunes.apple.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,apps.apple.com,DEFAULT-PROXY'
+  - 'DOMAIN-SUFFIX,blobstore.apple.com,DEFAULT-PROXY'
+  - 'DOMAIN,cvws.icloud-content.com,DEFAULT-PROXY'
+  - 'DOMAIN-KEYWORD,admarvel,REJECT'
+  - 'DOMAIN-KEYWORD,admaster,REJECT'
+  - 'DOMAIN-KEYWORD,adsage,REJECT'
+  - 'DOMAIN-KEYWORD,adsmogo,REJECT'
+  - 'DOMAIN-KEYWORD,adsrvmedia,REJECT'
+  - 'DOMAIN-KEYWORD,adwords,REJECT'
+  - 'DOMAIN-KEYWORD,adservice,REJECT'
+  - 'DOMAIN-SUFFIX,appsflyer.com,REJECT'
+  - 'DOMAIN-KEYWORD,domob,REJECT'
+  - 'DOMAIN-SUFFIX,doubleclick.net,REJECT'
+  - 'DOMAIN-KEYWORD,duomeng,REJECT'
+  - 'DOMAIN-KEYWORD,dwtrack,REJECT'
+  - 'DOMAIN-KEYWORD,guanggao,REJECT'
+  - 'DOMAIN-KEYWORD,lianmeng,REJECT'
+  - 'DOMAIN-SUFFIX,mmstat.com,REJECT'
+  - 'DOMAIN-KEYWORD,mopub,REJECT'
+  - 'DOMAIN-KEYWORD,omgmta,REJECT'
+  - 'DOMAIN-KEYWORD,openx,REJECT'
+  - 'DOMAIN-KEYWORD,partnerad,REJECT'
+  - 'DOMAIN-KEYWORD,pingfore,REJECT'
+  - 'DOMAIN-KEYWORD,supersonicads,REJECT'
+  - 'DOMAIN-KEYWORD,uedas,REJECT'
+  - 'DOMAIN-KEYWORD,umeng,REJECT'
+  - 'DOMAIN-KEYWORD,usage,REJECT'
+  - 'DOMAIN-SUFFIX,vungle.com,REJECT'
+  - 'DOMAIN-KEYWORD,wlmonitor,REJECT'
+  - 'DOMAIN-KEYWORD,zjtoolbar,REJECT'
+  - 'GEOIP,CN,DIRECT'
+  - 'MATCH,DIRECT'
