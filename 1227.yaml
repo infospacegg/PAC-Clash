@@ -11,9 +11,8 @@ external-controller: '127.0.0.1:9090'
 hosts:
     dns.alidns.com: [223.5.5.5, '2400:3200::1']
     doh.pub: [1.12.12.12, 120.53.53.53]
-
+    
 # 2. DNS 设置
-
 
 dns:
     enable: true
@@ -22,11 +21,9 @@ dns:
     enhanced-mode: fake-ip
     fake-ip-range: 198.18.0.1/16
     use-hosts: true
-    nameserver: ['https://dns.alidns.com/dns-query', 'https://doh.pub/dns-query']
-    fallback: ['https://223.5.5.5/dns-query', 'https://223.6.6.6/dns-query', 'https://doh.360.cn/dns-query']
+    nameserver: ['https://dns.alidns.com/dns-query', 'https://doh.pub/dns-query', 180.184.1.1]
+    fallback: ['https://223.5.5.5/dns-query', 'https://223.6.6.6/dns-query', 'https://doh.360.cn/dns-query', 180.184.1.1]
     fallback-filter: { geoip: true, geoip-code: CN, geosite: [gfw], ipcidr: [240.0.0.0/4], domain: [+.google.com, +.facebook.com, +.youtube.com] }
-
-
 
 # 3. 代理节点 (Proxies) - 替换为您自己的本地引擎
 proxies:
@@ -51,6 +48,7 @@ proxies:
 
 
 
+
 # 3.5. Proxy Providers - 关键部分！从这里开始
 proxy-providers:
   # Provider 名称（自定义，后面会用到）
@@ -61,7 +59,7 @@ proxy-providers:
 
     # 更新间隔（秒）：3600 = 1小时自动更新一次
     interval: 3600
-    path: ./providers/nc_local-black-1116.yaml
+    path: ./providers/nc_local-0218.yaml
     # 移到 header 下
     header:
       User-Agent:
@@ -76,7 +74,7 @@ proxy-providers:
     type: http
     url: "https://gitlab.com/api/v4/projects/67911760/repository/files/v2c.yaml/raw?ref=main&private_token=glpat-Eu2whgwSfLtBymi26RF9" # <-- 还是用同一个订阅链接
     interval: 3600
-    path: ./providers/v2c.yaml # <-- 建议用一个新文件名
+    path: ./providers/v2c_0218.yaml # <-- 建议用一个新文件名
     health-check:
       enable: true
       url: 'https://1.1.1.1/cdn-cgi/trace' 
@@ -89,7 +87,7 @@ proxy-providers:
     type: http
     url: "https://update.glados-config.com/mihomo/685533/bfbfc7d/83489/glados.yaml"
     interval: 3600
-    path: ./providers/local_glados.yaml
+    path: ./providers/local_White_glados.yaml
     health-check:
       enable: true
       interval: 600
@@ -120,7 +118,6 @@ proxy-groups:
     url: 'http://www.gstatic.com/generate_204'
     interval: 1800
 
-
   - name: "CF-D"  # 策略组名字，你可以随便改
     type: select
     use:
@@ -128,10 +125,10 @@ proxy-groups:
     proxies:
       - "V-CF"
       - DIRECT
-      - GLaDOS-SG
     url: 'http://www.gstatic.com/generate_204' # 用于测试连通性的地址
     interval: 1800   # 每半小时检测一次
     tolerance: 50   # 容差，防止频繁跳动
+
 
 
 
@@ -142,14 +139,12 @@ proxy-groups:
       - v2c
       - GLaDOS-Nodes
     proxies:
-      - "V2C-test"
-      - "V2C-Whzsmss"
+
       - "V-CF"
       - "M"
       - "M-h"
-      - GLaDOS-SG
-      - '♻️ NC自动选择'
-     
+
+
   - name: "NC-auto-all"
     type: select
     use:
@@ -157,14 +152,23 @@ proxy-groups:
 
   - name: "huggingface_ProxyGroup"
     type: select
-    use:
-      - v2c
     proxies:
+      - Whzsmss96San JoseSJC6
+      - Whzsmss96San JoseSJC7
+      - Whzsmss96San JoseSJC8
+      - Whzsmss96San JoseSJC9
+      - Whzsmss96San JoseSJC10
+      - Whzsmss96FrankfurtFRA1
+      - Whzsmss96FrankfurtFRA2
+      - Whzsmss96FrankfurtFRA3
+      - Whzsmss96FrankfurtFRA4
+      - Whzsmss96FrankfurtFRA5
       - "V2C-test"
       - "V2C-Whzsmss"
       - "V-CF"
       - "M"
       - "M-h"
+      - Whzsmss20260212-ypdq
 
   - name: "V2C-Whzsmss"
     type: select
@@ -194,11 +198,11 @@ proxy-groups:
       - nc
     filter: "香"
 
-  - name: "NC-auto-猎户座"
+  - name: "NC-auto-白羊座"
     type: select
     use:
       - nc
-    filter: "猎户座"
+    filter: "白羊座"
 
   - name: "NC-auto-US"
     type: select
@@ -275,6 +279,7 @@ proxy-groups:
 
 # 5. 规则 (Rules) - 在专业规则的基础上，增加了我们的规则
 rules:
+
   # (5.0) 【新增】您的个人永久直连规则 (最高优先级之一)
   #- DOMAIN-SUFFIX,anaconda.com,DIRECT
   - DOMAIN-KEYWORD,openai365.top,DIRECT
@@ -283,7 +288,7 @@ rules:
   - DOMAIN-SUFFIX,pypi.doubanio.com,DIRECT
   - DOMAIN-SUFFIX,cron-job.org,DIRECT
   - DOMAIN-SUFFIX,qwen.ai,DIRECT
-  # npm
+ # npm
   - DOMAIN-SUFFIX,npmjs.com,DIRECT
   - DOMAIN-SUFFIX,registry.npmjs.org,DIRECT
   - DOMAIN-SUFFIX,yarnpkg.com,DIRECT
@@ -309,7 +314,8 @@ rules:
   - DOMAIN-SUFFIX,pythonhosted.org,CF-D # pip下载包实际的域名
   - DOMAIN-SUFFIX,files.pythonhosted.org,CF-D
   - DOMAIN-SUFFIX,githubusercontent.com,CF-D # 很多库从这里下源码
-  
+  # - DOMAIN-KEYWORD,gvt2.com,CF-D
+
   # 5.0.1.1 优先走CF代理其次直连（Google全家桶）
   - DOMAIN-SUFFIX,gvt0.com,CF-D
   - DOMAIN-SUFFIX,gvt1.com,CF-D
@@ -332,33 +338,30 @@ rules:
   - DOMAIN-SUFFIX,youtube.com,CF-D
 
 
-
-
   # (5.1) 【新增】我们的特殊AI及工作网站规则 (最高优先级)
   - DOMAIN-KEYWORD,grok,AI-SPECIAL-PROXY
   - DOMAIN-KEYWORD,openai,AI-SPECIAL-PROXY
-  - DOMAIN-KEYWORD,chatgpt,AI-SPECIAL-PROXY 
   - DOMAIN-KEYWORD,claude,AI-SPECIAL-PROXY
   - DOMAIN-KEYWORD,aistudio,AI-SPECIAL-PROXY
   - DOMAIN-KEYWORD,makersuite,AI-SPECIAL-PROXY
   - DOMAIN-KEYWORD,copilot.microsoft,AI-SPECIAL-PROXY
-  # - DOMAIN-KEYWORD,bing.com,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,bing.com,AI-SPECIAL-PROXY
+  - DOMAIN-KEYWORD,chat.bing,AI-SPECIAL-PROXY
 
-
-  - DOMAIN-KEYWORD,challenges.cloudflare.com,AI-SPECIAL-PROXY
-  
+  - DOMAIN-KEYWORD,antigravity,AI-SPECIAL-PROXY
   # - DOMAIN-KEYWORD,huggingface.co,AI-SPECIAL-PROXY
-  
+
   # GLADOS 走nc
-  - DOMAIN-KEYWORD,glados,NC-auto-all
+  - DOMAIN-KEYWORD,glados,NC-auto-all 
+  # gitlab 走nc 因为它屏蔽了cf
   - DOMAIN-KEYWORD,gitlab.com,NC-auto-all
+  # 走nc PushDeer
   - DOMAIN-SUFFIX,pushdeer.com,NC-auto-all
-  - DOMAIN-KEYWORD,chat.bing,NC-auto-all
-  
-   
+  - DOMAIN-KEYWORD,chat.bing,NC-auto-all 
+
+
   #- huggingface 等流量很大，但对节点又有要求的网站，单独列出来
   - DOMAIN-KEYWORD,huggingface.co,huggingface_ProxyGroup
-
 
   # (5.2) 【沿用并修改】专业配置中的所有规则
   # 我已将所有原来指向“🚀 节点选择”的规则，都改为了指向“DEFAULT-PROXY”
@@ -699,4 +702,4 @@ rules:
   - 'DOMAIN-KEYWORD,wlmonitor,REJECT'
   - 'DOMAIN-KEYWORD,zjtoolbar,REJECT'
   - 'GEOIP,CN,DIRECT'
-  - 'MATCH,DIRECT'
+  - 'MATCH,DEFAULT-PROXY'
