@@ -288,6 +288,8 @@ rules:
   - DOMAIN-SUFFIX,pypi.doubanio.com,DIRECT
   - DOMAIN-SUFFIX,cron-job.org,DIRECT
   - DOMAIN-SUFFIX,qwen.ai,DIRECT
+  # SM公司
+  - DOMAIN-SUFFIX,wwitechs.com,DIRECT
  # npm
   - DOMAIN-SUFFIX,npmjs.com,DIRECT
   - DOMAIN-SUFFIX,registry.npmjs.org,DIRECT
