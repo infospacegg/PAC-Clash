@@ -155,16 +155,6 @@ proxy-groups:
   - name: "huggingface_ProxyGroup"
     type: select
     proxies:
-      - Whzsmss96San JoseSJC6
-      - Whzsmss96San JoseSJC7
-      - Whzsmss96San JoseSJC8
-      - Whzsmss96San JoseSJC9
-      - Whzsmss96San JoseSJC10
-      - Whzsmss96FrankfurtFRA1
-      - Whzsmss96FrankfurtFRA2
-      - Whzsmss96FrankfurtFRA3
-      - Whzsmss96FrankfurtFRA4
-      - Whzsmss96FrankfurtFRA5
       - "V2C-test"
       - "V2C-Whzsmss"
       - "V-CF"
