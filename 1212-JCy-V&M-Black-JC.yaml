@@ -74,7 +74,7 @@ proxy-providers:
 
   v2c:
     type: http
-    url: "https://gitlab.com/api/v4/projects/67911760/repository/files/v2c.yaml/raw?ref=main&private_token=glpat-Eu2whgwSfLtBymi26RF9" # <-- 还是用同一个订阅链接
+    url: "https://myclashraw.infospace.workers.dev/v2c.yaml?token=linshimimaCFW20260315" # <-- 还是用同一个订阅链接
     interval: 3600
     path: ./providers/v2c.yaml # <-- 建议用一个新文件名
     health-check:
