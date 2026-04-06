@@ -285,6 +285,7 @@ rules:
   - DOMAIN-SUFFIX,pypi.doubanio.com,DIRECT
   - DOMAIN-SUFFIX,cron-job.org,DIRECT
   - DOMAIN-SUFFIX,qwen.ai,DIRECT
+  - DOMAIN-SUFFIX,caowo.xin,DIRECT
   # npm
   - DOMAIN-SUFFIX,npmjs.com,DIRECT
   - DOMAIN-SUFFIX,registry.npmjs.org,DIRECT
