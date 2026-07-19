@@ -1,0 +1,49 @@
+# 跨平台协作：团队成员使用 Windows、macOS、Linux 等不同系统，如果没有统一规则，Git 可能会自动转换换行符，导致文件在工作目录中反复变化，产生无意义的提交记录或合并冲突。
+# 脚本兼容性：Windows 脚本需要 CRLF，而其他文件希望统一为 LF（例如服务器部署环境是 Linux），需要特别处理。
+# 二进制文件保护：避免 Git 误判二进制文件为文本，导致内容被破坏。
+
+# 1. 默认规则：所有文本文件在仓库里存为 LF，检出到硬盘也是 LF。
+* text=auto eol=lf
+.gitattributes text eol=lf
+
+# 2. 明确常见源码/文档文件使用 LF，避免工具按平台自动猜测。
+*.md text eol=lf
+*.py text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.sql text eol=lf
+*.csv text eol=lf
+*.txt text eol=lf
+
+# 3. Windows 脚本必须强制保留 CRLF。
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# 4. 二进制文件绝对不能动换行符。
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.xlsx binary
+*.xls binary
+*.docx binary
+*.pptx binary
+*.zip binary
+*.7z binary
+*.tar binary
+*.gz binary
+*.feather binary
+*.parquet binary
+*.pkl binary
+*.joblib binary
+*.onnx binary
+*.bin binary

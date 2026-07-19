@@ -1,0 +1,54 @@
+mode: global
+dns:
+  enable: true
+  enhanced-mode: fake-ip
+  nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
+
+proxies:
+
+
+  - name: "DataImpulse-http"
+    type: http    # 如果 DataImpulse 提供的是 socks5，这里就改成 socks5
+    server: "gw.dataimpulse.com"   # 例如 gw.dataimpulse.com
+    port: 10000                      # 例如 823 (注意这里是数字，不要加引号)
+    username: "dee2b8ea659b945246b1"
+    password: "74b3adfd75d4a61a"
+
+
+  - name: "DataImpulse-socks5"
+    type: socks5    # 如果 DataImpulse 提供的是 socks5，这里就改成 socks5
+    server: "gw.dataimpulse.com"   # 例如 gw.dataimpulse.com
+    port: 10000                      # 例如 823 (注意这里是数字，不要加引号)
+    username: "dee2b8ea659b945246b1"
+    password: "74b3adfd75d4a61a"
+
+
+  - name: "V-CF"
+    type: socks5
+    server: 127.0.0.1
+    port: 10808
+
+  - name: "M-socks5"
+    type: socks5
+    server: 127.0.0.1
+    port: 9909 # 请确认您的VPN端口是这个
+
+  - name: "M-http"
+    type: http
+    server: 127.0.0.1
+    port: 9910 # 请确认您的VPN端口是这个
+
+
+proxy-groups:
+  - name: PROXY
+    type: select
+    proxies:
+      - "DataImpulse-http"
+      - "DataImpulse-socks5"
+      - "M-http"
+      - "M-socks5"
+      - "V-CF"
+rules:
+  - MATCH,PROXY

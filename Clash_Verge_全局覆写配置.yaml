@@ -1,0 +1,72 @@
+# 这个可以用于 四个容器，但同时，  proxy: "📦容器1" 本质上是策略组，所以在 网页上，也可以用。
+# [[浏览器的“Proxy SwitchyOmega”设置]]
+# Profile Enhancement Merge Template for Clash Verge
+
+
+
+profile:
+  store-selected: true
+
+#  将监听端口绑定到这 6 个策略组上
+listeners:
+  - name: node-1
+    type: mixed
+    port: 48311
+    proxy: "node-1" # 绑定到上面的策略组
+
+  - name: node-2
+    type: mixed
+    port: 48312
+    proxy: "node-2"
+
+  - name: node-3
+    type: mixed
+    port: 48313
+    proxy: "node-3"
+
+  - name: node-4
+    type: mixed
+    port: 48314
+    proxy: "node-4"
+
+  - name: node-5
+    type: mixed
+    port: 48315
+    proxy: "node-5"
+
+  - name: node-6
+    type: mixed
+    port: 48316
+    proxy: "node-6"
+
+
+
+  # - name: node-7
+  #   type: mixed
+  #   port: 48317
+  #   proxy: "node-7"
+
+  # - name: node-8
+  #   type: mixed
+  #   port: 48318
+  #   proxy: "node-8"
+
+  # - name: node-9
+  #   type: mixed
+  #   port: 48319
+  #   proxy: "node-9"
+
+  # - name: node-10
+  #   type: mixed
+  #   port: 48320
+  #   proxy: "node-10"
+
+  # - name: node-11
+  #   type: mixed
+  #   port: 48321
+  #   proxy: "node-11"
+
+  # - name: node-12
+  #   type: mixed
+  #   port: 48322
+  #   proxy: "node-12"

@@ -1,0 +1,41 @@
+function main(config) {
+  // 1. 置顶插入直连规则（替代失效的 prepend-rules）
+  const prependRules = [
+    "IP-CIDR,10.0.0.0/8,DIRECT",
+    "IP-CIDR,172.16.0.0/12,DIRECT",
+    "IP-CIDR,192.168.0.0/16,DIRECT",
+
+    "DOMAIN-KEYWORD,openai365.top,DIRECT",
+    "DOMAIN-SUFFIX,tuna.tsinghua.edu.cn,DIRECT",
+    "DOMAIN-SUFFIX,mirrors.aliyun.com,DIRECT",
+    "DOMAIN-SUFFIX,pypi.doubanio.com,DIRECT",
+    "DOMAIN-SUFFIX,cron-job.org,DIRECT",
+    "DOMAIN-SUFFIX,qwen.ai,DIRECT",
+    "DOMAIN-SUFFIX,wwitechs.com,DIRECT"
+  //   # npm
+  // - DOMAIN-SUFFIX,npmjs.com,DIRECT
+  // - DOMAIN-SUFFIX,registry.npmjs.org,DIRECT
+  // - DOMAIN-SUFFIX,yarnpkg.com,DIRECT
+
+  ];
+  config["rules"] = [...prependRules, ...(config["rules"] || [])];
+
+  // 2. 追加12个容器策略组
+  const newGroups = [
+    { name: "node-1", type: "select", "include-all": true, filter: "(?i)(AI|Research|US|TW|美国|台湾)", proxies: ["DIRECT"] },
+    { name: "node-2", type: "select", "include-all": true, filter: "(?i)(AI|Research|US|TW|美国|台湾)", proxies: ["DIRECT"] },
+    { name: "node-3", type: "select", "include-all": true, filter: "(?i)(AI|Research|US|TW|美国|台湾)", proxies: ["DIRECT"] },
+    { name: "node-4", type: "select", "include-all": true, filter: "(?i)(AI|Research|US|TW|美国|台湾)", proxies: ["DIRECT"] },
+    { name: "node-5", type: "select", "include-all": true, filter: "(?i)(AI|Research|US|TW|美国|台湾)", proxies: ["DIRECT"] },
+    { name: "node-6", type: "select", "include-all": true, filter: "(?i)(AI|Research|US|TW|美国|台湾)", proxies: ["DIRECT"] },
+    // { name: "node-7", type: "select", "include-all": true, filter: "(?i)(AI|Research|US|TW|美国|台湾)", proxies: ["DIRECT"] },
+    // { name: "node-8", type: "select", "include-all": true, filter: "(?i)(AI|Research|US|TW|美国|台湾)", proxies: ["DIRECT"] },
+    // { name: "node-9", type: "select", "include-all": true, filter: "(?i)(AI|Research|US|TW|美国|台湾)", proxies: ["DIRECT"] },
+    // { name: "node-10", type: "select", "include-all": true, filter: "(?i)(AI|Research|US|TW|美国|台湾)", proxies: ["DIRECT"] },
+    // { name: "node-11", type: "select", "include-all": true, filter: "(?i)(AI|Research|US|TW|美国|台湾)", proxies: ["DIRECT"] },
+    // { name: "node-12", type: "select", "include-all": true, filter: "(?i)(AI|Research|US|TW|美国|台湾)", proxies: ["DIRECT"] }
+  ];
+  config["proxy-groups"] = [...(config["proxy-groups"] || []), ...newGroups];
+
+  return config;
+}
